@@ -129,6 +129,19 @@ config.forEach((section) => {
     //   });
     // }
 
+    const sectionConfigContent = `export default ${JSON.stringify(
+      {
+        settings: {
+          name: "V1",
+          slug: "v1",
+          isDefault: true,
+        },
+        sidebar: sectionSidebar,
+      },
+      null,
+      2
+    )};`;
+
     sectionSidebar.push({
       type: "page",
       path: `./${page.path.split("/").pop()}.mdx`,
@@ -136,9 +149,7 @@ config.forEach((section) => {
 
     fs.writeFile(
       `${guideFolderPath}/config.ts`,
-      `export default {
-        sidebar: ${JSON.stringify(sectionSidebar, null, 2)}
-      };`,
+      sectionConfigContent,
       function (err) {
         if (err) return console.log(err);
         console.log(`File`);
