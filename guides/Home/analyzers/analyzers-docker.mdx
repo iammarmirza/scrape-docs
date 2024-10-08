@@ -1,0 +1,141 @@
+---
+title: Docker
+slug: analyzers-docker
+visibility: PUBLIC
+label: Home
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Docker
+
+Search
+
+Docker
+======
+
+The Docker Analyzer analyzes your Dockerfiles and raises issues if they do not follow the best practices and methods to build efficient docker images.
+
+This section covers configuration specific to the `Dockerfile` analyzer. Please make sure to read the general first.
+
+Configuration - `.deepsource.toml`
+
+[](#configuration---deepsourcetoml)
+-------------------------------------------------------------------------
+
+### 
+
+`name`
+
+[](#name)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: mandatory
+*   **Description**: Shortcode of the analyzer.
+*   **Example**:
+
+TOML
+
+`name = "docker"`
+
+### 
+
+`enabled`
+
+[](#enabled)
+
+*   **Type**: [Boolean](https://toml.io/en/v1.0.0#boolean)
+*   **Presence**: optional
+*   **Description**: Toggle whether this analyzer should be run.
+*   **Example**:
+
+TOML
+
+`enabled = true`
+
+### 
+
+`meta`
+
+[](#meta)
+
+*   **Type**: [Table](https://toml.io/en/v1.0.0#table)
+*   **Presence**: optional
+*   **Description**: Any supported metadata to pass to the analyzer.
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   dockerfile_paths = [     "api/dockerfile_dev",     "Dockerfile_local"   ]`
+
+#### 
+
+`dockerfile_paths`
+
+[](#dockerfile_paths)
+
+*   **Type**: [Array](https://toml.io/en/v1.0.0#array)
+*   **Presence**: optional
+*   **Description**: Specify the dockerfile(s) to run analysis on.
+*   **Available Value**: None. Expects path(s) of dockerfile(s)
+*   **Default Value**: File named `Dockerfile` in the repository root, if it exists.
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   dockerfile_paths = [     "Dockerfile",     "api/dockerfile_dev",     "Dockerfile_local"   ]`
+
+> 📘
+> --
+> 
+> DeepSource looks for a file named `Dockerfile` in the repository root by default.  
+> If your Dockerfile name or path is different, you must provide the path to the file in the `dockerfile_paths` meta field.
+> 
+> If `dockerfile_paths` is specified, DeepSource will run analysis on all the files provided, along with the default `Dockerfile` file from the repository root, if it exists.
+
+#### 
+
+`trusted_registries`
+
+[](#trusted_registries)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: optional
+*   **Description**: Specify trusted registries from where images are to be pulled.
+*   **Available Value**: None. The user must provide the registries.
+*   **Default Value**: None
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   trusted_registries = [     "my-registry.com",     "company-registry.com"   ]`
+
+> 📘
+> --
+> 
+> If no values are provided for the meta field `trusted_registries`, the analyzer will not flag untrusted registries when encountered.  
+> However, when `trusted_registries` is provided, DeepSource will consider only the specified registries as allowed,  
+> and will raise an issue for any other registry that images are pulled from.
+
+Sample config
+
+[](#sample-config)
+-----------------------------------
+
+TOML
+
+`version = 1  [[analyzers]] name = "docker" enabled = true    [analyzers.meta]   dockerfile_paths = [     "dockerfile_dev",     "dockerfile_prod"   ]    trusted_registries = [     "my-registry.com",     "docker.io"   ]`
+
+Updated over 1 year ago
+
+* * *

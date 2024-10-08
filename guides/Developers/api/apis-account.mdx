@@ -1,0 +1,281 @@
+---
+title: Account
+slug: apis-account
+visibility: PUBLIC
+label: Developers
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Account
+
+Search
+
+Account
+=======
+
+The `Account` query is used to fetch the details of your team or individual account on DeepSource. It also provides mutations to configure account-wide settings.
+
+account
+
+[](#account)
+-----------------------
+
+`Query:account` Fetch the details of a single DeepSource account.
+
+### 
+
+Arguments
+
+[](#arguments)
+
+Field
+
+Type
+
+Description
+
+login
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The login or username to lookup the account by.
+
+vcsProvider
+
+[VCSProvider](https://deepsource-docs.readme.io/docs/apis-reference-enums#vcsprovider)!
+
+VCS Provider of the account.
+
+### 
+
+Sample Request
+
+[](#sample-request)
+
+GraphQL
+
+`query {   account(login: "deepsourcelabs", vcsProvider: GITHUB) {     login     id     type     vcsProvider     vcsUrl     avatarUrl   } }`
+
+### 
+
+Sample Response
+
+[](#sample-response)
+
+JSON
+
+`{   "data": {     "account": {       "login": "cyberdyne",       "id": "QWNjb3VudDp6bWpws2I=",       "type": "TEAM",       "vcsProvider": "GITHUB",       "vcsUrl": "https://github.com/cyberdyne",       "avatarUrl": "https://user-avatars.deepsource.io/demo-image.png"     }   } }`
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+Account
+
+[](#account-1)
+
+Field
+
+Type
+
+Description
+
+**id**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The ID of the object.
+
+**login**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The unique identifier (or username) of the account.
+
+**type**
+
+[AccountType](https://deepsource-docs.readme.io/docs/apis-reference-enums#accounttype)!
+
+The account type (individual or team).
+
+**vcsProvider**
+
+[VCSProvider](https://deepsource-docs.readme.io/docs/apis-reference-enums#vcsprovider)!
+
+VCS Provider of the account.
+
+**vcsUrl**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+URL for the account on the VCS Provider.
+
+**isBetaTester**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+Whether the account is a beta tester.
+
+**avatarUrl**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+URL for the account's public avatar.
+
+**subscription**
+
+[AccountSubscription](#accountsubscription)!
+
+Subscription and billing details of the account.
+
+**report**
+
+[Report](https://deepsource-docs.readme.io/docs/apis-reports-2)!
+
+The report associated with this account.
+
+key
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+The key of the report to fetch.
+
+**repositories**
+
+[RepositoryConnection](https://deepsource-docs.readme.io/docs/apis-repository#repositoryconnection)!
+
+List of repositories that belong to the requested account
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+first
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+**members**
+
+[TeamMemberConnection](https://deepsource-docs.readme.io/docs/apis-team#teammemberconnection)!
+
+Members of the team. This is an empty list for an individual account.
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+first
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+AccountSubscription
+
+[](#accountsubscription)
+
+Subscription and billing details of an `Account`.
+
+Field
+
+Type
+
+Description
+
+**plan**
+
+!
+
+The plan associated with this account's subscription.
+
+### 
+
+AccountConnection
+
+[](#accountconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+!
+
+Pagination data for this connection.
+
+**edges**
+
+!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+### 
+
+AccountEdge
+
+[](#accountedge)
+
+A Relay edge containing a `Account` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+The item at the end of the edge.
+
+**cursor**
+
+!
+
+A cursor for use in pagination.
+
+Updated 16 days ago
+
+* * *

@@ -1,0 +1,247 @@
+---
+title: 'SAML SSO & SCIM: Okta'
+slug: sso-saml-sso-scim-okta
+visibility: PUBLIC
+label: Integrations
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+SAML SSO & SCIM: Okta
+
+Search
+
+SAML SSO & SCIM: Okta
+=====================
+
+This document explains the process to enable SAML SSO and SCIM on DeepSource using Okta as the Identity Provider (IdP).
+
+> 📘
+> 
+> Requires Enterprise Plans
+> 
+> 
+> -------------------------------
+> 
+> Enabling SAML SSO and SCIM requires the team to be on Enterprise Cloud or Server plans. Please reachout to your account manager (or) for a demo.
+
+SAML SSO
+
+[](#saml-sso)
+=========================
+
+Configuring SAML SSO on Okta
+
+[](#configuring-saml-sso-on-okta)
+-----------------------------------------------------------------
+
+For now, an admin (on Okta) needs to create a custom SAML integration for DeepSource Enterprise. The steps for which are as given:
+
+1.  On the left sidebar, choose **"Applications" → "Applications"**, and click on **"Create App Integration"**.
+2.  Choose **"SAML 2.0"** and click **"Next"**.
+
+![](https://files.readme.io/7e588f3-image.png)
+
+3.  Fill in the following details:  
+    ![](https://files.readme.io/ca6222a-ca7a697-image.png)
+
+Field
+
+Value
+
+App Name
+
+DeepSource
+
+4.  Assuming that DeepSource is hosted on-premise at `https://deepsource.foobar.com`, fill in the following details accordingly:
+
+> 🚧
+> 
+> Note for Enterprise Cloud Users
+> 
+> 
+> -------------------------------------
+> 
+> If you're on DeepSource Enterprise Cloud, replace [https://deepsource.foobar.com](https://deepsource.foobar.com) with [https://app.deepsource.com](https://app.deepsource.com)
+
+![](https://files.readme.io/1fa2fd6-image.png)
+
+Field
+
+Values
+
+Single sign on URL
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+Audience URI (SP Entity ID)
+
+`https://deepsource.foobar.com/saml2/metadata/`
+
+Name ID format
+
+EmailAddress (choose from drop down)
+
+Application username
+
+Email (choose from drop down
+
+5.  In "Attribute Statements", add the following:  
+    ![](https://files.readme.io/1a417c8-image.png)
+
+Field
+
+Name format
+
+Value
+
+first\_name
+
+Basic
+
+user.firstName
+
+last\_name
+
+Basic
+
+user.lastName
+
+6.  Under Feedback selection, choose:
+    1.  For **"Are you a customer or partner?"**, choose **"I am an Okta customer, adding an internal app"**.
+    2.  **App type**: check the box — **This is an internal app that we have created.** Otherwise, Okta will ask for many other fields. Click on **"Finish"**.
+7.  On the next screen, go to the **“SAML Signing Certificates”** section. Copy the link for **"Identity Provider Metadata"** by clicking on `Actions -> View IdP metadata` for the “**SHA-2** **Type**” certificate. It should be in the format: `https://<customer>.okta.com/app/<app-slug>/sso/saml/metadata`.
+
+![](https://files.readme.io/c2f5d12-image.png)
+
+Configuring SAML SSO on DeepSource
+
+[](#configuring-saml-sso-on-deepsource)
+-----------------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+SCIM Provisioning
+
+[](#scim-provisioning)
+===========================================
+
+Configuring SCIM on Okta
+
+[](#configuring-scim-on-okta)
+---------------------------------------------------------
+
+1.  To Enable SCIM Provisioning, select DeepSource application, then go to `General → App Settings → Edit` and turn on `Enable SCIM provisioning`.
+    
+    ![](https://files.readme.io/a52af2c-image.png)
+    
+2.  Click on the **Provisioning** tab, under **SCIM Connection**, click on Edit and configure the given parameters.
+    
+    ![](https://files.readme.io/640af73-image.png)
+    
+    Field
+    
+    Values
+    
+    SCIM connector base URL
+    
+    `https://deepsource.foobar.com/scim/v2/`
+    
+    Unique identifier field for users
+    
+    email
+    
+    Supported provisioning actions
+    
+    Push New Users, Push Profile Updates, Push Groups
+    
+    Authentication Mode
+    
+    HTTP Header
+    
+    Authorization bearer token
+    
+    SCIM Authentication token which you have put in replicated console (kotsadm)
+    
+
+> 🚧
+> 
+> Note for Enterprise Cloud
+> 
+> 
+> -------------------------------
+> 
+> If you're on DeepSource Enterprise Cloud, use the following values instead of the values defined above.
+> 
+> Field
+> 
+> Values
+> 
+> SCIM connector base URL
+> 
+> `https://app.deepsource.com/scim/v2/`
+> 
+> Unique identifier field for users
+> 
+> email
+> 
+> Supported provisioning actions
+> 
+> Import New Users and Profile Updates, Push New Users, Push Profile Updates
+> 
+> Authentication Mode
+> 
+> HTTP Header
+> 
+> Authorization bearer token
+> 
+> SCIM Authentication token generated from DeepSource
+
+1.  Click on **Test Connector Configuration** to verify SCIM connection.
+    
+2.  Click on **Save** to apply the settings.
+    
+3.  After the integration is saved successfully, go to **To App** option on the left sidebar under **Settings** inside **Provisioning**.
+    
+4.  Enable the following options:
+    
+    *   Create Users
+    *   Update User Attributes
+    *   Deactivate Users
+    
+    and, click on **Save**.
+    
+    ![](https://files.readme.io/b736d24-image.png)
+    
+
+Configuring SCIM on DeepSource
+
+[](#configuring-scim-on-deepsource)
+---------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+> 🎉
+> --
+> 
+> You have successfully configured SCIM provisioning for your DeepSource Enterprise via Okta.
+
+Updated about 1 year ago
+
+* * *

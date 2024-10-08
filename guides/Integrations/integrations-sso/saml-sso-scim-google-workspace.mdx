@@ -1,0 +1,145 @@
+---
+title: 'SAML SSO & SCIM: Google Workspace'
+slug: saml-sso-scim-google-workspace
+visibility: PUBLIC
+label: Integrations
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+SAML SSO & SCIM: Google Workspace
+
+Search
+
+SAML SSO & SCIM: Google Workspace
+=================================
+
+This document explains the process to enable SAML SSO on DeepSource using Google Workspace as the Identity Provider (IdP).
+
+> 📘
+> 
+> Requires Enterprise Plans
+> 
+> 
+> -------------------------------
+> 
+> Enabling SAML SSO and SCIM requires the team to be on Enterprise Cloud or Server plans. Please reachout to your account manager (or) for a demo.
+
+SAML SSO
+
+[](#saml-sso)
+=========================
+
+Configuring SAML SSO on Google Workspace
+
+[](#configuring-saml-sso-on-google-workspace)
+-----------------------------------------------------------------------------------------
+
+For now, an admin (on Google Workspace) needs to create a custom SAML integration for DeepSource Enterprise. The steps for which are as given:
+
+1.  Navigate to [https://admin.google.com/ac/apps/unified](https://admin.google.com/ac/apps/unified).
+2.  On the menu bar, click on **"Add App" -> "Add custom SAML app"**.
+
+![](https://files.readme.io/d338028-image.png)
+
+3.  Fill in the following details:
+
+![](https://files.readme.io/9497133-image.png)
+
+Field
+
+Value
+
+App Name
+
+DeepSource
+
+4.  Click **"Continue"** again.
+5.  Assuming that DeepSource is hosted on-premise at `https://deepsource.foobar.com`, fill in the following details accordingly:
+
+> 🚧
+> 
+> Note for Enterprise Cloud Users
+> 
+> 
+> -------------------------------------
+> 
+> If you're on DeepSource Enterprise Cloud, replace [https://deepsource.foobar.com](https://deepsource.foobar.com) with [https://app.deepsource.com](https://app.deepsource.com)
+
+![](https://files.readme.io/9e0fc91-image.png)
+
+Field
+
+Values
+
+ACS URL
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+Entity ID
+
+`https://deepsource.foobar.com/saml2/metadata/`
+
+Signed response
+
+Yes
+
+Name ID format
+
+EMAIL (choose from drop down)
+
+NAME ID
+
+Basic Information > Primary email (choose from drop down)
+
+5.  In "Attributes", add the following:  
+    ![](https://files.readme.io/2eb12bc-image.png)
+
+Google Directory attributes
+
+App attributes
+
+First name (choose from dropdown)
+
+`first_name`
+
+Last name (choose from dropdown)
+
+`last_name`
+
+6.  On the next screen, click on **“DOWNLOAD METADATA”** button. A modal will open up, clicking on **“DOWNLOAD METADATA”** button on the modal will ask you to download and save a `GoogleIDPMetadata.xml` file on your system.
+
+![](https://files.readme.io/13a8d65-image.png) ![](https://files.readme.io/daaedcd-image.png)
+
+7.  The file downloaded in the previous step should be hosted on a publicly accessible URL. You can either host it on your own infrastructure or an easy alternative is to paste it into a public gist on [https://gist.github.com/](https://gist.github.com/).
+
+Configuring SAML SSO on DeepSource
+
+[](#configuring-saml-sso-on-deepsource)
+-----------------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+SCIM Provisioning
+
+[](#scim-provisioning)
+===========================================
+
+Google Workspace doesn't support custom SCIM integrations.
+
+Updated about 1 year ago
+
+* * *

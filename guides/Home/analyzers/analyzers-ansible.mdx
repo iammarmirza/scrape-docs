@@ -1,0 +1,77 @@
+---
+title: Ansible
+slug: analyzers-ansible
+visibility: PUBLIC
+label: Home
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Ansible
+
+Search
+
+Ansible
+=======
+
+The Ansible Analyzer analyzes your Ansible playbooks, roles, and collections, and raises issues if something is wrong with them. It points out bugs and syntax issues with a detailed explanation of how to fix them.
+
+This section covers configuration specific to the `Ansible` analyzer. Please make sure to read the general [configuration guide](https://deepsource-docs.readme.io/docs/configuration) first.
+
+Configuration - `.deepsource.toml`
+
+[](#configuration---deepsourcetoml)
+-------------------------------------------------------------------------
+
+### 
+
+`name`
+
+[](#name)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: mandatory
+*   **Description**: Shortcode of the analyzer.
+*   **Example**:
+
+TOML
+
+`name = "ansible"`
+
+### 
+
+`enabled`
+
+[](#enabled)
+
+*   **Type**: [Boolean](https://toml.io/en/v1.0.0#boolean)
+*   **Presence**: optional
+*   **Description**: Toggle whether this analyzer should be run.
+*   **Example**:
+
+TOML
+
+`enabled = true`
+
+Sample config
+
+[](#sample-config)
+-----------------------------------
+
+TOML
+
+`version = 1  [[analyzers]] name = "ansible" enabled = true`
+
+Updated about 1 year ago
+
+* * *
