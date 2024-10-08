@@ -1,0 +1,93 @@
+---
+title: History
+slug: repository-view-history
+visibility: PUBLIC
+label: Dashboard
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+History
+
+Search
+
+History
+=======
+
+The History tab provides a record of all the DeepSource analysis runs conducted on the repository. Each entry displays the impacted branch, the most recent analyzed commit, and the number of newly detected and resolved issues since the previous run. This tab also enables you to act on active pull requests and access historical analysis data.
+
+Analysis runs
+
+[](#analysis-runs)
+-----------------------------------
+
+You can switch between Open and Closed pull requests in the Analysis Runs section. Clicking on any of the analysis runs will reveal the checks and a summary of the run. If there are any failing checks, the open issues will be displayed. Clicking on any of these issues will take you to the issue occurrence page, where you can view the occurrences, a detailed description, and contextual code.
+
+![](https://files.readme.io/9a70c8d-history.png)
+
+### 
+
+Ignore an occurrence of an issue
+
+[](#ignore-an-occurrence-of-an-issue)
+
+Refer to .
+
+### 
+
+Suppress metrics
+
+[](#suppress-metrics)
+
+By setting a threshold and enabling enforcement in the repository settings, pull request runs will fail if the threshold conditions aren't met. However, you can choose to suppress a metric from the **Analysis Runs** page in the **History** tab, which will unblock the pull request on your version control provider.
+
+![](https://files.readme.io/d406e81-small-Suppress_metric.png)
+
+### 
+
+Retry analysis runs
+
+[](#retry-analysis-runs)
+
+Analysis checks that timed out or errored out can be retried manually from the UI. You can choose to retry an individual check or all unsuccessful checks in the analysis run. This operation is restricted to users with `WRITE` access to the repository.
+
+![](https://files.readme.io/13d7739-image.png)
+
+Skip analysis runs
+
+[](#skip-analysis-runs)
+---------------------------------------------
+
+Transformer and analysis checks on a commit can be skipped by adding any of the following strings to the commit message:
+
+*   `[skip ci]`
+*   `[ci skip]`
+*   `[no ci]`
+*   `[skipcq]`
+
+![](https://files.readme.io/7bfa50e-skip.png)
+
+Transforms
+
+[](#transforms)
+-----------------------------
+
+This section displays the style changes made to your code by Transformers. Each card shows which Transformers were enabled and the total number of files that were transformed. If you click on any of the cards, you'll see a diff of all the transformations that were applied to the code.
+
+![](https://files.readme.io/2b14d54-transforms.png)
+
+Updated about 1 year ago
+
+* * *
+
+What’s Next

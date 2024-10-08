@@ -1,0 +1,98 @@
+---
+title: Troubleshooting
+slug: help-troubleshooting
+visibility: PUBLIC
+label: Help
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Troubleshooting
+
+Search
+
+Troubleshooting
+===============
+
+Why is my analysis timing out?
+
+[](#why-is-my-analysis-timing-out)
+====================================================================
+
+At the moment, DeepSource has a hard limit of 25 minutes to publish analysis results. If the analysis fails to finish within the allotted time, we show an Analysis timed out message.
+
+Timeouts are more likely to occur during the first-ever analysis run for a repository, where all files are analyzed.
+
+If your repository has files that you don't want to run analysis on (like migrations, examples, fixtures, etc) please make sure they are specified in the in the `.deepsource.toml` config file.
+
+> 📘
+> --
+> 
+> Even if the analysis gets timed out for the first run, DeepSource will continue to analyze every incoming commit/PR after it is activated for the repo.
+
+Why do I see test coverge issues for lines that have not changes my PR?
+
+[](#why-do-i-see-test-coverge-issues-for-lines-that-have-not-changes-my-pr)
+======================================================================================================================================================
+
+This happens when the PR is not rebased with the default branch. Rebasing the PR will fix this problem.
+
+Deepsource generated the wrong Autofix. How do I report it?
+
+[](#deepsource-generated-the-wrong-autofix-how-do-i-report-it)
+=============================================================================================================================
+
+Please report it to with a screenshot or the code snippet for which the wrong Autofix was generated.
+
+Analysis fails, with the message "Error cloning git repository". What should I do?
+
+[](#analysis-fails-with-the-message-error-cloning-git-repository-what-should-i-do)
+========================================================================================================================================================================
+
+This can happen due to one of the following reasons:
+
+1.  **You have enabled submodules in the repository**: If this is the case, ensure that DeepSource has access to your submodules. Read how to enable submodules [here](https://deepsource-docs.readme.io/docs/repository-settings#enable-git-submodules:~:text=on%20this%20branch.-,Enable%20git%20submodules,-If%20you%27re%20using).
+2.  **The default branch set on DeepSource doesn't exist**: This can happen, e.g., if your default branch has changed from, say, master to main and DeepSource doesn't know about that yet. To change the name in DeepSource, navigate to Settings > General and change the name of the default branch. Read more [here](https://deepsource-docs.readme.io/docs/repository-settings#set-default-analysis-branch:~:text=General-,Set%20default%20analysis%20branch,-Set%20the%20base).
+3.  **The VCS provider is down**: This rarely, if ever, happens. If this is the case, you can retry the analysis after some time.
+
+Why can't I find the option to add team members?
+
+[](#why-cant-i-find-the-option-to-add-team-members)
+=======================================================================================================
+
+This can happen when the account is an **Individual account** and not a **Organization or Team account**. As of now, DeepSource doesn't allow adding contributors/members to a personal account.
+
+DeepSource supports two types of accounts, **Individual and Team/Organization accounts**.
+
+*   An Individual account is tied to a personal Github, Gitlab, or Bitbucket account.
+*   An **Organization or Team account** is tied to a GitHub org, GitLab group, or Bitbucket workspace.
+
+With a DeepSource Team account, members can be easily added to the team. Click [here](https://deepsource-docs.readme.io/docs/account-management) for more information regarding adding members to the team.
+
+DeepSource shows issues in all files of the repository even when `granular` mode is selected
+
+[](#deepsource-shows-issues-in-all-files-of-the-repository-even-when-granular-mode-is-selected)
+===============================================================================================================================================================================================
+
+This can happen when the PR is opened against a non-default branch. Opening the PR against the default branch will fix this problem. We don't support diff analysis on non-default branches yet, but it is in our roadmap.
+
+Analysis results are different on the same change in PR and in the default branch after merging when there's a change in `.deepsource.toml` file in the PR
+
+[](#analysis-results-are-different-on-the-same-change-in-pr-and-in-the-default-branch-after-merging-when-theres-a-change-in-deepsourcetoml-file-in-the-pr)
+========================================================================================================================================================================================================================================================================================================================
+
+DeepSource respects granular analysis for pull requests. Since the config can affect issues in the overall repository like when you add new exclude patterns, or some meta options to the analyzer — existing issues can become stale after that change. To take care of syncing all the issues and making sure that the repository is in its best shape, all files are analyzed with updated config for the default branch.
+
+Updated over 1 year ago
+
+* * *

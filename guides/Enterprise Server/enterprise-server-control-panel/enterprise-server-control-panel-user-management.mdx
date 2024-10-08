@@ -1,0 +1,224 @@
+---
+title: User Management
+slug: enterprise-server-control-panel-user-management
+visibility: PUBLIC
+label: Enterprise Server
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+User Management
+
+Search
+
+User Management
+===============
+
+The user management section helps you manage your enterprise users, groups, and invitation links from one place.
+
+Users
+
+[](#users)
+-------------------
+
+Manage all users within your enterprise from the `Users` section in user management. Check which groups and teams they are a part of, add them to groups of choice, and remove them if needed!
+
+![](https://files.readme.io/7b0951f-small-home_1.png)
+
+### 
+
+Create a user
+
+[](#create-a-user)
+
+Adding a user to your DeepSource enterprise installation can be done via two ways:
+
+*   If your organization uses SSO, please refer to on setting up an Identity Provider for adding a user.
+*   If your organization uses a cloud service like GitHub, GitLab, etc as their login method, simply log in with the respective service in order to create an account.
+
+### 
+
+Remove a user
+
+[](#remove-a-user)
+
+1.  Navigate to the detailed view of a user via clicking on the user's card.
+2.  Click on the `Remove user` button in the top description box area for the user.
+3.  Verify if the user you have selected for deletion is the correct one. If yes, click on `Yes, delete this user`.
+
+> 🚧
+> --
+> 
+> This is a destructive action and the user's data won't be recoverable once deleted.
+
+![](https://files.readme.io/8816de4-small-remove-user.png)
+
+### 
+
+Remove a user from a group
+
+[](#remove-a-user-from-a-group)
+
+1.  Navigate to the detailed view of a user via clicking on the user's card.
+2.  Click on the `Remove user from group` button present against the group that you want to remove the user from.
+3.  Verify the action within the confirm dialog and if correct, click on `Yes, remove this user` to perform the action.
+
+![](https://files.readme.io/f6b7496-small-remove-user-group.png)
+
+### 
+
+Remove a user from a team
+
+[](#remove-a-user-from-a-team)
+
+1.  Navigate to the detailed view of a user via clicking on the user's card. Navigate to the team view by clicking on the `Teams` tab.
+2.  Click on the `Remove user from team` button present against the group that you want to remove the user from.
+3.  Verify the action within the confirm dialog and if correct, click on `Yes, remove this user` to perform the action.
+
+> 📘
+> --
+> 
+> This button will only be available for the teams that the user is directly part of and will not be available against teams, that the user has access to, due to a group they are a part of.
+
+![](https://files.readme.io/7b32a60-small-remove-user-team.png)
+
+Groups
+
+[](#groups)
+---------------------
+
+*   Groups are useful when you want to assign similar access levels to multiple users. Multiple groups can be created for different user cohorts and a user can be part of more than one group.
+*   An admin can assign teams to a group. Teams can be added to a group with a specific role, like `admin`, `member`, or `contributor` — this will help decide the level of access the users of this group have to the particular team.
+*   All the users that are part of the respective group, will directly get access to the selected teams as per the configuration.
+
+### 
+
+Create a group
+
+[](#create-a-group)
+
+1.  To create a group, go to the `Groups` page under the `User management` section.
+2.  Click on the `+ Create new group` button on the top right of the screen to open the group creation dialog.
+3.  Enter a unique name for a group within the input labeled `Group name`.
+4.  After entering a name, click the `+ Create group` button in order to create a group.
+
+![](https://files.readme.io/ced8d77-small-create-group.png)
+
+### 
+
+Delete a group
+
+[](#delete-a-group)
+
+1.  To delete a group, click on the button with the red-colored `dustbin/trashcan` icon on the group list page or click on the `Delete group` button in the group detail view.
+2.  Verify the action within the confirm dialog and if correct, click on `Yes, delete this group` to perform the action.
+
+> 🚧
+> --
+> 
+> This is a destructive action and the group's data won't be recoverable once deleted.
+
+![](https://files.readme.io/406af64-small-delete-group.png)
+
+### 
+
+Edit a group's name
+
+[](#edit-a-groups-name)
+
+1.  To edit a group's name, click on the `Edit` button in the group's detailed view.
+2.  Change the name within the input as required.
+3.  Click on the `Confirm` button to update the group name.
+
+![](https://files.readme.io/98bc430-small-edit-group.png)
+
+### 
+
+Add a user to a group
+
+[](#add-a-user-to-a-group)
+
+1.  Get the invite link to the group by either visiting the `Invitations` page or by clicking on the `Invite user` button on a group's detail page.
+2.  Share this link with the user, who will be able to join the group via the link by accepting the invitation.
+
+> 📘
+> --
+> 
+> If a need arises to reset the invitation link for a particular group, please use the `Reset link` button available below the invite link.
+
+![](https://files.readme.io/ebd31b3-small-invite-user.png)
+
+### 
+
+Add a team to a group
+
+[](#add-a-team-to-a-group)
+
+1.  Navigate to a group's detailed view via clicking on the group's card against the respective group.
+2.  Click on the `Add a team` button in the team's header to open the `Add a team` dialog.
+3.  Click the `Add to group` button against the respective team, to add the team to the group. The team will be added with the default `Contributor` access level. This can be updated from the dialog or from the `Teams` tab in the group detail view as required.
+
+![](https://files.readme.io/a517b3e-small-add-team-group.png)
+
+### 
+
+Update role of a team in a group
+
+[](#update-role-of-a-team-in-a-group)
+
+1.  Navigate to a group's detailed view via clicking on the group's card. Navigate to the team view by clicking on the `Teams` tab.
+2.  Click on the role for a team within the team's card.
+3.  Update the role by selecting an option from the available choices.
+
+![](https://files.readme.io/a996e03-small-update-team-role.png)
+
+### 
+
+Remove a user from a group
+
+[](#remove-a-user-from-a-group-1)
+
+1.  Navigate to the detailed view of a user via clicking on the group's card.
+2.  Click on the `Remove user from group` button present against the group that you want to remove the user from.
+3.  Verify the action within the confirm dialog and if correct, click on `Yes, remove this user` to perform the action.
+
+![](https://files.readme.io/ebc4b39-small-remove-group-user.png)
+
+### 
+
+Remove a team from a group
+
+[](#remove-a-team-from-a-group)
+
+1.  Navigate to the detailed view of a group via clicking on the group's card. Navigate to the team view by clicking on the `Teams` tab.
+2.  Click on the button with the red-colored `x` icon present against the team that you want to remove from the group.
+3.  Verify the action within the confirm dialog and if correct, click on `Yes, remove this team` to perform the action.
+
+![](https://files.readme.io/49da7e2-small-remove-group-team.png)
+
+Invitations
+
+[](#invitations)
+-------------------------------
+
+The `Invitations` section is handy when you need to get an invitation URL for a group quickly. Here is how to do it:
+
+1.  Select the group you want an invite for from the dropdown.
+2.  You can then copy and share the invitation link.
+3.  If required, the invitation URL for a group can be reset.
+
+![](https://files.readme.io/dbadfa3-small-invitations.png)
+
+Updated over 1 year ago
+
+* * *

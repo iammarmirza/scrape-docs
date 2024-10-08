@@ -1,0 +1,132 @@
+---
+title: Team
+slug: apis-team
+visibility: PUBLIC
+label: Developers
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Team
+
+Search
+
+Team
+====
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+TeamMember
+
+[](#teammember)
+
+Represents a user within a team.
+
+Field
+
+Type
+
+Description
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**user**
+
+[User](https://deepsource-docs.readme.io/docs/apis-viewer#user)!
+
+The User instance.
+
+**role**
+
+[TeamMemberRole](https://deepsource-docs.readme.io/docs/apis-reference-enums#teammemberrole)!
+
+The role this user has in the team.
+
+**isOwner**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+Whether this user is the owner of the team.
+
+**joinedAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The time when this user joined the team.
+
+### 
+
+TeamMemberConnection
+
+[](#teammemberconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+[TeamMemberEdge](https://deepsource-docs.readme.io/docs/apis-team#teammemberedge)!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+TeamMemberEdge
+
+[](#teammemberedge)
+
+A Relay edge containing a `TeamMember` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[TeamMember](https://deepsource-docs.readme.io/docs/apis-team#teammember)
+
+The item at the end of the edge.
+
+**cursor**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A cursor for use in pagination.
+
+Updated over 1 year ago
+
+* * *

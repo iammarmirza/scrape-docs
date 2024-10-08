@@ -1,0 +1,216 @@
+---
+title: Issue
+slug: apis-issue
+visibility: PUBLIC
+label: Developers
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Issue
+
+Search
+
+Issue
+=====
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+Issue
+
+[](#issue)
+
+Field
+
+Type
+
+Description
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**shortcode**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+**analyzer**
+
+[Analyzer](https://deepsource-docs.readme.io/docs/apis-analyzer#analyzer)!
+
+**autofixAvailable**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+**isRecommended**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+**category**
+
+[IssueCategory](https://deepsource-docs.readme.io/docs/apis-reference-enums#issuecategory)!
+
+**severity**
+
+[IssueSeverity](https://deepsource-docs.readme.io/docs/apis-reference-enums#issueseverity)!
+
+**shortDescription**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+**tags**
+
+\[[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)\]!
+
+### 
+
+IssueCategorySetting
+
+[](#issuecategorysetting)
+
+Configuration for an `IssueCategory` in a `Repository`.
+
+Field
+
+Type
+
+Description
+
+**category**
+
+[IssueCategory](https://deepsource-docs.readme.io/docs/apis-reference-enums#issuecategory)!
+
+An \`IssueCategory\`.
+
+**isReported**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+Whether issues of given category are enabled for reporting in the repository.
+
+**canFailCheck**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+Whether to fail checks when occurrence(s) of issues of given category are found in the repository.
+
+### 
+
+IgnoreRule
+
+[](#ignorerule)
+
+An `IgnoreRule` defines the condition on which to suppress an `Issue`'s `Occurrence`s in a `Repository`.
+
+Field
+
+Type
+
+Description
+
+**level**
+
+!
+
+Ignore level of the rule.
+
+**type**
+
+!
+
+Ignore type of the rule.
+
+**issue**
+
+[Issue](#issue)!
+
+The \`Issue\` to ignore in the rule.
+
+**filePath**
+
+!
+
+File path if rule is on `FILE` level.
+
+**globPattern**
+
+!
+
+Glob pattern if rule is of `PATTERN` type.
+
+### 
+
+IgnoreRuleConnection
+
+[](#ignoreruleconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+!
+
+Pagination data for this connection.
+
+**edges**
+
+\[[IgnoreRuleEdge](#ignoreruleedge)\]!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+### 
+
+IgnoreRuleEdge
+
+[](#ignoreruleedge)
+
+A Relay edge containing a `IgnoreRule` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[IgnoreRule](#ignorerule)
+
+The item at the end of the edge.
+
+**cursor**
+
+!
+
+A cursor for use in pagination.
+
+Updated 10 months ago
+
+* * *

@@ -1,0 +1,236 @@
+---
+title: 'SAML SSO & SCIM: Azure AD'
+slug: sso-saml-sso-scim-azure-ad
+visibility: PUBLIC
+label: Integrations
+ogImage: null
+seoTitle: null
+seoDescription: null
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+SAML SSO & SCIM: Azure AD
+
+Search
+
+SAML SSO & SCIM: Azure AD
+=========================
+
+This document explains the process to enable SAML SSO and SCIM on DeepSource using Azure Active Directory (AD) as the Identity Provider (IdP).
+
+> 📘
+> 
+> Requires Enterprise Plans
+> 
+> 
+> -------------------------------
+> 
+> Enabling SAML SSO and SCIM requires the team to be on Enterprise Cloud or Server plans. Please reachout to your account manager (or) for a demo.
+
+SAML SSO
+
+[](#saml-sso)
+=========================
+
+Configuring SAML SSO on Azure AD
+
+[](#configuring-saml-sso-on-azure-ad)
+-------------------------------------------------------------------------
+
+For now, an admin (on Azure) needs to create a custom SAML connector for DeepSource Enterprise. The steps for which are as follows:
+
+1.  Visit [https://portal.azure.com/](https://portal.azure.com/) and log in to your Microsoft account.
+2.  From your home screen, click the hamburger menu in the top left and then **“Azure Active Directory”** → **"Enterprise applications"**.
+3.  Then, click on **"New application"** and then click on **“Create your own application”**.
+4.  Fill in the following details and click **“Create”**:
+
+![](https://files.readme.io/9826987-small-1_1.png)
+
+Field
+
+Value
+
+What's the name of your app?
+
+DeepSource Enterprise Server
+
+What are you looking to do with your application?
+
+Integrate any other application you don't find in the gallery (Non-gallery)
+
+5.  From the home screen of this new application, click on **“Set up single sign on”** and then **“SAML”**.
+6.  Click on **“Edit”** against the **“Basic SAML Configuration”** heading.
+7.  Assuming that DeepSource is hosted on `https://deepsource.foobar.com`fill in the following details accordingly leaving the rest of the fields with defaults and click **“Save”**:
+
+Field
+
+Value
+
+Identifier (Entity ID)
+
+`https://deepsource.foobar.com/saml2/metadata/`
+
+Reply URL (Assertion Consumer Service URL)
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+Sign on URL
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+Logout URL
+
+`https://deepsource.foobar.com/saml2/ls/post/`
+
+![](https://files.readme.io/b952d98-small-2.png)
+
+8.  Click on **“Edit”** against the **“Attributes & Claims”** heading.
+9.  Fill in the following details and click **“Save”**:
+
+Name
+
+Source
+
+Namespace
+
+Source attribute
+
+Unique User Identifier (Name ID)
+
+Attribute
+
+user.userprincipalname (from dropdown)
+
+email
+
+Attribute
+
+user.mail (from dropdown)
+
+first\_name
+
+Attribute
+
+user.givenname (from dropdown)
+
+last\_name
+
+Attribute
+
+user.surname (from dropdown)
+
+![](https://files.readme.io/88a92e7-small-3.png)
+
+10.  Click on **“Edit”** against the **“SAML Certificates”** heading.
+    
+11.  Make sure the **"Signing Option"** is set to **"Sign SAML response and assertion"**.
+    
+    ![](https://files.readme.io/bf0f76d-image.png)
+12.  Now we need to select which users can access this application for sign-in into DeepSource. You can either choose to disable assignment to grant access to all users in your AD (follow steps in option **i**) or you can selectively grant access to specific users (follow steps in option **ii**).
+    
+    1.  Navigate to **“Properties”** using the menu on the left. Turn **“Assignment Required?”** to **“No”** and click **“Save”**.
+    2.  Navigate to **“Users and Groups”** using the menu on the left then click **“Add user/group”** → **“None Selected”** then select the users from the list on the right and click **“Select”** → **“Assign”**.
+13.  Navigate to **“Single sign-on”** again using the menu on the left and copy the **“App Federation Metadata Url”** under the **“SAML Signing Certificate”** section. Make sure the URL starts with `https://login.microsoftonline.com/`.
+    
+14.  At this point, SAML-based Sign-on has been configured successfully. You can also choose to test to verify the connection by clicking the **“Test”** → **“Test sign in”** buttons on the **“Single sign-on”** page.
+    
+
+> 🚧
+> 
+> For Enterprise Cloud users
+> 
+> 
+> --------------------------------
+> 
+> *   In step 4, name of the app should be changed to `DeepSource Enterprise Cloud`.
+> *   In step 7, DeepSource's URL should be changed to [https://app.deepsource.com](https://app.deepsource.com).
+
+Configuring SAML SSO on DeepSource
+
+[](#configuring-saml-sso-on-deepsource)
+-----------------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+SCIM Provisioning
+
+[](#scim-provisioning)
+===========================================
+
+Configuring SCIM on Azure AD
+
+[](#configuring-scim-on-azure-ad)
+-----------------------------------------------------------------
+
+1.  To Enable SCIM Provisioning, go to the DeepSource application you created on Azure in the previous section.
+2.  Navigate to **“Provisioning”** using the menu on the left and click on **“Get started”**.
+3.  On the next page, you will see a field named **“Provisioning Mode”**. Choose **“Advanced”** from the dropdown and then fill in the following details under the **“Admin Credentials”** section.
+
+Field
+
+Value
+
+Tenant URL
+
+`https://deepsource.foobar.com/scim/v2/`
+
+Secret Token
+
+SCIM Authentication token which you have put in Admin Panel
+
+![](https://files.readme.io/6738285-small-5.png)
+
+1.  Click on **“Test Connection”** to verify the SCIM connection.
+2.  Click on **”Save”** to apply the settings.
+3.  Finally, navigate back to the **“Provisioning**” tab and click on **“Start provisioning”** to enable the sync.
+
+> 🚧
+> 
+> For Enterprise Cloud users
+> 
+> 
+> --------------------------------
+> 
+> In step 3, the following values should be used instead:
+> 
+> Field
+> 
+> Values
+> 
+> Tenant URL
+> 
+> `https://app.deepsource.com/scim/v2/`
+> 
+> Secret Token
+> 
+> SCIM Authentication token generated from DeepSource
+
+Configuring SCIM on DeepSource
+
+[](#configuring-scim-on-deepsource)
+---------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+> 🎉
+> --
+> 
+> You have successfully configured SCIM provisioning for your DeepSource Enterprise via Azure AD.
+
+Updated 9 months ago
+
+* * *
