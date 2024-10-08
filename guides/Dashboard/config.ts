@@ -1,7 +1,7 @@
 export default {
-  "variant": "GUIDE",
-  "settings": {
-    "name": "Dashboard",
-    "slug": "dashboard"
-  }
+  variant: "GUIDE",
+  settings: {
+    name: "Dashboard",
+    slug: "dashboard",
+  },
 };

@@ -1,7 +1,7 @@
 export default {
-  "variant": "GUIDE",
-  "settings": {
-    "name": "Integrations",
-    "slug": "integrations"
-  }
+  variant: "GUIDE",
+  settings: {
+    name: "Integrations",
+    slug: "integrations",
+  },
 };

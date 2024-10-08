@@ -1,7 +1,7 @@
 export default {
-  "variant": "GUIDE",
-  "settings": {
-    "name": "Developers",
-    "slug": "developers"
-  }
+  variant: "GUIDE",
+  settings: {
+    name: "Developers",
+    slug: "developers",
+  },
 };
