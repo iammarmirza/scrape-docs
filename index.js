@@ -90,29 +90,65 @@ const createFileWithContent = async (path, content, label) => {
 
 config.forEach((section) => {
   const guideLabel = section.label;
-  const guideFolder = `guides/${guideLabel}`;
-  fs.mkdirSync(guideFolder, { recursive: true });
+  const guideFolderPath = `guides/${guideLabel}/version-1`;
+  fs.mkdirSync(guideFolderPath, { recursive: true });
+  const guideConfigPath = `guides/${guideLabel}/config.ts`;
+  const guideConfigContent = `export default ${JSON.stringify(
+    {
+      variant: "GUIDE",
+      settings: {
+        name: section.label,
+        slug: section.label.toLowerCase(),
+      },
+    },
+    null,
+    2
+  )};`;
+  fs.writeFile(guideConfigPath, guideConfigContent, function (err) {
+    if (err) return console.log(err);
+    console.log(`File`);
+  });
+
+  const sectionSidebar = [];
+
   section.pages.forEach((page) => {
-    if (page.pages && page.pages.length > 0) {
-      const subGuideFolder = `${guideFolder}/${page.path.split("/").pop()}`;
-      fs.mkdirSync(subGuideFolder, { recursive: true });
-      page.pages.forEach((subPage) => {
-        scrapeWebsite(`https://docs.deepsource.com${subPage.path}`).then(
-          (article) => {
-            const pagePath = subPage.path.split("/").pop();
-            createFileWithContent(
-              `./${subGuideFolder}/${pagePath}.mdx`,
-              article,
-              guideLabel
-            );
-          }
-        );
-      });
-    }
+    // if (page.pages && page.pages.length > 0) {
+    //   const subGuideFolder = `${guideFolder}/${page.path.split("/").pop()}`;
+    //   fs.mkdirSync(subGuideFolder, { recursive: true });
+    //   page.pages.forEach((subPage) => {
+    //     scrapeWebsite(`https://docs.deepsource.com${subPage.path}`).then(
+    //       (article) => {
+    //         const pagePath = subPage.path.split("/").pop();
+    //         createFileWithContent(
+    //           `./${subGuideFolder}/${pagePath}.mdx`,
+    //           article,
+    //           guideLabel
+    //         );
+    //       }
+    //     );
+    //   });
+    // }
+
+    sectionSidebar.push({
+      type: "page",
+      path: `./${page.path.split("/").pop()}.mdx`,
+    });
+
+    fs.writeFile(
+      `${guideFolderPath}/config.ts`,
+      `export default {
+        sidebar: ${JSON.stringify(sectionSidebar, null, 2)}
+      };`,
+      function (err) {
+        if (err) return console.log(err);
+        console.log(`File`);
+      }
+    );
+
     scrapeWebsite(`https://docs.deepsource.com${page.path}`).then((article) => {
       const pagePath = page.path.split("/").pop();
       createFileWithContent(
-        `./${guideFolder}/${pagePath}.mdx`,
+        `./${guideFolderPath}/${pagePath}.mdx`,
         article,
         guideLabel
       );
