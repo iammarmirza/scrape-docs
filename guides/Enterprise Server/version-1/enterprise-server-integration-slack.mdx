@@ -1,12 +1,13 @@
 ---
-title: 'Integration: Slack'
+title: "Integration: Slack"
 slug: enterprise-server-integration-slack
 visibility: PUBLIC
-label: 'Integration: Slack'
+label: "Integration: Slack"
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -18,15 +19,13 @@ Integration: Slack
 
 Search
 
-Integration: Slack
-==================
+# Integration: Slack
 
 To integrate DeepSource with Slack you need a Slack application. This document outlines the configuration, permission requirements and app configuration to get started with it.
 
 Creating the Slack app
 
-[](#creating-the-slack-app)
------------------------------------------------------
+## [](#creating-the-slack-app)
 
 To create the app, you can run this quick setup script with a few additional steps. The script will create a Slack app manifest that can be used to easily create  
 a Slack app.
@@ -36,40 +35,34 @@ Bash
 `python3 <(curl -s https://raw.githubusercontent.com/DeepSourceCorp/enterprise-assets/master/integrations/create_slack_app.py)`
 
 1.  When you run the command in the CLI, a few details will have to filled in:
-    
-    *   **Name for the Slack app**: The name of the Slack app being created. Defaults to `DeepSource Enterprise`.
-    *   **The URL of your DeepSource installation**: The URL of your DeepSource instance. For e.g., if your DeepSource instance is running on `https://deepsource.stark.com`, then enter `https://deepsource.stark.com` here.
+
+    - **Name for the Slack app**: The name of the Slack app being created. Defaults to `DeepSource Enterprise`.
+    - **The URL of your DeepSource installation**: The URL of your DeepSource instance. For e.g., if your DeepSource instance is running on `https://deepsource.stark.com`, then enter `https://deepsource.stark.com` here.
+
 2.  Copy the slack app manifest.
-    
+
     ![](https://files.readme.io/1350fad-small-create-slack-app.png)
-    
+
 3.  Goto [https://api.slack.com/apps](https://api.slack.com/apps) and log into the Slack Developer Console if required.
-    
 4.  Click on **Create New App**.
-    
 5.  In the popup that opens select **From an app manifest**.
-    
 6.  Select the Slack workspace you'd like to create the app under and click on **Next**.
-    
 7.  Select the **YAML** tab and paste the app manifest. Once done, click on **Next**.
-    
+
     ![](https://files.readme.io/f33ca18-small-slack-app-manifest-input.png)
-    
+
 8.  Click on **Create**.
-    
 9.  Scroll down and navigate to the "App Credentials" section and note down the following values:
-    
-    *   **Client ID**
-    *   **Client Secret**
-    *   **Signing Secret**
-    
+
+    - **Client ID**
+    - **Client Secret**
+    - **Signing Secret**
+
     ![](https://files.readme.io/dc64166-small-slack-app-credentials.png)
-    
 
 Configuring the Slack app in the Admin Console
 
-[](#configuring-the-slack-app-in-the-admin-console)
------------------------------------------------------------------------------------------------------
+## [](#configuring-the-slack-app-in-the-admin-console)
 
 After you create your Jira Cloud application, you need to configure Client ID & Secret in the Admin Console for the application to use it.
 
@@ -86,4 +79,4 @@ After you create your Jira Cloud application, you need to configure Client ID & 
 
 Updated 5 months ago
 
-* * *
+---

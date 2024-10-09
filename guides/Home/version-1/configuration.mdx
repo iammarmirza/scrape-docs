@@ -4,9 +4,10 @@ slug: configuration
 visibility: PUBLIC
 label: Configuration
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -18,15 +19,13 @@ Configuration
 
 Search
 
-Configuration
-=============
+# Configuration
 
 ![](https://files.readme.io/1c10d91-small-Config.png)
 
 .deepsource.toml
 
-[](#deepsourcetoml)
-=======================================
+# [](#deepsourcetoml)
 
 The analysis configuration for a repository on DeepSource is defined in a `.deepsource.toml` file in the repository's root. This file must be present at the said location for analysis to be run.
 
@@ -38,12 +37,11 @@ The configuration is written in the [TOML](https://github.com/toml-lang/toml) fo
 
 `version`
 
-[](#version)
--------------------------
+## [](#version)
 
-*   **Type:** Integer
-*   **Presence:** mandatory
-*   **Description:** The version property is required and must be set to 1, which is the only supported version at the moment.
+- **Type:** Integer
+- **Presence:** mandatory
+- **Description:** The version property is required and must be set to 1, which is the only supported version at the moment.
 
 TOML
 
@@ -51,13 +49,12 @@ TOML
 
 `exclude_patterns`
 
-[](#exclude_patterns)
--------------------------------------------
+## [](#exclude_patterns)
 
-*   **Type:** Array
-*   **Presence:** optional
-*   **Description:** List of glob patterns that should be excluded when the analyses are run. These patterns should be relative to the repository's root.
-*   Example:
+- **Type:** Array
+- **Presence:** optional
+- **Description:** List of glob patterns that should be excluded when the analyses are run. These patterns should be relative to the repository's root.
+- Example:
 
 TOML
 
@@ -65,13 +62,12 @@ TOML
 
 `test_patterns`
 
-[](#test_patterns)
--------------------------------------
+## [](#test_patterns)
 
-*   **Type:** Array
-*   **Presence:** optional
-*   **Description:** List of glob patterns that should be marked as tests or containing test files. These patterns should be relative to the repository's root.  
-    Example:
+- **Type:** Array
+- **Presence:** optional
+- **Description:** List of glob patterns that should be marked as tests or containing test files. These patterns should be relative to the repository's root.  
+  Example:
 
 TOML
 
@@ -79,13 +75,12 @@ TOML
 
 `analyzers`
 
-[](#analyzers)
------------------------------
+## [](#analyzers)
 
-*   **Type:** Array of Tables
-*   **Presence:** mandatory
-*   **Description:** List of analyzers. For each analyzer that has to be enabled for this repo, an entry has to be added to the analyzers table. Refer to analyzer specific configuration docs for available options.
-*   Example:
+- **Type:** Array of Tables
+- **Presence:** mandatory
+- **Description:** List of analyzers. For each analyzer that has to be enabled for this repo, an entry has to be added to the analyzers table. Refer to analyzer specific configuration docs for available options.
+- Example:
 
 TOML
 
@@ -95,13 +90,12 @@ The configuration must have at least one valid Analyzer enabled for the analysis
 
 `transformers`
 
-[](#transformers)
------------------------------------
+## [](#transformers)
 
-*   **Type:** Array of Tables
-*   **Presence:** mandatory
-*   **Description:** List of transformers. For each transformer that has to be enabled for this repo, an entry has to be added to the transformers table. Refer to transformer-specific configuration docs for available options.
-*   **Example:**
+- **Type:** Array of Tables
+- **Presence:** mandatory
+- **Description:** List of transformers. For each transformer that has to be enabled for this repo, an entry has to be added to the transformers table. Refer to transformer-specific configuration docs for available options.
+- **Example:**
 
 TOML
 
@@ -109,6 +103,6 @@ TOML
 
 Updated about 1 year ago
 
-* * *
+---
 
 What’s Next

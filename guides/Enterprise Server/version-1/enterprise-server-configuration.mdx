@@ -4,9 +4,10 @@ slug: enterprise-server-configuration
 visibility: PUBLIC
 label: App Manager Configuration
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -18,13 +19,11 @@ App Manager Configuration
 
 Search
 
-App Manager Configuration
-=========================
+# App Manager Configuration
 
 Admin Console
 
-[](#admin-console)
-===================================
+# [](#admin-console)
 
 The admin console is used to install and configure your DeepSource enterprise installation.
 
@@ -32,19 +31,19 @@ The admin console is used to install and configure your DeepSource enterprise in
 
 The Admin Console contains the following sections:
 
-*   Application
-    *   Dashboard
-    *   Version History
-    *   Config
-    *   Troubleshoot
-    *   License
-    *   View files
-    *   Registry settings
-*   GitOps
-*   Cluster Management
-*   Snapshots
+- Application
+  - Dashboard
+  - Version History
+  - Config
+  - Troubleshoot
+  - License
+  - View files
+  - Registry settings
+- GitOps
+- Cluster Management
+- Snapshots
 
-### 
+###
 
 Application
 
@@ -52,7 +51,7 @@ Application
 
 The Application tab is used for installing and upgrading the DeepSource Enterprise application, configuring your installation, etc.
 
-#### 
+####
 
 Dashboard
 
@@ -60,7 +59,7 @@ Dashboard
 
 The Dashboard section shows you a quick preview of the state of your application.
 
-#### 
+####
 
 Version history
 
@@ -72,7 +71,7 @@ The Version History tab shows you all versions of the DeepSource application tha
 
 You can press the `Check for update` button to check for new updates that may be available.
 
-#### 
+####
 
 Config
 
@@ -104,32 +103,29 @@ Selecting any Version Control Provider will show additional configuration option
 
 **Node selectors:** DeepSource contains two classes of workloads. The application workloads and the analysis workloads. Separating application workloads from the analysis workloads is highly recommended. This is done to prevent resource contention surges from affecting your application. You can attach node labels for your nodes using the following command: @vishnu to document.
 
-*   **Node selector label for application workloads:** Set the labels to identify nodes that will run the application workloads. Eg: `deepsource: application`
-*   **Node selector label for analysis workloads:** Set the labels to identify nodes that will run the analysis workloads. Eg: `deepsource: analysis`
+- **Node selector label for application workloads:** Set the labels to identify nodes that will run the application workloads. Eg: `deepsource: application`
+- **Node selector label for analysis workloads:** Set the labels to identify nodes that will run the analysis workloads. Eg: `deepsource: analysis`
 
 **DeepSource Enterprise Admins:** Enter a comma-separated list of users who will have access to the Enterprise Control Panel. You can add these e-mail addresses pre-emptively, and once the user with the e-mail address onboard, they will have access to the Enterprise Control Panel.
 
 Cluster Management
 
-[](#cluster-management)
----------------------------------------------
+## [](#cluster-management)
 
 This section would be visible if you are using the method. The cluster management section provides information about the nodes in your cluster. The cluster management portal allows you to:
 
-*   **Drain node:** This lets you safely drain a node. This can be used when you need to restart or delete a node.
-*   **Add a Node:** This will generate a command you can execute to add a newly provisioned node to your cluster.
+- **Drain node:** This lets you safely drain a node. This can be used when you need to restart or delete a node.
+- **Add a Node:** This will generate a command you can execute to add a newly provisioned node to your cluster.
 
 Snapshots (Cluster metadata backups)
 
-[](#snapshots-cluster-metadata-backups)
--------------------------------------------------------------------------------
+## [](#snapshots-cluster-metadata-backups)
 
 You can back up your cluster metadata through the Admin Console. Advanced documentation for this is directly available on [Replicated documentation](https://docs.replicated.com/enterprise/snapshots-understanding) page.
 
 Bring your own Database
 
-[](#bring-your-own-database)
-=======================================================
+# [](#bring-your-own-database)
 
 DeepSource Enterprise uses a PostgreSQL database to store persistent data. By default, an embedded database is provisioned within the Kubernetes cluster. However, we highly recommend bringing your own PostgreSQL database for production deployments. This document walks through the steps to set up an external database.
 
@@ -137,8 +133,7 @@ DeepSource Enterprise uses a PostgreSQL database to store persistent data. By de
 
 Setting up your database
 
-[](#setting-up-your-database)
----------------------------------------------------------
+## [](#setting-up-your-database)
 
 On a fresh PostgreSQL database, you would have to create a new database and set up a user with sufficient privileges before configuring it for use with DeepSource app.
 
@@ -164,8 +159,7 @@ Following are sample steps to do this on a generic PostgreSQL database. Your ste
 
 Configuring your app to use the external database
 
-[](#configuring-your-app-to-use-the-external-database)
------------------------------------------------------------------------------------------------------------
+## [](#configuring-your-app-to-use-the-external-database)
 
 1.  Log into the .
 2.  Navigate to the **Config** section in the admin console.
@@ -183,48 +177,44 @@ Configuring your app to use the external database
 
 Moving from an embedded database to an external database
 
-[](#moving-from-an-embedded-database-to-an-external-database)
--------------------------------------------------------------------------------------------------------------------------
+## [](#moving-from-an-embedded-database-to-an-external-database)
 
 If you intend to switch to an external database and you have been using DeepSource Enterprise for a while, you will face data loss. You can, however, use these steps to take a database backup and restore it on to the new database.
 
-*   Create a backup using the [pg\_dump](https://www.postgresql.org/docs/current/app-pgdump.html) utility.
-    
-    SH
-    
-    `pg_dump -h <hostname> -U <username> -d <db_name> -v > dump.sql`
-    
-*   To get the hostname, password, database name and the database user, run the following command:
-    
+- Create a backup using the [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html) utility.
+
+  SH
+
+  `pg_dump -h <hostname> -U <username> -d <db_name> -v > dump.sql`
+
+- To get the hostname, password, database name and the database user, run the following command:
 
 Shell
 
 `kubectl exec -it deploy/asgard-main -- cat /secrets/.env | grep ASGARD_DB_`
 
-*   The above command will output the info in the below format:
+- The above command will output the info in the below format:
 
 Shell
 
 `ASGARD_DB_NAME='asgard' ASGARD_DB_USER=asgard-enterprise ASGARD_DB_PASSWORD=******** ASGARD_DB_HOST='postgresql-ha-pgpool.default' ASGARD_DB_PORT='5432'`
 
-*   To get the hostname IP, run `kubectl get svc | grep pgpool` and use the IP for the service as the hostname.
-*   You can use [pg\_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) to apply the dump to your new database.
+- To get the hostname IP, run `kubectl get svc | grep pgpool` and use the IP for the service as the hostname.
+- You can use [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) to apply the dump to your new database.
 
 Database Backups
 
-[](#database-backups)
------------------------------------------
+## [](#database-backups)
 
 DeepSource Enterprise Server does not create database backups. Please make sure to enable backups by configuring the database hosting provider.
 
 Setup TLS
 
-[](#setup-tls)
-===========================
+# [](#setup-tls)
 
 We highly recommend using TLS with your DeepSource Enterprise installation. There are multiple ways to enable TLS on DeepSource Enterprise Server. You can configure these options on the Admin Console.
 
-### 
+###
 
 Upload your own TLS certificate and private key
 
@@ -232,7 +222,7 @@ Upload your own TLS certificate and private key
 
 Setting this option to `Yes` will allow you to upload your TLS certificate and private key. Upload the TLS certificate and private key and click **Save Config**. Deploy the latest version to begin using your site with TLS.
 
-### 
+###
 
 Let DeepSource provision a TLS certificate
 
@@ -240,7 +230,7 @@ Let DeepSource provision a TLS certificate
 
 By selecting `No` to the above option, DeepSource will automatically use Let's Encrypt to provision a TLS certificate for your site. Please note that Let's Encrypt will attempt a domain validation challenge. To validate the certificates, your site would have to be reachable by the Let's Encrypt server.
 
-### 
+###
 
 No TLS
 
@@ -250,4 +240,4 @@ If this option is selected, no certificates will be installed by DeepSource. Thi
 
 Updated over 1 year ago
 
-* * *
+---

@@ -4,9 +4,10 @@ slug: transformers
 visibility: PUBLIC
 label: Transformers
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -18,8 +19,7 @@ Transformers
 
 Search
 
-Transformers
-============
+# Transformers
 
 ![](https://files.readme.io/b2fb171-small-Transformers.png)
 
@@ -29,22 +29,19 @@ When a pull request (PR) is generated, all the enabled transformers specified in
 
 In cases where changes are made directly to the default branch without a pull request, a new pull request is automatically generated with the necessary transformations. This process ensures that any code changes made to the repository are consistently formatted and meet established standards, regardless of the method of modification.
 
-> 📘
-> --
-> 
+> ## 📘
+>
 > GitHub imposes restrictions on creating commits on branches from other forks, which may occasionally prevent changes from being committed back. In such cases, we recommend merging the pull request as it is. Once the pull request is merged, DeepSource automatically identifies and incorporates the formatting transformations introduced in the merge commit.
 
 When transformers are initially added to the `.deepsource.toml` file on the default branch, the entire codebase is transformed. However, subsequent to this initial transformation, only files that have been added or modified in a commit, pull request, or merge request are transformed.
 
-> 📘
-> --
-> 
+> ## 📘
+>
 > It should be noted that for pull requests that have non-default branches as their base (such as pull requests to release branches), transformations are not executed.
 
 Supported Transformers
 
-[](#supported-transformers)
-=====================================================
+# [](#supported-transformers)
 
 The following table lists all the supported Transformers.
 
@@ -170,4 +167,4 @@ Ruff Formatter
 
 Updated 7 months ago
 
-* * *
+---

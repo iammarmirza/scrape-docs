@@ -4,9 +4,10 @@ slug: cli
 visibility: PUBLIC
 label: Command Line Interface (CLI)
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -18,35 +19,33 @@ Command Line Interface (CLI)
 
 Search
 
-Command Line Interface (CLI)
-============================
+# Command Line Interface (CLI)
 
 DeepSource CLI helps you access and interact with DeepSource right from your terminal.
 
 Installation
 
-[](#installation)
-=================================
+# [](#installation)
 
-### 
+###
 
 Homebrew
 
 [](#homebrew)
 
-*   To install the DeepSource CLI with [homebrew](https://brew.sh), run:
+- To install the DeepSource CLI with [homebrew](https://brew.sh), run:
 
 Shell
 
 `brew install deepsourcelabs/cli/deepsource`
 
-### 
+###
 
 Unix
 
 [](#unix)
 
-*   To directly install the CLI as a binary, run:
+- To directly install the CLI as a binary, run:
 
 Shell
 
@@ -60,15 +59,15 @@ Shell
 
 `BINDIR=~/.local/bin curl https://deepsource.io/cli | sh`
 
-### 
+###
 
 Windows
 
 [](#windows)
 
-*   Download compressed binary [here](https://github.com/deepsourcelabs/cli/releases/download/v0.5.0/deepsource_0.5.0_windows_x86_64.tar.gz).
-*   Decompress the binary.
-*   To invoke the binary, run:
+- Download compressed binary [here](https://github.com/deepsourcelabs/cli/releases/download/v0.5.0/deepsource_0.5.0_windows_x86_64.tar.gz).
+- Decompress the binary.
+- To invoke the binary, run:
 
 Shell
 
@@ -76,37 +75,36 @@ Shell
 
 The CLI requires that the tests are run inside a git repo, and that the git binary is installed. The `DEEPSOURCE_DSN` value needs to be set in the environment, too.
 
-### 
+###
 
 Supported operating systems
 
 [](#supported-operating-systems)
 
-*   Linux
-*   Darwin
-*   Windows
-*   FreeBSD
-*   OpenBSD
-*   NetBSD
+- Linux
+- Darwin
+- Windows
+- FreeBSD
+- OpenBSD
+- NetBSD
 
-### 
+###
 
 Supported architectures
 
 [](#supported-architectures)
 
-*   i386
-*   x86\_64
-*   arm64
+- i386
+- x86_64
+- arm64
 
 Configuration
 
-[](#configuration)
-===================================
+# [](#configuration)
 
 DeepSource CLI is used in two scenarios:
 
-#### 
+####
 
 Text-based User Interface (TUI)
 
@@ -118,7 +116,7 @@ Shell
 
 `deepsource auth login  Please copy your one-time code: XYZXYZ Press enter to open deepsource.io in your browser...`
 
-#### 
+####
 
 Report code coverage
 
@@ -126,24 +124,21 @@ Report code coverage
 
 Usage
 
-[](#usage)
-===================
+# [](#usage)
 
 You can use an of the available commands with the following syntax:
 
 `./bin/deepsource <command> [<arguments>]`
 
-> 📘
-> --
-> 
+> ## 📘
+>
 > See `./bin/deepsource <command> --help` to read about a specific subcommand or concept right from the CLI.
 
 Commands
 
-[](#commands)
--------------------------
+## [](#commands)
 
-### 
+###
 
 `report`
 
@@ -151,18 +146,18 @@ Commands
 
 Report artifacts to DeepSource.
 
-#### 
+####
 
 Flags
 
 [](#flags)
 
-*   `--key`: Shortcode of the language (example: `python`, `go`, `javascript`, `ruby`, `java`, `scala`, `php`, `csharp`, `cxx`, `rust`)
-*   `--analyzer`: Name of the analyzer (example: `test-coverage`)
-*   `--value`: Value of the artifact
-*   `--value-file`: Path to the artifact value file
+- `--key`: Shortcode of the language (example: `python`, `go`, `javascript`, `ruby`, `java`, `scala`, `php`, `csharp`, `cxx`, `rust`)
+- `--analyzer`: Name of the analyzer (example: `test-coverage`)
+- `--value`: Value of the artifact
+- `--value-file`: Path to the artifact value file
 
-### 
+###
 
 `help`
 
@@ -170,85 +165,85 @@ Flags
 
 The `--help` flag can be used with any command to display the help for that command. When used alone, the help command displays general help for the entire CLI.
 
-### 
+###
 
 `config`
 
 [](#config)
 
-#### 
+####
 
 Sub-commands
 
 [](#sub-commands)
 
-*   `generate`: Generate starter configuration file, `.deepsource.toml`, for a repository
-*   `validate`: Validate the `.deepsource.toml` config file
+- `generate`: Generate starter configuration file, `.deepsource.toml`, for a repository
+- `validate`: Validate the `.deepsource.toml` config file
 
-### 
+###
 
 `auth`
 
 [](#auth)
 
-#### 
+####
 
 Sub-commands
 
 [](#sub-commands-1)
 
-*   `login`: Authenticate with your DeepSource account or create a new one
-*   `logout`: Log out of your active DeepSource account
-*   `refresh`: Refresh the stored authentication credentials
-*   `status`: View the authentication status
+- `login`: Authenticate with your DeepSource account or create a new one
+- `logout`: Log out of your active DeepSource account
+- `refresh`: Refresh the stored authentication credentials
+- `status`: View the authentication status
 
-### 
+###
 
 `repo`
 
 [](#repo)
 
-#### 
+####
 
 Sub-commands
 
 [](#sub-commands-2)
 
-*   `status`: Show the activation status of a repository on DeepSource
-*   `view`: Open the DeepSource dashboard of a repository
+- `status`: Show the activation status of a repository on DeepSource
+- `view`: Open the DeepSource dashboard of a repository
 
-#### 
+####
 
 Flags
 
 [](#flags-1)
 
-*   `--repo/-r`: URL of the repository. If not specified, the `repo` command respects the repository corresponding to the current working directory.
+- `--repo/-r`: URL of the repository. If not specified, the `repo` command respects the repository corresponding to the current working directory.
 
-### 
+###
 
 `issues`
 
 [](#issues)
 
-#### 
+####
 
 Sub-commands
 
 [](#sub-commands-3)
 
-*   `list <file_path>`: Show the list of issues in a file in a repository.
+- `list <file_path>`: Show the list of issues in a file in a repository.
 
-#### 
+####
 
 Flags
 
 [](#flags-2)
 
-*   `--repo/-r`: URL of the repository to fetch issues from
-*   `--limit/-l`: Number of issues to display at once. By default, the limit is set to 30.
+- `--repo/-r`: URL of the repository to fetch issues from
+- `--limit/-l`: Number of issues to display at once. By default, the limit is set to 30.
 
-### 
+###
 
 `version`
 
@@ -256,7 +251,7 @@ Flags
 
 Get the version of the installed DeepSource CLI.
 
-### 
+###
 
 `completion`
 
@@ -264,19 +259,18 @@ Get the version of the installed DeepSource CLI.
 
 The DeepSource CLI supports autocompletion for macOS and Linux to make it easier to use the right commands with the CLI with the Bash and ZSH shells. Get the autocompletion script by running `deepsource completion <shell>` and add it to the corresponding shell config to get autocompletion for various `deepsource` CLI commands.
 
-> 📘
-> --
-> 
+> ## 📘
+>
 > Shell completion scripts are not currently supported on Windows.
 
-#### 
+####
 
 Argument
 
 [](#argument)
 
-*   `shell`: The shell for which autocompletion commands will be generated. Shells that are currently supported are: `bash`, `fish`, `powershell` and `zsh`.
+- `shell`: The shell for which autocompletion commands will be generated. Shells that are currently supported are: `bash`, `fish`, `powershell` and `zsh`.
 
 Updated over 1 year ago
 
-* * *
+---

@@ -4,9 +4,10 @@ slug: enterprise-server-troubleshooting
 visibility: PUBLIC
 label: Troubleshooting
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -18,30 +19,27 @@ Troubleshooting
 
 Search
 
-Troubleshooting
-===============
+# Troubleshooting
 
 Enterprise Server has a built-in troubleshooting tool that collects and analyzes logs and system metrics to help identify issues with the cluster.
 
 Generate Support bundle from the admin console
 
-[](#generate-support-bundle-from-the-admin-console)
------------------------------------------------------------------------------------------------------
+## [](#generate-support-bundle-from-the-admin-console)
 
 To generate a support bundle (archive of application logs):
 
-*   Run the command `kubectl set env deploy/kotsadm -n <namepspace> KOTSADM_LOG_LEVEL=debug`(namespace is `default` for Standalone Cluster installations)
-*   Navigate to **Application->Troubleshoot** section in your Admin console.
-*   Click on the **Generate a support bundle** button.
-*   Click **Analyse DeepSource** button.
-*   If you need help from DeepSource Support Engineering team, you can press **Send bundle to vendor** to send the support bundle to DeepSource Engineering team.
+- Run the command `kubectl set env deploy/kotsadm -n <namepspace> KOTSADM_LOG_LEVEL=debug`(namespace is `default` for Standalone Cluster installations)
+- Navigate to **Application->Troubleshoot** section in your Admin console.
+- Click on the **Generate a support bundle** button.
+- Click **Analyse DeepSource** button.
+- If you need help from DeepSource Support Engineering team, you can press **Send bundle to vendor** to send the support bundle to DeepSource Engineering team.
 
 ![](https://files.readme.io/f1bb8a1-troubleshooting.png)
 
 Generate Support bundle from CLI
 
-[](#generate-support-bundle-from-cli)
--------------------------------------------------------------------------
+## [](#generate-support-bundle-from-cli)
 
 If you are unable to access the Admin Console for any reason, you can run the command below to generate a support bundle from the CLI:
 
@@ -53,12 +51,11 @@ Allow a few minutes for the above command to finish execution. Select `quit[q]` 
 
 Auto forward errors to DeepSource
 
-[](#auto-forward-errors-to-deepsource)
----------------------------------------------------------------------------
+## [](#auto-forward-errors-to-deepsource)
 
 You can configure Enterprise Server to send Sentry alerts to the DeepSource team whenever an error occurs in the application.
 
-### 
+###
 
 Configuration
 
@@ -69,11 +66,11 @@ To configure Sentry for your DeepSource installation, you will need to go to the
 ![](https://files.readme.io/95fc694-enable-sentry.png)
 
 > Notes:
-> 
-> *   You will also need to allow egress to [https://sentry.io](https://sentry.io) from the cluster.
-> *   A DSN is already set in your license, so you may have to sync your license (go to Admin Console -> License -> click on Sync License) and redeploy before you can use Sentry.
+>
+> - You will also need to allow egress to [https://sentry.io](https://sentry.io) from the cluster.
+> - A DSN is already set in your license, so you may have to sync your license (go to Admin Console -> License -> click on Sync License) and redeploy before you can use Sentry.
 
-### 
+###
 
 Why should I send application errors to DeepSource through Sentry?
 
@@ -85,8 +82,7 @@ When you enable Sentry for your installation, DeepSource Support Engineering tea
 
 Setup log forwarding
 
-[](#setup-log-forwarding)
--------------------------------------------------
+## [](#setup-log-forwarding)
 
 Enterprise Server lets you forward system and application logs to a log aggregation system of your choice. This can be easily configured from the Config section of the Admin Console.
 
@@ -98,7 +94,7 @@ Enterprise Server lets you forward system and application logs to a log aggregat
 
 > Note: Log forwarding is only supported in standalone cluster installations.
 
-### 
+###
 
 Sample Configuration
 
@@ -110,28 +106,25 @@ This is a sample configuration for sending logs to an HTTP endpoint.
 
 RabbitMQ stuck in CrashLoopBackoff state
 
-[](#rabbitmq-stuck-in-crashloopbackoff-state)
------------------------------------------------------------------------------------------
+## [](#rabbitmq-stuck-in-crashloopbackoff-state)
 
 There are some releases where we change the RabbitMQ definitions for introducing new queues and ideally, RabbitMQ pods should restart automatically. However, if the configuration reload fails and RabbitMQ gets stuck in CrashLoopBackoff we recommend the following procedure to fix it:
 
 1.  Downscale the RabbitMQ StatefulSet
-    
+
     bash
-    
+
     `kubectl scale sts/rabbitmq --replicas=0`
-    
+
 2.  Upscale the RabbitMQ StatefulSet
-    
+
     bash
-    
+
     `kubectl scale sts/rabbitmq --replicas=2`
-    
 
 Generate Cluster Support Bundle
 
-[](#generate-cluster-support-bundle)
------------------------------------------------------------------------
+## [](#generate-cluster-support-bundle)
 
 Sometimes the normal support-bundle is not enough to diagnose the issue and we might ask you to generate a cluster support-bundle for in-depth information. To generate a support-bundle from CLI, run the following command:
 
@@ -139,8 +132,7 @@ Sometimes the normal support-bundle is not enough to diagnose the issue and we m
 
 Analysis runs are timing out
 
-[](#analysis-runs-are-timing-out)
------------------------------------------------------------------
+## [](#analysis-runs-are-timing-out)
 
 After some deployments, the order of the restart of the application pods might not sync with the restart of the core services. Due to this, all analysis runs may start timing out. To fix it, follow these steps:
 
@@ -148,4 +140,4 @@ After some deployments, the order of the restart of the application pods might n
 
 Updated 2 months ago
 
-* * *
+---
