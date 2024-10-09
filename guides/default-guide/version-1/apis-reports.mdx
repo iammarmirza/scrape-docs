@@ -1,0 +1,1247 @@
+---
+title: Reports
+slug: apis-reports
+visibility: PUBLIC
+label: Reports
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Reports
+
+Search
+
+Reports
+=======
+
+You can query for a report associated with an `Account` or a `Repository`. You can do so by querying for the `reports` field in the `Account` or `Repository` objects. `Account.reports` contains all the reports available for an `Account`. `Repository.reports` contains all the reports available for a `Repository`.
+
+### 
+
+Fetching the OWASP Top 10 report for a repository
+
+[](#fetching-the-owasp-top-10-report-for-a-repository)
+
+`Query:repository:report:owaspTop10` Query for fetching the OWASP Top 10 report associated with a Repository.
+
+#### 
+
+Sample Request
+
+[](#sample-request)
+
+GraphQL
+
+`query ( 	$name: String! 	$login: String! 	$vcsProvider: VCSProvider! 	$startDate: Date! 	$endDate: Date! ) { 	repository(name: $name, login: $login, vcsProvider: $vcsProvider) { 		reports { 			owaspTop10 { 				key 				title 				currentValue 				status 				values(startDate: $startDate, endDate: $endDate) { 					date 					values { 						key 						value 					} 				} 				trends { 					label 					value 					changePercentage 				} 				securityIssueStats { 					key 					title 					occurrence { 						critical 						major 						minor 						total 					} 				} 			} 		} 	} }`
+
+#### 
+
+Sample Response
+
+[](#sample-response)
+
+JSON
+
+`{ 	"data": { 		"repository": { 			"reports": { 				"owaspTop10": { 					"key": "OWASP_TOP_10", 					"title": "OWASP Top 10", 					"currentValue": 12, 					"status": "FAILING", 					"values": [ 						{ 							"date": "2022-12-09", 							"values": [ 								{ 									"key": "count", 									"value": 12 								} 							] 						}, 						{ 							"date": "2022-12-10", 							"values": [ 								{ 									"key": "count", 									"value": 12 								} 							] 						}, 						{ 							"date": "2022-12-11", 							"values": [ 								{ 									"key": "count", 									"value": 12 								} 							] 						}, 						{ 							"date": "2022-12-12", 							"values": [ 								{ 									"key": "count", 									"value": 12 								} 							] 						} 					], 					"trends": [ 						{ 							"label": "1 Month Ago", 							"value": 13, 							"changePercentage": -7.0 						}, 						{ 							"label": "3 Months Ago", 							"value": 14, 							"changePercentage": -14.0 						}, 						{ 							"label": "6 Months Ago", 							"value": 14, 							"changePercentage": -14.0 						}, 						{ 							"label": "12 Months Ago", 							"value": null, 							"changePercentage": null 						} 					], 					"securityIssueStats": [ 						{ 							"key": "A01", 							"title": "Broken Access Control", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 0, 								"total": 0 							} 						}, 						{ 							"key": "A02", 							"title": "Cryptographic Failures", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 3, 								"total": 3 							} 						}, 						{ 							"key": "A03", 							"title": "Injection", 							"occurrence": { 								"critical": 0, 								"major": 2, 								"minor": 0, 								"total": 2 							} 						}, 						{ 							"key": "A04", 							"title": "Insecure Design", 							"occurrence": { 								"critical": 0, 								"major": 6, 								"minor": 0, 								"total": 6 							} 						}, 						{ 							"key": "A05", 							"title": "Security Misconfiguration", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 3, 								"total": 3 							} 						}, 						{ 							"key": "A06", 							"title": "Vulnerable and Outdate components", 							"occurrence": { 								"critical": 0, 								"major": 3, 								"minor": 0, 								"total": 3 							} 						}, 						{ 							"key": "A07", 							"title": "Identification and Authentication Failures", 							"occurrence": { 								"critical": 0, 								"major": 1, 								"minor": 0, 								"total": 1 							} 						}, 						{ 							"key": "A08", 							"title": "Software and Data Integrity Failures", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 0, 								"total": 0 							} 						}, 						{ 							"key": "A09", 							"title": "Security Logging and Monitoring Failures", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 0, 								"total": 0 							} 						}, 						{ 							"key": "A10", 							"title": "Server-Side Request Forgery (SSRF)", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 0, 								"total": 0 							} 						} 					] 				} 			} 		} 	} }`
+
+* * *
+
+### 
+
+Fetching the OWASP Top 10 report for an account
+
+[](#fetching-the-owasp-top-10-report-for-an-account)
+
+`Query:repository:report:owaspTop10` Query for fetching the OWASP Top 10 report associated with an Account.
+
+#### 
+
+Sample Request
+
+[](#sample-request-1)
+
+GraphQL
+
+`query ( 	$login: String! 	$vcsProvider: VCSProvider! 	$startDate: Date! 	$endDate: Date! ) { 	account(login: $login, vcsProvider: $vcsProvider) { 		reports { 			owaspTop10 { 				key 				title 				currentValue 				status 				values(startDate: $startDate, endDate: $endDate) { 					date 					values { 						key 						value 					} 				} 				trends { 					label 					value 					changePercentage 				} 				securityIssueStats { 					key 					title 					occurrence { 						critical 						major 						minor 						total 					} 				} 			} 		} 	} }`
+
+#### 
+
+Sample Response
+
+[](#sample-response-1)
+
+JSON
+
+`{ 	"data": { 		"account": { 			"reports": { 				"owaspTop10": { 					"key": "OWASP_TOP_10", 					"title": "OWASP Top 10", 					"currentValue": 144, 					"status": "FAILING", 					"values": [ 						{ 							"date": "2022-12-09", 							"values": [ 								{ 									"key": "count", 									"value": 144 								} 							] 						}, 						{ 							"date": "2022-12-10", 							"values": [ 								{ 									"key": "count", 									"value": 144 								} 							] 						}, 						{ 							"date": "2022-12-11", 							"values": [ 								{ 									"key": "count", 									"value": 144 								} 							] 						}, 						{ 							"date": "2022-12-12", 							"values": [ 								{ 									"key": "count", 									"value": 144 								} 							] 						} 					], 					"trends": [ 						{ 							"label": "1 Month Ago", 							"value": 35, 							"changePercentage": 311.0 						}, 						{ 							"label": "3 Months Ago", 							"value": 35, 							"changePercentage": 311.0 						}, 						{ 							"label": "6 Months Ago", 							"value": 22, 							"changePercentage": 554.0 						}, 						{ 							"label": "12 Months Ago", 							"value": null, 							"changePercentage": null 						} 					], 					"securityIssueStats": [ 						{ 							"key": "A01", 							"title": "Broken Access Control", 							"occurrence": { 								"critical": 2, 								"major": 28, 								"minor": 2, 								"total": 32 							} 						}, 						{ 							"key": "A02", 							"title": "Cryptographic Failures", 							"occurrence": { 								"critical": 3, 								"major": 8, 								"minor": 8, 								"total": 19 							} 						}, 						{ 							"key": "A03", 							"title": "Injection", 							"occurrence": { 								"critical": 1, 								"major": 37, 								"minor": 1, 								"total": 39 							} 						}, 						{ 							"key": "A04", 							"title": "Insecure Design", 							"occurrence": { 								"critical": 0, 								"major": 9, 								"minor": 0, 								"total": 9 							} 						}, 						{ 							"key": "A05", 							"title": "Security Misconfiguration", 							"occurrence": { 								"critical": 1, 								"major": 11, 								"minor": 8, 								"total": 20 							} 						}, 						{ 							"key": "A06", 							"title": "Vulnerable and Outdate components", 							"occurrence": { 								"critical": 0, 								"major": 6, 								"minor": 0, 								"total": 6 							} 						}, 						{ 							"key": "A07", 							"title": "Identification and Authentication Failures", 							"occurrence": { 								"critical": 0, 								"major": 2, 								"minor": 0, 								"total": 2 							} 						}, 						{ 							"key": "A08", 							"title": "Software and Data Integrity Failures", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 0, 								"total": 0 							} 						}, 						{ 							"key": "A09", 							"title": "Security Logging and Monitoring Failures", 							"occurrence": { 								"critical": 63, 								"major": 0, 								"minor": 0, 								"total": 63 							} 						}, 						{ 							"key": "A10", 							"title": "Server-Side Request Forgery (SSRF)", 							"occurrence": { 								"critical": 0, 								"major": 0, 								"minor": 0, 								"total": 0 							} 						} 					] 				} 			} 		} 	} }`
+
+### 
+
+Fetching a report for a repository \[Deprecated\]
+
+[](#fetching-a-report-for-a-repository-deprecated)
+
+> 🚧
+> --
+> 
+> `Query:repository:report` field is **deprecated** in favor of `Query:repository:reports` field.
+
+`Query:repository:report` Query for fetching a report associated with a Repository.
+
+#### 
+
+Sample Request
+
+[](#sample-request-2)
+
+GraphQL
+
+`query($name: String!, $login: String!, $vcsProvider: VCSProvider!, $reportKey: ReportKey!, $startDate: Date!, $endDate: Date!) {     repository(name: $name, login: $login, vcsProvider: $vcsProvider) {         report(key: $reportKey) {             key             title             currentValue             status             historicalValues(startDate:$startDate, endDate:$endDate) {                 date                 values {                     key                     value                 }             }             trends {                 label                 value                 rate             }              ... on ComplianceReport {                 complianceIssueStats {                     key                     title                     occurrence {                         critical                         major                         minor                         total                     }                 }             }              ... on IssueDistributionReport {                 issueDistributionByAnalyzer {                     key                     value                 }                 issueDistributionByCategory {                     key                     value                 }             }         }     } }`
+
+#### 
+
+Sample Response
+
+[](#sample-response-2)
+
+JSON
+
+`{   "data": {     "repository": {       "report": {         "key": "OWASP_TOP_10",         "title": "OWASP Top 10",         "currentValue": 15,         "status": "FAILING",         "historicalValues": [           {             "date": "2022-07-01",             "values": [               {                 "key": "count",                 "value": 15               }             ]           }         ],         "trends": [           {             "label": "1 Month Ago",             "value": null,             "rate": null           },           {             "label": "3 Months Ago",             "value": null,             "rate": null           },           {             "label": "6 Months Ago",             "value": null,             "rate": null           },           {             "label": "12 Months Ago",             "value": null,             "rate": null           }         ],         "complianceIssueStats": [           {             "key": "A01",             "title": "Broken Access Control",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 0,               "total": 0             }           },           {             "key": "A02",             "title": "Cryptographic Failures",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 3,               "total": 3             }           },           {             "key": "A03",             "title": "Injection",             "occurrence": {               "critical": 0,               "major": 3,               "minor": 0,               "total": 3             }           },           {             "key": "A04",             "title": "Insecure Design",             "occurrence": {               "critical": 0,               "major": 8,               "minor": 0,               "total": 8             }           },           {             "key": "A05",             "title": "Security Misconfiguration",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 3,               "total": 3             }           },           {             "key": "A06",             "title": "Vulnerable and Outdate components",             "occurrence": {               "critical": 0,               "major": 3,               "minor": 0,               "total": 3             }           },           {             "key": "A07",             "title": "Identification and Authentication Failures",             "occurrence": {               "critical": 0,               "major": 1,               "minor": 0,               "total": 1             }           },           {             "key": "A08",             "title": "Software and Data Integrity Failures",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 0,               "total": 0             }           },           {             "key": "A09",             "title": "Security Logging and Monitoring Failures",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 0,               "total": 0             }           },           {             "key": "A10",             "title": "Server-Side Request Forgery (SSRF)",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 0,               "total": 0             }           }         ]       }     }   } }`
+
+* * *
+
+### 
+
+Fetching a report for an account \[Deprecated\]
+
+[](#fetching-a-report-for-an-account-deprecated)
+
+> 🚧
+> --
+> 
+> `Query:account:report` field is **deprecated** in favor of `Query:account:reports` field.
+
+`Query:account:report` Query for fetching a report associated with an Account.
+
+#### 
+
+Sample Request
+
+[](#sample-request-3)
+
+GraphQL
+
+`query( $login: String!, $vcsProvider: VCSProvider!, $reportKey: ReportKey!, $startDate: Date!, $endDate: Date!) {     account( login: $login, vcsProvider: $vcsProvider) {         report(key: $reportKey) {             key             title             currentValue             status             historicalValues(startDate:$startDate, endDate:$endDate) {                 date                 values {                     key                     value                 }             }             trends {                 label                 value                 rate             }              ... on ComplianceReport {                 complianceIssueStats {                     key                     title                     occurrence {                         critical                         major                         minor                         total                     }                 }             }              ... on IssueDistributionReport {                 issueDistributionByAnalyzer {                     key                     value                 }                 issueDistributionByCategory {                     key                     value                 }             }         }     } }`
+
+#### 
+
+Sample Response
+
+[](#sample-response-3)
+
+JSON
+
+`{   "data": {     "account": {       "report": {         "key": "OWASP_TOP_10",         "title": "OWASP Top 10",         "currentValue": 138,         "status": "FAILING",         "historicalValues": [           {             "date": "2022-07-01",             "values": [               {                 "key": "count",                 "value": 138               }             ]           }         ],         "trends": [           {             "label": "1 Month Ago",             "value": null,             "rate": null           },           {             "label": "3 Months Ago",             "value": null,             "rate": null           },           {             "label": "6 Months Ago",             "value": null,             "rate": null           },           {             "label": "12 Months Ago",             "value": null,             "rate": null           }         ],         "complianceIssueStats": [           {             "key": "A01",             "title": "Broken Access Control",             "occurrence": {               "critical": 1,               "major": 16,               "minor": 2,               "total": 19             }           },           {             "key": "A02",             "title": "Cryptographic Failures",             "occurrence": {               "critical": 2,               "major": 7,               "minor": 8,               "total": 17             }           },           {             "key": "A03",             "title": "Injection",             "occurrence": {               "critical": 2,               "major": 25,               "minor": 2,               "total": 29             }           },           {             "key": "A04",             "title": "Insecure Design",             "occurrence": {               "critical": 0,               "major": 13,               "minor": 0,               "total": 13             }           },           {             "key": "A05",             "title": "Security Misconfiguration",             "occurrence": {               "critical": 2,               "major": 11,               "minor": 8,               "total": 21             }           },           {             "key": "A06",             "title": "Vulnerable and Outdate components",             "occurrence": {               "critical": 0,               "major": 6,               "minor": 0,               "total": 6             }           },           {             "key": "A07",             "title": "Identification and Authentication Failures",             "occurrence": {               "critical": 0,               "major": 2,               "minor": 0,               "total": 2             }           },           {             "key": "A08",             "title": "Software and Data Integrity Failures",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 0,               "total": 0             }           },           {             "key": "A09",             "title": "Security Logging and Monitoring Failures",             "occurrence": {               "critical": 63,               "major": 0,               "minor": 0,               "total": 63             }           },           {             "key": "A10",             "title": "Server-Side Request Forgery (SSRF)",             "occurrence": {               "critical": 0,               "major": 0,               "minor": 0,               "total": 0             }           }         ]       }     }   } }`
+
+* * *
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+AccountReportsNamespace
+
+[](#accountreportsnamespace)
+
+A namespace containing all the reports available in an `Account`.
+
+Field
+
+Type
+
+Description
+
+**owaspTop10**
+
+[OwaspTop10Report](https://deepsource-docs.readme.io/docs/apis-reports#owasptop10report)!
+
+The OWASP Top 10 report for a account.
+
+**sansTop25**
+
+[SansTop25Report](https://deepsource-docs.readme.io/docs/apis-reports#sanstop25report)!
+
+The SANS Top 25 report for a account.
+
+**codeHealthTrend**
+
+[CodeHealthTrendReport](https://deepsource-docs.readme.io/docs/apis-reports#codehealthtrendreport)!
+
+The Code Health Trend report for a account.
+
+**issueDistribution**
+
+[IssueDistributionReport](https://deepsource-docs.readme.io/docs/apis-reports#issuedistributionreport)!
+
+The Issue Distribution report for a account.
+
+**issuesPrevented**
+
+[IssuesPreventedReport](https://deepsource-docs.readme.io/docs/apis-reports#issuespreventedreport)!
+
+The Issues Prevented report for a account.
+
+**issuesAutofixed**
+
+[IssuesAutofixedReport](https://deepsource-docs.readme.io/docs/apis-reports#issuesautofixedreport)!
+
+The Issues Autofixed report for a account.
+
+### 
+
+RepositoryReportsNamespace
+
+[](#repositoryreportsnamespace)
+
+A namespace containing all the reports available in a `Repository`.
+
+Field
+
+Type
+
+Description
+
+**owaspTop10**
+
+[OwaspTop10Report](https://deepsource-docs.readme.io/docs/apis-reports#owasptop10report)!
+
+The OWASP Top 10 report for a repository.
+
+**sansTop25**
+
+[SansTop25Report](https://deepsource-docs.readme.io/docs/apis-reports#sanstop25report)!
+
+The SANS Top 25 report for a repository.
+
+**codeHealthTrend**
+
+[CodeHealthTrendReport](https://deepsource-docs.readme.io/docs/apis-reports#codehealthtrendreport)!
+
+The Code Health Trend report for a repository.
+
+**issueDistribution**
+
+[IssueDistributionReport](https://deepsource-docs.readme.io/docs/apis-reports#issuedistributionreport)!
+
+The Issue Distribution report for a repository.
+
+**issuesPrevented**
+
+[IssuesPreventedReport](https://deepsource-docs.readme.io/docs/apis-reports#issuespreventedreport)!
+
+The Issues Prevented report for a repository.
+
+**issuesAutofixed**
+
+[IssuesAutofixedReport](https://deepsource-docs.readme.io/docs/apis-reports#issuesautofixedreport)!
+
+The Issues Autofixed report for a repository.
+
+### 
+
+OwaspTop10Report
+
+[](#owasptop10report)
+
+Represents the OWASP Top 10 report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The current value of the reported statistic.
+
+**values**
+
+\[[ReportValueItem](https://deepsource-docs.readme.io/docs/apis-reports#reportvalueitem)\]!
+
+The values of the report between the given start and end dates.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+**status**
+
+[ReportStatus](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportstatus)!
+
+The status of the report.
+
+**securityIssueStats**
+
+\[[SecurityIssueStat](https://deepsource-docs.readme.io/docs/apis-reports#securityissuestat)\]!
+
+This contains all data regarding the occurrences of the compliance issues.
+
+### 
+
+SansTop25Report
+
+[](#sanstop25report)
+
+Represents the SANS Top 25 report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The current value of the reported statistic.
+
+**values**
+
+\[[ReportValueItem](https://deepsource-docs.readme.io/docs/apis-reports#reportvalueitem)\]!
+
+The values of the report between the given start and end dates.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+**status**
+
+[ReportStatus](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportstatus)!
+
+The status of the report.
+
+**securityIssueStats**
+
+\[[SecurityIssueStat](https://deepsource-docs.readme.io/docs/apis-reports#securityissuestat)\]!
+
+This contains all data regarding the occurrences of the compliance issues.
+
+### 
+
+CodeCoverageReport
+
+[](#codecoveragereport)
+
+Represents the Code Coverage report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**repositories**
+
+[CodeCoverageReportRepositoryConnection](#CodeCoverageReportRepositoryConnection)
+
+The list of repositories along with their code coverage metric values.
+
+q
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+The query param to search the repositories by name.
+
+sortKey
+
+[CodeCoverageReportRepositorySortKey](api/enum#CodeCoverageReportRepositorySortKey)
+
+An enum to sort the list of repositories by.
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The count of repositories to skip.
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+A cursor to be used with last for backward pagination.
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+The number of items to forward paginate.
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The number of items to backward paginate.
+
+### 
+
+CodeHealthTrendReport
+
+[](#codehealthtrendreport)
+
+Represents the Code Health Trend report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The current value of the reported statistic.
+
+**values**
+
+\[[ReportValueItem](https://deepsource-docs.readme.io/docs/apis-reports#reportvalueitem)\]!
+
+The values of the report between the given start and end dates.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+### 
+
+IssueDistributionReport
+
+[](#issuedistributionreport)
+
+Represents the Issue Distribution report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The current value of the reported statistic.
+
+**values**
+
+\[[ReportValueItem](https://deepsource-docs.readme.io/docs/apis-reports#reportvalueitem)\]!
+
+The values of the report between the given start and end dates.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+**issueDistributionByAnalyzer**
+
+[IssueDistribution](https://deepsource-docs.readme.io/docs/apis-reports#issuedistribution)!
+
+Distribution of issues by analyzer.
+
+**issueDistributionByCategory**
+
+[IssueDistribution](https://deepsource-docs.readme.io/docs/apis-reports#issuedistribution)!
+
+Distribution of issues by category.
+
+### 
+
+IssuesPreventedReport
+
+[](#issuespreventedreport)
+
+Represents the Issues Prevented report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The current value of the reported statistic.
+
+**values**
+
+\[[ReportValueItem](https://deepsource-docs.readme.io/docs/apis-reports#reportvalueitem)\]!
+
+The values of the report between the given start and end dates.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+**issueDistributionByAnalyzer**
+
+[IssueDistribution](https://deepsource-docs.readme.io/docs/apis-reports#issuedistribution)!
+
+Distribution of issues by analyzer.
+
+**issueDistributionByCategory**
+
+[IssueDistribution](https://deepsource-docs.readme.io/docs/apis-reports#issuedistribution)!
+
+Distribution of issues by category.
+
+### 
+
+IssuesAutofixedReport
+
+[](#issuesautofixedreport)
+
+Represents the Issues Autofixed report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+An enum that uniquely identifies a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The current value of the reported statistic.
+
+**values**
+
+\[[ReportValueItem](https://deepsource-docs.readme.io/docs/apis-reports#reportvalueitem)\]!
+
+The values of the report between the given start and end dates.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+### 
+
+ReportValueItem
+
+[](#reportvalueitem)
+
+Represents the list of values recorded for a report on a specific date.
+
+Field
+
+Type
+
+Description
+
+**date**
+
+!
+
+The date the values were recorded on.
+
+**values**
+
+[ReportValue](https://deepsource-docs.readme.io/docs/apis-reports#reportvalue)
+
+The list of values recorded.
+
+### 
+
+ReportValue
+
+[](#reportvalue)
+
+Represents a recorded value in a report.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The key to identify the recorded value
+
+**value**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The recorded value.
+
+### 
+
+IssueDistribution
+
+[](#issuedistribution)
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Key representing the category/type of issue.
+
+**value**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+Number of issues in the category/type of issue.
+
+### 
+
+SecurityIssueStat
+
+[](#securityissuestat)
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The key of the security issue.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Title of the security issue.
+
+**occurrence**
+
+[SeverityDistribution](https://deepsource-docs.readme.io/docs/apis-reports#severitydistribution)!
+
+Denotes the count of occurrences of various security issues.
+
+### 
+
+SeverityDistribution
+
+[](#severitydistribution)
+
+Field
+
+Type
+
+Description
+
+**critical**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of security issues categorized as critical.
+
+**major**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of security issues categorized as major.
+
+**minor**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of security issues categorized as minor.
+
+**major**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+Total number of security issues.
+
+### 
+
+CodeCoverageReportRepositoryConnection
+
+[](#codecoveragereportrepositoryconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+\[[CodeCoverageReportRepositoryEdge](https://deepsource-docs.readme.io/docs/apis-reports#codecoveragereportrepositoryedge)\]!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The total count of the nodes.
+
+### 
+
+CodeCoverageReportRepositoryEdge
+
+[](#codecoveragereportrepositoryedge)
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[CodeCoverageReportRepository](https://deepsource-docs.readme.io/docs/apis-reports#codecoveragereportrepository)
+
+The `CodeCoverageReportRepository` object.
+
+**cursor**
+
+\[[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)\]!
+
+The cursor to be used for pagination.
+
+### 
+
+CodeCoverageReportRepository
+
+[](#codecoveragereportrepository)
+
+Field
+
+Type
+
+Description
+
+**name**
+
+\[[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)\]!
+
+The name of the repository.
+
+**id**
+
+\[[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)\]!
+
+The ID of the repository.
+
+**lcvMetricValue**
+
+\[[Float](https://deepsource-docs.readme.io/docs/apis-reference-scalars#float)\]
+
+The LCV metric value for the repository.
+
+**bcvMetricValue**
+
+\[[Float](https://deepsource-docs.readme.io/docs/apis-reference-scalars#float)\]
+
+The BCV metric value for the repository.
+
+**isLcvPassing**
+
+\[[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)\]
+
+Whether the LCV value is passing the threshold set for the metric.
+
+**isBcvPassing**
+
+\[[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)\]
+
+Whether the BCV value is passing the threshold set for the metric.
+
+### 
+
+Trend
+
+[](#trend)
+
+Compares the report value across different time periods.
+
+Field
+
+Type
+
+Description
+
+**label**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A label for the trend. For example: "1 Month Ago"
+
+**value**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+The value of the trend.
+
+**changePercentage**
+
+!
+
+The rate of change compared to the current value.
+
+* * *
+
+Deprecated
+
+[](#deprecated)
+-----------------------------
+
+> 🚧
+> --
+> 
+> The following GraphQL interfaces & objects have been deprecated and will be removed soon.
+
+### 
+
+Interfaces
+
+[](#interfaces)
+
+#### 
+
+Report
+
+[](#report)
+
+Represents the report associated with an Account or Repository.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+This is an enum that is used to uniquely identify a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+The current value of the reported statistic.
+
+**historicalValues**
+
+\[[HistoricalValueItem](#historicalvalueitem)\]!
+
+The historical data of the report.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the historical values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the historical values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+### 
+
+Objects
+
+[](#objects-1)
+
+#### 
+
+ComplianceReport
+
+[](#compliancereport)
+
+Represents a compliance report. Currently there are two compliance reports - `OWASP_TOP_10` and `SANS_TOP_25`.
+
+Implements the interface.
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[ReportKey](https://deepsource-docs.readme.io/docs/apis-reference-enums#reportkey)!
+
+This is an enum that is used to uniquely identify a report.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Title of the report.
+
+**currentValue**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+The current value of the reported statistic.
+
+**historicalValues**
+
+\[[HistoricalValueItem](#historicalvalueitem)\]!
+
+The historical data of the report.
+
+startDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The start date for the historical values.
+
+endDate
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The end date for the historical values.
+
+**trends**
+
+\[[Trend](https://deepsource-docs.readme.io/docs/apis-reports#trend)\]!
+
+The trends across 1 month, 3 month, 6 month and 12 months.
+
+**complianceIssueStats**
+
+\[[ComplianceIssueStat](#complianceIssueStats)\]!
+
+This contains all data regarding the occurrences of the compliance issues.
+
+#### 
+
+ComplianceIssueStat
+
+[](#complianceissuestat)
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The key of the compliance issue.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Title of the compliance issue.
+
+**occurrence**
+
+[ComplianceIssueOccurrenceCount](https://deepsource-docs.readme.io/docs/apis-reports#objects-1)!
+
+Denotes the count of occurences of various compliance issues.
+
+#### 
+
+ComplianceIssueOccurrenceCount
+
+[](#complianceissueoccurrencecount)
+
+Field
+
+Type
+
+Description
+
+**critical**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of compliance issues categorized as critical.
+
+**major**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of compliance issues categorized as major.
+
+**minor**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of compliance issues categorized as minor.
+
+**major**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+Total number of compliance issues.
+
+#### 
+
+HistoricalValue
+
+[](#historicalvalue)
+
+Field
+
+Type
+
+Description
+
+**key**
+
+[String](#https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+The key to uniquely identify the recorded value.
+
+**value**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+The value of the recorded value.
+
+#### 
+
+HistoricalValueItem
+
+[](#historicalvalueitem)
+
+Field
+
+Type
+
+Description
+
+**date**
+
+[Date](https://deepsource-docs.readme.io/docs/apis-reference-scalars#date)!
+
+Date of the recorded value.
+
+**values**
+
+\[[HistoricalValue](https://deepsource-docs.readme.io/docs/apis-repor#objects-1)\]!
+
+A list of values recorded on the associated date.
+
+Updated 8 days ago
+
+* * *

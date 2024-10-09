@@ -17,7 +17,7 @@ const GUIDE_FOLDER_PATH = "guides/default-guide";
 
 async function scrapeWebsite(url) {
   try {
-    const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
+    const response = await fetch(url, { signal: AbortSignal.timeout(20000) });
     const pageHtml = await response.text();
 
     const doc = new JSDOM(pageHtml, {
@@ -73,7 +73,7 @@ async function scrapeWebsite(url) {
 
     return article;
   } catch (error) {
-    log.error("An error occurred:", { error });
+    console.log("An error occurred:", { error });
   }
   return null;
 }
