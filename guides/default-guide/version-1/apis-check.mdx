@@ -1,0 +1,325 @@
+---
+title: Check
+slug: apis-check
+visibility: PUBLIC
+label: Check
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Check
+
+Search
+
+Check
+=====
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+Check
+
+[](#check)
+
+A single analyzer check as part of an analysis run.
+
+Field
+
+Type
+
+Description
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**sequence**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+Sequence number of the check in the analysis run it belongs to.
+
+**status**
+
+[CheckStatus](https://deepsource-docs.readme.io/docs/apis-reference-enums#checkstatus)!
+
+The current status of the check.
+
+**analyzer**
+
+[Analyzer](https://deepsource-docs.readme.io/docs/apis-analyzer#analyzer)!
+
+The analyzer related to the check.
+
+**createdAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+Time when the check was created.
+
+**updatedAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+Time when the check was last modified.
+
+**finishedAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)
+
+Time when the check finished.
+
+**summary**
+
+[CheckSummary](https://deepsource-docs.readme.io/docs/apis-check#checksummary)!
+
+Summary of the check.
+
+**occurrences**
+
+[OccurrenceConnection](https://deepsource-docs.readme.io/docs/apis-check#occurrenceconnection)!
+
+Issue occurrences found in the check.
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+first
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+**metrics**
+
+[RepositoryMetric](https://deepsource-docs.readme.io/docs/apis-metric#repositorymetric)!
+
+List of DeepSource metrics captured in the check.
+
+### 
+
+CheckSummary
+
+[](#checksummary)
+
+Summary of a check.
+
+Field
+
+Type
+
+Description
+
+**occurrencesIntroduced**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of issues introduced in the check.
+
+**occurrencesResolved**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of issues resolved in the check.
+
+**occurrencesSuppressed**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of issues marked as suppressed in the check.
+
+**occurrenceDistributionByCategory**
+
+[OccurrenceDistributionByCategory](https://deepsource-docs.readme.io/docs/apis-analysis-run#occurrencedistributionbycategory)
+
+The issue category distribution for the check.
+
+### 
+
+Occurrence
+
+[](#occurrence)
+
+Field
+
+Type
+
+Description
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**path**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+**beginLine**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+**beginColumn**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+**endLine**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+**endColumn**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)!
+
+**issue**
+
+[Issue](https://deepsource-docs.readme.io/docs/apis-issue#issue)!
+
+**issue**
+
+[Issue](https://deepsource-docs.readme.io/docs/apis-issue#issue)!
+
+The definition of the issue which has been raised.
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Title describing the issue which has been raised here.
+
+### 
+
+CheckConnection
+
+[](#checkconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+\[[CheckEdge](https://deepsource-docs.readme.io/docs/apis-check#checkedge)\]!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+CheckEdge
+
+[](#checkedge)
+
+A Relay edge containing a `Check` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[Check](https://deepsource-docs.readme.io/docs/apis-check#check)
+
+The item at the end of the edge.
+
+**cursor**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A cursor for use in pagination.
+
+### 
+
+OccurrenceConnection
+
+[](#occurrenceconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+\[[OccurrenceEdge](https://deepsource-docs.readme.io/docs/apis-check#occurrenceedge)\]!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+OccurrenceEdge
+
+[](#occurrenceedge)
+
+A Relay edge containing a `Occurrence` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[Occurrence](https://deepsource-docs.readme.io/docs/apis-check#occurrence)
+
+The item at the end of the edge.
+
+**cursor**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A cursor for use in pagination.
+
+Updated 8 months ago
+
+* * *

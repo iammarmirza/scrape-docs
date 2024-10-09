@@ -1,0 +1,70 @@
+---
+title: Activate analysis via Auto Onboard
+slug: quickstart-auto-onboard
+visibility: PUBLIC
+label: Activate analysis via Auto Onboard
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Activate analysis via Auto Onboard
+
+Search
+
+Activate analysis via Auto Onboard
+==================================
+
+This page onboards users who are introduced to DeepSource via Auto Onboard
+
+> Auto Onboard is a feature used by teams with large number of repositories to make onboarding easier. Read more about Auto Onboard .
+
+You probably received a pull request from DeepSource that adds a .deepsource.toml file to the root directory of your repository. If that's the case, this guide is designed to introduce you to DeepSource and guide you through the next steps.
+
+### 
+
+What is DeepSource?
+
+[](#what-is-deepsource)
+
+DeepSource is a code health platform that equips organizations with everything they need to write maintainable and secure code without compromising the velocity of software development. DeepSource runs Static analysis, SAST, IaC analysis and processes Code coverage reports on every commit and pull request in a repository to find issues like bug risks, security flaws, anti-patterns, code smells, performance issues, style violations, and missing documentation.
+
+When a developer makes a commit or a pull request, the issues they introduce are raised in the pull-request check. This allows them to address these issues before the code is merged or reviewed by other peers, thereby saving time and ensuring important problems are not overlooked. Team administrators can configure sophisticated quality and security gates to control when a pull request is blocked from merging based on the category and severity of issues.
+
+### 
+
+What does the DeepSource pull request do?
+
+[](#what-does-the-deepsource-pull-request-do)
+
+The pull request adds a commit that introduces the `.deepsource.toml` file to the root folder of the repository. The presence of `.deepsource.toml` file is a requirement for DeepSource analysis to be activated/enabled on a given repository. You can add and configure analyzers to this file, to be run on every pull requests, commit, and subsequent merges into the default branch. To ensure that DeepSource analysis is activated, it is essential to have this file located in the root directory of the repository. Please refer to the links below to configure the `.deepsource.toml` file as per your preference.
+
+> **Reference links:**
+> 
+> .deepsource.toml Configuration -
+> 
+> Analyzer Configuration -
+> 
+> Analyzer Directory - [https://app.deepsource.com/directory](https://app.deepsource.com/directory)
+
+### 
+
+What to do after merging the PR
+
+[](#what-to-do-after-merging-the-pr)
+
+Once you have successfully merged this pull request into the default branch of the repository, DeepSource will automatically activate analysis on the repository and initiate an initial analysis on the merge commit. From that point forward, DeepSource will continuously analyze the repository for any code health issues on each commit to the default branch and on each subsequent PR.
+
+To access and review the analysis results, simply visit the [DeepSource Dashboard](https://app.deepsource.com). Upon clicking on a repository listed under 'Recently active repositories,' you will be taken to the Repository dashboard. From there, you can navigate to the Issues tab, where you will find a list of the code health issues currently identified in the default branch of the repository.
+
+Updated about 1 year ago
+
+* * *
+
+What’s Next

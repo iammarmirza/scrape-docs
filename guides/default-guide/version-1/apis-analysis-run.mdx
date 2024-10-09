@@ -1,0 +1,410 @@
+---
+title: Analysis Run
+slug: apis-analysis-run
+visibility: PUBLIC
+label: Analysis Run
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Analysis Run
+
+Search
+
+Analysis Run
+============
+
+A `Run` is an analysis done against your codebase.
+
+run
+
+[](#run)
+---------------
+
+`Query: run` fetch the details of a single run using either the `runUid` identifier or `commitOid`.
+
+### 
+
+Arguments
+
+[](#arguments)
+
+Field
+
+Type
+
+Description
+
+runUid
+
+[UUID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#uuid)
+
+UID of the Analysis Run you want to get.
+
+commitOid
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+Commit OID of the Analysis Run you want to get.
+
+### 
+
+Sample Request
+
+[](#sample-request)
+
+GraphQL
+
+`query {   run(runUid:"0613332b-436a-429b-95e3-6e01d72208b3") {     id     createdAt     branchName     baseOid     finishedAt   } }`
+
+or,
+
+GraphQL
+
+`query {   run(commitOid:"6df7f08b029abbf25905abf1bc79fde72934045b") {     id     createdAt     branchName     baseOid     finishedAt   } }`
+
+### 
+
+Sample Response
+
+[](#sample-response)
+
+JSON
+
+`{   "data": {     "run": {       "id": "QW5hbHlzaXNadW46eHpkZ3Zi",       "createdAt": "2019-01-07T20:52:19.491314+00:00",       "branchName": "foobar",       "finishedAt": "2019-01-07T20:52:34.677357+00:00"     }   } }`
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+AnalysisRun
+
+[](#analysisrun)
+
+Field
+
+Type
+
+Description
+
+**createdAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+The time at which the Run was created.
+
+**branchName**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+The branch name against which the analysis was run.
+
+**baseOid**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+The commit ID which acts as the root for the Analysis. All issues introduced in the code before this commit are ignored by DeepSource.
+
+**commitOid**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+The commit ID on which the Analysis is run.
+
+**finishedAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)
+
+The time at which the Run completed.
+
+**repository**
+
+[Repository](https://deepsource-docs.readme.io/docs/apis-repository#repository)!
+
+The repository on which the Analysis has run.
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**runUid**
+
+[UUID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#uuid)!
+
+UID of this AnalysisRun.
+
+**status**
+
+[AnalysisRunStatus](https://deepsource-docs.readme.io/docs/apis-reference-enums#analysisrunstatus)!
+
+The current status of the run.
+
+**summary**
+
+[AnalysisRunSummary](https://deepsource-docs.readme.io/docs/apis-analysis-run#analysisrunsummary)!
+
+Summary of the analysis run.
+
+**changesetStats**
+
+[ChangesetStats](#changesetstats)
+
+Statistics pertaining to the changeset (of a commit or PR) in the analysis run.
+
+**updatedAt**
+
+[DateTime](https://deepsource-docs.readme.io/docs/apis-reference-scalars#datetime)!
+
+Time when the analysis run was last modified.
+
+**checks**
+
+[CheckConnection](https://deepsource-docs.readme.io/docs/apis-check#checkconnection)!
+
+Analyzer checks in the analysis run.
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+first
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+* * *
+
+### 
+
+AnalysisRunConnection
+
+[](#analysisrunconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+\[[AnalysisRunEdge](https://deepsource-docs.readme.io/docs/apis-analysis-run#analysisrunedge)\]!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+The total number of analysis runs in the connection.
+
+### 
+
+AnalysisRunEdge
+
+[](#analysisrunedge)
+
+A Relay edge containing a `AnalysisRun` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[AnalysisRun](https://deepsource-docs.readme.io/docs/apis-analysis-run#analysisrun)
+
+The item at the end of the edge.
+
+**cursor**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A cursor for use in pagination.
+
+### 
+
+AnalysisRunSummary
+
+[](#analysisrunsummary)
+
+Field
+
+Type
+
+Description
+
+**occurrencesIntroduced**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of issues introduced during this analysis run, between the \`baseOid\` and the \`commitOid\`
+
+**occurrencesResolved**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of issues marked as resolved in this analysis run
+
+**occurrencesSuppressed**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+Number of issues marked as suppressed in this analysis run.
+
+**occurrenceDistributionByAnalyzer**
+
+[OccurrenceDistributionByAnalyzer](https://deepsource-docs.readme.io/docs/apis-analysis-run#occurrencedistributionbyanalyzer)
+
+Number of issues raised per analyzer.
+
+**occurrenceDistributionByCategory**
+
+\[[OccurrenceDistributionByCategory](https://deepsource-docs.readme.io/docs/apis-analysis-run#occurrencedistributionbycategory)\]
+
+Number of issues raised per issue category.
+
+### 
+
+OccurrenceDistributionByAnalyzer
+
+[](#occurrencedistributionbyanalyzer)
+
+Field
+
+Type
+
+Description
+
+**analyzerShortcode**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Shortcode of the analyzer.
+
+**introduced**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Number of issues detected by the analyzer.
+
+### 
+
+OccurrenceDistributionByCategory
+
+[](#occurrencedistributionbycategory)
+
+Field
+
+Type
+
+Description
+
+**category**
+
+[IssueCategory](https://deepsource-docs.readme.io/docs/apis-reference-enums#issuecategory)!
+
+Category of the issue.
+
+**introduced**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Number of issues detected that belong to this category.
+
+### 
+
+ChangesetStats
+
+[](#changesetstats)
+
+Statistics pertaining to the changeset (of a commit or PR), as analyzed by an `AnalysisRun`.
+
+Field
+
+Type
+
+Description
+
+**lines**
+
+[ChangesetStatsCounts](#changesetstats)!
+
+Stats for number of lines in the changeset.
+
+**branches**
+
+[ChangesetStatsCounts](#changesetstats)!
+
+Stats for number of branches in the changeset.
+
+**conditions**
+
+[ChangesetStatsCounts](#changesetstats)!
+
+Stats for number of conditions in the changeset.
+
+### 
+
+ChangesetStatsCounts
+
+[](#changesetstatscounts)
+
+Overall and newly added number of lines (or branches or conditions) in a changeset. Note: `0` depicts no lines (or branches or conditions) were found whereas `None` depicts the information is not available.
+
+Field
+
+Type
+
+Description
+
+**overall**
+
+Overall number of lines (or branches or conditions) across the repository.
+
+**overallCovered**
+
+Overall number of lines (or branches or conditions) that are covered across the repository.
+
+**new**
+
+Newly added number of lines (or branches or conditions) in the changeset.
+
+**newCovered**
+
+Newly added number of lines (or branches or conditions) that are covered in the changeset.
+
+Updated 8 months ago
+
+* * *

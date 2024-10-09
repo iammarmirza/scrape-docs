@@ -1,0 +1,219 @@
+---
+title: SQL
+slug: analyzers-sql
+visibility: PUBLIC
+label: SQL
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+SQL
+
+Search
+
+SQL
+===
+
+The SQL Analyzer helps you write good SQL and catch errors and bad SQL before it hits your database.
+
+This section covers configuration specific to the `SQL` analyzer. Please make sure to read the general [configuration guide](https://deepsource-docs.readme.io/docs/configuration) first.
+
+Configuration - `.deepsource.toml`
+
+[](#configuration---deepsourcetoml)
+-------------------------------------------------------------------------
+
+### 
+
+`name`
+
+[](#name)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: mandatory
+*   **Description**: Shortcode of the analyzer.
+*   **Example**:
+
+TOML
+
+`name = "sql"`
+
+### 
+
+`enabled`
+
+[](#enabled)
+
+*   **Type**: [Boolean](https://toml.io/en/v1.0.0#boolean)
+*   **Presence**: optional
+*   **Description**: Toggle whether this analyzer should be run.
+*   **Example**:
+
+TOML
+
+`enabled = true`
+
+### 
+
+`meta`
+
+[](#meta)
+
+*   **Type**: [Table](https://toml.io/en/v1.0.0#table)
+*   **Presence**: optional
+*   **Description**: Analyzer specific metadata to tweak its behavior. These values are used to customize the checkers.
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   max_line_length = 100   tab_space_size = 4   indent_unit = "tab"   comma_style = "trailing"   capitalisation_policy = "consistent"   allow_scalar = true   single_table_references = "consistent"`
+
+Available `meta` fields
+
+[](#available-meta-fields)
+-----------------------------------------------------
+
+#### 
+
+`max_line_length`
+
+[](#max_line_length)
+
+*   **Type**: [Integer](https://toml.io/en/v1.0.0#integer)
+*   **Presence**: optional
+*   **Description**: The maximum length of a line to allow without raising a violation
+*   **Available Value**: Any positive integer value.
+*   **Default Value**: 80
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   max_line_length = 100`
+
+#### 
+
+`tab_space_size`
+
+[](#tab_space_size)
+
+*   **Type**: [Integer](https://toml.io/en/v1.0.0#integer)
+*   **Presence**: optional
+*   **Description**: The number of spaces to consider equal to one tab.
+*   **Available Value**: Any positive integer value.
+*   **Default Value**: 4
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   tab_space_size = 4`
+
+#### 
+
+`indent_unit`
+
+[](#indent_unit)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: optional
+*   **Description**: Whether to use tabs or spaces to add new indents.
+*   **Available Values**: `tab` and `space`
+*   **Default Value**: "space"
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   indent_unit = "tab"`
+
+#### 
+
+`comma_style`
+
+[](#comma_style)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: optional
+*   **Description**: The comma style to enforce.
+*   **Available Values**: `trailing` and `leading`
+*   **Default Value**: "trailing"
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   comma_style = "trailing"`
+
+#### 
+
+`capitalisation_policy`
+
+[](#capitalisation_policy)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: optional
+*   **Description**: The capitalization policy to enforce.
+*   **Available Value**: `consistent`, `upper`, `lower` and `capitalise`.
+*   **Default Value**: "consistent"
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   capitalisation_policy = "consistent"`
+
+#### 
+
+`allow_scalar`
+
+[](#allow_scalar)
+
+*   **Type**: [Boolean](https://toml.io/en/v1.0.0#boolean)
+*   **Presence**: optional
+*   **Description**: If `true` then there would be no issues if there is only one element in the `SELECT` clause e.g. `SELECT 1 + 2 FROM blah`. It will still fail if there are multiple columns.
+*   **Available Values**: `true` and `false`
+*   **Default Value**: true
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   allow_scalar = true`
+
+#### 
+
+`single_table_references`
+
+[](#single_table_references)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: optional
+*   **Description**: The expectation for references in single-table `SELECT`.
+*   **Available Values**: `qualified`, `unqualified` and `consistent`
+*   **Default Value**: "consistent"
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   single_table_references = "consistent"`
+
+> 📘
+> --
+> 
+> The meta options are optional and should be provided only if you want the value to be something other than the default value.  
+> If no value is passed for a meta field, the analyzer will automatically consider the default value.
+
+Sample config
+
+[](#sample-config)
+-----------------------------------
+
+TOML
+
+`version = 1  [[analyzers]] name = "sql" enabled = true    [analyzers.meta]     max_line_length = 100     tab_space_size = 4     indent_unit = "tab"     comma_style = "trailing"     capitalisation_policy = "consistent"     allow_scalar = true     single_table_references = "consistent"`
+
+Updated about 1 year ago
+
+* * *

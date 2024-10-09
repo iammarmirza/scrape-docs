@@ -1,0 +1,88 @@
+---
+title: 'Integration: Jira Cloud'
+slug: enterprise-server-integration-jira-cloud
+visibility: PUBLIC
+label: 'Integration: Jira Cloud'
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Integration: Jira Cloud
+
+Search
+
+Integration: Jira Cloud
+=======================
+
+To integrate DeepSource with Jira Cloud you need a Jira OAuth 2.0 application. This document outlines the configuration, permission requirements and app configuration to get started with it.
+
+Creating the Jira Cloud app
+
+[](#creating-the-jira-cloud-app)
+---------------------------------------------------------------
+
+1.  Go to [https://developer.atlassian.com](https://developer.atlassian.com) and log into the Developer Console.
+    
+2.  Once logged in, click on you avatar on the top right and select Developer Console.
+    
+    ![](https://files.readme.io/e2fb252-small-developer-console-home.png)
+    
+3.  Click on **Create** > **OAuth 2.0 integration**.
+    
+4.  Give a name to the app and click on **Create**.
+    
+    ![](https://files.readme.io/8bbfc1f-small-create-app.png)
+    
+5.  Navigate to the **Permissions** tab. Against the Jira API click on **Add** and then click on **Configure**.
+    
+    ![](https://files.readme.io/251a956-small-permissions.png)
+    
+6.  In the **Jira platform REST API** section click on **Edit Scopes** and select the following scopes:
+    
+    *   `read:jira-work`
+    *   `read:jira-user`
+    *   `write:jira-work`
+    
+    ![](https://files.readme.io/3f6ba7d-small-scopes.png)
+    
+7.  Navigate to the **Authorization** tab. Against **OAuth 2.0 (3LO)** click on **Add** and add the following callback URL: `https://<HOSTNAME>/callback/integrations/jira`.
+    
+    (Replace `<HOSTNAME>` with your DeepSource instance's hostname, for e.g. if your `<HOSTNAME>` is `deepsource.stark.com`, then the callback URL will be `https://deepsource.stark.com/callback/integrations/jira`).
+    
+    ![](https://files.readme.io/bbe5ac4-small-authorization.png)
+    
+8.  Navigate to the **Settings** tab and note down the following values:
+    
+    *   **Client ID**
+    *   **Secret**
+    
+    ![](https://files.readme.io/cb82cbd-small-settings.png)
+    
+
+Configuring the Jira Cloud app in the Admin Console
+
+[](#configuring-the-jira-cloud-app-in-the-admin-console)
+---------------------------------------------------------------------------------------------------------------
+
+After you create your Jira Cloud application, you need to configure Client ID & Secret in the Admin Console for the application to use it.
+
+1.  Visit the .
+2.  Navigate to **Application -> Config**.
+3.  In the **Integrations** section, set "Enable Integrations" to "Yes" and select the "Jira Cloud" checkbox.
+4.  Fill up the values from the previous step for:
+    1.  **Jira Integration Client ID**
+    2.  **Jira Integration Client Secret**
+5.  **Save**.
+
+![](https://files.readme.io/de7e62c-small-jira-admin-console.png)
+
+Updated over 1 year ago
+
+* * *

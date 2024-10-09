@@ -1,0 +1,208 @@
+---
+title: 'SAML SSO & SCIM: OneLogin'
+slug: sso-saml-sso-scim-onelogin
+visibility: PUBLIC
+label: 'SAML SSO & SCIM: OneLogin'
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+SAML SSO & SCIM: OneLogin
+
+Search
+
+SAML SSO & SCIM: OneLogin
+=========================
+
+This document explains the process to enable SAML SSO and SCIM on DeepSource using OneLogin as the Identity Provider (IdP).
+
+> 📘
+> 
+> Requires Enterprise Plans
+> 
+> 
+> -------------------------------
+> 
+> Enabling SAML SSO and SCIM requires the team to be on Enterprise Cloud or Server plans. Please reachout to your account manager (or) for a demo.
+
+SAML SSO
+
+[](#saml-sso)
+=========================
+
+Configuring SAML SSO on OneLogin
+
+[](#configuring-saml-sso-on-onelogin)
+-------------------------------------------------------------------------
+
+For now, an admin (on OneLogin) needs to create a custom SAML connector for DeepSource Enterprise. The steps for which are as given:
+
+1.  On the top menu, go to `Applications → Applications`, and click on **"Add App"**.
+2.  Search for and choose **“SCIM Provisioner with SAML (SCIM v2 Enterprise, full SAML)”**.
+3.  Fill in the following details and click **“Save”**:
+
+![](https://files.readme.io/770e154-small-1.png)
+
+Field
+
+Value
+
+Display Name
+
+DeepSource Enterprise Server
+
+4.  Navigate to the **“Configuration”** tab using the sidebar on the left.
+5.  Assuming that DeepSource is hosted on`https://deepsource.foobar.com`, fill in the following details accordingly leaving the rest of the fields with defaults and click **“Save”**:
+
+![](https://files.readme.io/9338ec0-small-2.png)
+
+![](https://files.readme.io/a94d00b-small-3.png)
+
+Field
+
+Value
+
+SAML Audience URL
+
+`https://deepsource.foobar.com/saml2/metadata/`
+
+SAML Audience URL
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+ACS (Consumer) URL Validator
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+ACS (Consumer) URL
+
+`https://deepsource.foobar.com/saml2/acs/`
+
+SAML signature element
+
+Both (from dropdown)
+
+6.  Navigate to the **“SSO”** using the sidebar on the left.
+7.  Change the **“SAML Signature Algorithm”** field to use a stronger algorithm such as “SHA-512” (from dropdown) and click on **“Save”**.
+8.  On the same screen, copy the **“Issuer URL”**. It should be in the format `https://app.onelogin.com/saml/metadata/<app-uuid>`.
+
+> 🚧
+> 
+> For Enterprise Cloud users
+> 
+> 
+> --------------------------------
+> 
+> *   In step 3, name of the app should be changed to DeepSource Enterprise Cloud.
+> *   In step 5, DeepSource's URL should be changed to [https://app.deepsource.com](https://app.deepsource.com).
+
+Configuring SAML SSO on DeepSource
+
+[](#configuring-saml-sso-on-deepsource)
+-----------------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+SCIM Provisioning
+
+[](#scim-provisioning)
+===========================================
+
+Configuring SCIM on OneLogin
+
+[](#configuring-scim-on-onelogin)
+-----------------------------------------------------------------
+
+1.  To Enable SCIM Provisioning, go to your "DeepSource Enterprise Server" application on OneLogin.
+2.  Go to the **Configuration** tab, under **API Connection**, click on **Enable** and configure the given parameters.
+
+![](https://files.readme.io/ebaf704-small-5.png)
+
+Field
+
+Value
+
+SCIM Base URL
+
+`https://deepsource.foobar.com/scim/v2` (no trailing slash)
+
+SCIM Bearer Token
+
+SCIM Authentication token which you have put in Admin Panel in the previous step
+
+3.  Click on **Save** to apply the settings.
+4.  Go to the **Provisioning** tab, and configure the given parameters.
+
+![](https://files.readme.io/a51f409-small-6.png)
+
+Field
+
+Value
+
+Enable provisioning
+
+✅
+
+Create user
+
+✅
+
+Delete user
+
+✅
+
+Update user
+
+✅
+
+5.  Click on **Save** to apply the settings
+
+> 🚧
+> 
+> For Enterprise Cloud users
+> 
+> 
+> --------------------------------
+> 
+> In step 2, the following values should be used instead:
+> 
+> Field
+> 
+> Values
+> 
+> SCIM Base URL
+> 
+> `https://app.deepsource.com/scim/v2` (no trailing slash)
+> 
+> SCIM Bearer Token
+> 
+> SCIM Authentication token generated from DeepSource
+
+Configuring SCIM on DeepSource
+
+[](#configuring-scim-on-deepsource)
+---------------------------------------------------------------------
+
+Refer to:
+
+*   , or,
+*   .
+
+> 🎉
+> --
+> 
+> You have successfully configured SCIM provisioning for your DeepSource Enterprise via OneLogin.
+
+Updated about 1 year ago
+
+* * *

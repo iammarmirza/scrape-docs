@@ -1,0 +1,181 @@
+---
+title: Ruby
+slug: analyzers-ruby
+visibility: PUBLIC
+label: Ruby
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Ruby
+
+Search
+
+Ruby
+====
+
+Configuration - `.deepsource.toml`
+
+[](#configuration---deepsourcetoml)
+-------------------------------------------------------------------------
+
+This section covers configuration specific to the `ruby` analyzer. Please make sure you read the general [configuration guide](https://deepsource-docs.readme.io/docs/configuration) first.
+
+### 
+
+`name`
+
+[](#name)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: mandatory
+*   **Description**: Shortcode of the analyzer.
+*   **Example**:
+
+TOML
+
+`name = "ruby"`
+
+### 
+
+`enabled`
+
+[](#enabled)
+
+*   **Type**: [Boolean](https://toml.io/en/v1.0.0#boolean)
+*   **Presence**: optional
+*   **Description**: Toggle whether this analyzer should be run.
+*   **Example**:
+
+TOML
+
+`enabled = true`
+
+### 
+
+`meta`
+
+[](#meta)
+
+*   **Type**: [Table](https://toml.io/en/v1.0.0#table)
+*   **Presence**: optional
+*   **Description**: Any supported metadata to pass to the analyzer.
+*   **Example**:
+
+TOML
+
+`[analyzers.meta] 	skip_doc_coverage = ["module", "class"]`
+
+#### 
+
+`skip_doc_coverage`
+
+[](#skip_doc_coverage)
+
+*   **Type**: [Array](https://toml.io/en/v1.0.0#array)
+    
+*   **Presence**: optional
+    
+*   **Description**: Specify which artifacts to skip when calculating documentation coverage.
+    
+*   **Available Values**: `class`, `module`, `method`, `singleton_method`
+    
+*   `class` - Ignore documentation coverage for class definitions
+    
+*   `module` - Ignore documentation coverage for module definitions
+    
+*   `method` - Ignore documentation coverage for method definitions
+    
+*   `singleton_method` - Ignore documentation coverage for singleton method definitions
+    
+*   **Default Value**: \[\]
+    
+*   **Example**:
+    
+
+TOML
+
+`skip_doc_coverage = ["module", "singleton_method"]`
+
+#### 
+
+`cyclomatic_complexity_threshold`
+
+[](#cyclomatic_complexity_threshold)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+    
+*   **Presence**: optional
+    
+*   **Description**: Specify the acceptable risk category for your project as the threshold. All functions with complexity beyond this threshold will raise an issue. For example, setting the threshold to `low` will flag all functions that have a cyclomatic complexity of more than `5`, while setting the threshold to `critical` will not flag any function.
+    
+*   **Available Values**: `low`, `medium`, `high`, `very-high` and `critical`
+    
+
+Risk category
+
+Cyclomatic complexity range
+
+Recommended action
+
+low
+
+1-5
+
+No action is needed.
+
+medium
+
+6-15
+
+Review and monitor.
+
+high
+
+16-25
+
+Review and refactor. Recommended to add detailed comments if the function absolutely needs to be kept as it is.
+
+very-high
+
+26-50
+
+Refactor to reduce the complexity.
+
+critical
+
+\>50
+
+Must refactor this. This can make the code untestable and very difficult to understand.
+
+*   **Default Value**: `medium`
+*   **Example**:
+
+TOML
+
+`[analyzers.meta] cyclomatic_complexity_threshold = "high"`
+
+Sample config
+
+[](#sample-config)
+-----------------------------------
+
+TOML
+
+`version = 1  test_patterns = [   "test/**",   "*_test.rb" ]  exclude_patterns = [   "vendor/**",   "**/examples/**" ]  [[analyzers]] name = "ruby" enabled = true    [analyzers.meta]   skip_doc_coverage = ["module", "singleton_method"]`
+
+> 📘
+> --
+> 
+> We currently support Ruby 2.0 and above.
+
+Updated about 1 year ago
+
+* * *

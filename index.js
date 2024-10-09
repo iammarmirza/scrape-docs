@@ -4,7 +4,7 @@ import { default as matter } from "gray-matter";
 import TurndownService from "turndown";
 import { mapCrawledContentToMarkdown } from "./utils/mapCrawledContentToMarkdown.js";
 import { parseFile } from "./utils/parseFile.js";
-import { config } from "./constant.js";
+import { config } from "./config.js";
 
 const virtualConsole = new VirtualConsole();
 virtualConsole.on("error", () => {
@@ -12,6 +12,8 @@ virtualConsole.on("error", () => {
 });
 
 const turndownService = new TurndownService();
+const GUIDE_PAGES_PATH = "guides/default-guide/version-1";
+const GUIDE_FOLDER_PATH = "guides/default-guide";
 
 async function scrapeWebsite(url) {
   try {
@@ -88,77 +90,93 @@ const createFileWithContent = async (path, content) => {
   });
 };
 
-config.forEach((section) => {
-  const guideLabel = section.label;
-  const guideFolderPath = `guides/${guideLabel}/version-1`;
-  fs.mkdirSync(guideFolderPath, { recursive: true });
-  const guideConfigPath = `guides/${guideLabel}/config.ts`;
-  const guideConfigContent = `export default ${JSON.stringify(
-    {
-      variant: "GUIDE",
-      settings: {
-        name: section.label,
-        slug: section.label.toLowerCase(),
-      },
+const guideConfigPath = `${GUIDE_FOLDER_PATH}/config.ts`;
+fs.mkdirSync(GUIDE_FOLDER_PATH, { recursive: true });
+const guideConfigContent = `export default ${JSON.stringify(
+  {
+    variant: "GUIDE",
+    settings: {
+      name: "default-guide",
+      slug: "default-guide",
     },
-    null,
-    2
-  )};`;
-  fs.writeFile(guideConfigPath, guideConfigContent, function (err) {
-    if (err) return console.log(err);
-    console.log(`File`);
-  });
+  },
+  null,
+  2
+)};`;
+fs.writeFile(guideConfigPath, guideConfigContent, function (err) {
+  if (err) return console.log(err);
+});
 
-  const sectionSidebar = [];
+fs.mkdirSync(GUIDE_PAGES_PATH, { recursive: true });
 
-  section.pages.forEach((page) => {
-    // if (page.pages && page.pages.length > 0) {
-    //   const subGuideFolder = `${guideFolder}/${page.path.split("/").pop()}`;
-    //   fs.mkdirSync(subGuideFolder, { recursive: true });
-    //   page.pages.forEach((subPage) => {
-    //     scrapeWebsite(`https://docs.deepsource.com${subPage.path}`).then(
-    //       (article) => {
-    //         const pagePath = subPage.path.split("/").pop();
-    //         createFileWithContent(
-    //           `./${subGuideFolder}/${pagePath}.mdx`,
-    //           article,
-    //           guideLabel
-    //         );
-    //       }
-    //     );
-    //   });
-    // }
+const sectionSidebar = [];
 
-    const sectionConfigContent = `export default ${JSON.stringify(
-      {
-        settings: {
-          name: "V1",
-          slug: "v1",
-          isDefault: true,
-        },
-        sidebar: sectionSidebar,
-      },
-      null,
-      2
-    )};`;
+config.forEach((section) => {
+  const sectionPages = [];
+  const isSection = section.type === "section";
 
-    sectionSidebar.push({
-      type: "page",
-      path: `./${page.path.split("/").pop()}.mdx`,
-    });
+  if (isSection && section.pages.length > 0) {
+    section.pages.forEach((page) => {
+      const sectionSubpages = [];
 
-    fs.writeFile(
-      `${guideFolderPath}/config.ts`,
-      sectionConfigContent,
-      function (err) {
-        if (err) return console.log(err);
-        console.log(`File`);
+      scrapeWebsite(`https://docs.deepsource.com${page.path}`).then(
+        (article) => {
+          const pagePath = page.path.split("/").pop();
+          createFileWithContent(
+            `./${GUIDE_PAGES_PATH}/${pagePath}.mdx`,
+            article
+          );
+        }
+      );
+
+      if (page.pages?.length > 0) {
+        page.pages?.forEach((subPage) => {
+          scrapeWebsite(`https://docs.deepsource.com${subPage.path}`).then(
+            (article) => {
+              const pagePath = subPage.path.split("/").pop();
+              createFileWithContent(
+                `./${GUIDE_PAGES_PATH}/${pagePath}.mdx`,
+                article
+              );
+            }
+          );
+
+          sectionSubpages.push({
+            type: "page",
+            path: `./${subPage.path.split("/").pop()}.mdx`,
+            pages: [],
+          });
+        });
       }
-    );
 
-    scrapeWebsite(`https://docs.deepsource.com${page.path}`).then((article) => {
-      const pagePath = page.path.split("/").pop();
-      createFileWithContent(`./${guideFolderPath}/${pagePath}.mdx`, article);
+      sectionPages.push({
+        type: "page",
+        path: `./${page.path.split("/").pop()}.mdx`,
+        pages: sectionSubpages,
+      });
     });
-  });
+  }
+
+  if (isSection) {
+    sectionSidebar.push({
+      type: "section",
+      slug: section.path?.split("/").pop(),
+      label: section.label,
+      visibility: "PUBLIC",
+      pages: sectionPages,
+    });
+  }
+});
+
+const versionConfigPath = `${GUIDE_PAGES_PATH}/config.ts`;
+const versionConfigContent = `export default ${JSON.stringify({
+  settings: {
+    name: "V1",
+    slug: "v1",
+    isDefault: true,
+  },
+  sidebar: sectionSidebar,
+})};`;
+fs.writeFile(versionConfigPath, versionConfigContent, function (err) {
+  if (err) return console.log(err);
 });

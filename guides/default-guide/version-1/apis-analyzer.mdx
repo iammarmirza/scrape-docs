@@ -1,0 +1,353 @@
+---
+title: Analyzer
+slug: apis-analyzer
+visibility: PUBLIC
+label: Analyzer
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Analyzer
+
+Search
+
+Analyzer
+========
+
+analyzer
+
+[](#analyzer)
+-------------------------
+
+`Query: analyzer` Fetch details of a single analyzer using the shortcode.
+
+### 
+
+Arguments
+
+[](#arguments)
+
+Field
+
+Type
+
+Description
+
+shortcode
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Shortcode of the analyzer you'd like to get.
+
+### 
+
+Sample Request
+
+[](#sample-request)
+
+GraphQL
+
+`query {   analyzer(shortcode:"python") {     id     shortcode     name   } }`
+
+### 
+
+Sample Response
+
+[](#sample-response)
+
+JSON
+
+`{   "data": {     "analyzer": {       "id": "QW5hbHl6Zdd6bGtiZXZ6",       "shortcode": "python",       "name": "Python"     }   } }`
+
+analyzers
+
+[](#analyzers)
+---------------------------
+
+`Query: analyzers` Fetch all available analyzers on DeepSource.
+
+### 
+
+Arguments
+
+[](#arguments-1)
+
+Field
+
+Type
+
+Description
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+first
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+Sample Request
+
+[](#sample-request-1)
+
+GraphQL
+
+`query {   analyzers{    	edges {       node {         id         name         shortcode       }     }   } }`
+
+### 
+
+Sample Response
+
+[](#sample-response-1)
+
+JSON
+
+`{   "data": {     "analyzers": {       "edges": [         {           "node": {             "id": "QW5hbHl6ZXI6bGtiZXZ6",             "name": "Python",             "shortcode": "python"           }         },         {           "node": {             "id": "QW5hbHl6ZXI6cmx6b2xi",             "name": "Go",             "shortcode": "go"           }         }       ]     }   } }`
+
+* * *
+
+Objects
+
+[](#objects)
+-----------------------
+
+### 
+
+Analyzer
+
+[](#analyzer-1)
+
+Field
+
+Type
+
+Description
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**shortcode**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Unique identifier for this analyzer globally.
+
+**name**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+Human-friendly name for this analyzer.
+
+**issues**
+
+[IssueConnection](https://deepsource-docs.readme.io/docs/apis-analyzer#issueconnection)!
+
+offset
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+before
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+after
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)
+
+first
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+last
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+AnalyzerConnection
+
+[](#analyzerconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+[AnalyzerEdge](https://deepsource-docs.readme.io/docs/apis-analyzer#analyzeredge)!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+AnalyzerEdge
+
+[](#analyzeredge)
+
+A Relay edge containing a `Analyzer` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[Analyzer](https://deepsource-docs.readme.io/docs/apis-analyzer#analyzer)
+
+The item at the end of the edge.
+
+**cursor**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A cursor for use in pagination.
+
+### 
+
+Issue
+
+[](#issue)
+
+Field
+
+Type
+
+Description
+
+**shortcode**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+**title**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+**analyzer**
+
+[Analyzer](https://deepsource-docs.readme.io/docs/apis-analyzer#analyzer)!
+
+**autofixAvailable**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+Whether this issue is autofixable
+
+**isRecommended**
+
+[Boolean](https://deepsource-docs.readme.io/docs/apis-reference-scalars#boolean)!
+
+Whether this is a recommended issue. Recommended issues show up at the top of the results.
+
+**id**
+
+[ID](https://deepsource-docs.readme.io/docs/apis-reference-scalars#id)!
+
+The ID of the object.
+
+**category**
+
+[IssueCategory](https://deepsource-docs.readme.io/docs/apis-reference-enums#issuecategory)!
+
+Category of the issue.
+
+**shortDescription**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A short description of the issue.
+
+### 
+
+IssueConnection
+
+[](#issueconnection)
+
+Field
+
+Type
+
+Description
+
+**pageInfo**
+
+[PageInfo](https://deepsource-docs.readme.io/docs/apis-reference-pagination#pageinfo)!
+
+Pagination data for this connection.
+
+**edges**
+
+\[[IssueEdge](https://deepsource-docs.readme.io/docs/apis-analyzer#issueedge)\]!
+
+Contains the nodes in this connection.
+
+**totalCount**
+
+[Int](https://deepsource-docs.readme.io/docs/apis-reference-scalars#int)
+
+### 
+
+IssueEdge
+
+[](#issueedge)
+
+A Relay edge containing a `Issue` and its cursor.
+
+Field
+
+Type
+
+Description
+
+**node**
+
+[Issue](https://deepsource-docs.readme.io/docs/apis-analyzer#issue)
+
+The item at the end of the edge.
+
+**cursor**
+
+[String](https://deepsource-docs.readme.io/docs/apis-reference-scalars#string)!
+
+A cursor for use in pagination.
+
+Updated over 1 year ago
+
+* * *

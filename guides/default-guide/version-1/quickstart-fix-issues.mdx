@@ -1,0 +1,94 @@
+---
+title: Fix issues
+slug: quickstart-fix-issues
+visibility: PUBLIC
+label: Fix issues
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Fix issues
+
+Search
+
+Fix issues
+==========
+
+When addressing code health issues flagged in the DeepSource dashboard, you have two options. The first approach involves manually fixing the issues, while the second method involves [Autofix™](https://deepsource-docs.readme.io/docs/autofix) — our auto remediation engine.
+
+Manual fix
+
+[](#manual-fix)
+=============================
+
+If you choose to manually fix the issues, you can follow these steps:
+
+1.  Open any issue from the Issues tab and examine the occurrences of the issue. You can identify where the issue exists in the codebase and read the issue description to gain a full understanding of what needs to be fixed and the code changes that are required to address the problem.
+
+![](https://files.readme.io/940adca-manual-fix-1.png)
+
+![](https://files.readme.io/d74d8a0-manual-fix-2.png)
+
+2.  Referring to the contextual code can provide you with a better understanding of the issue.  
+    Manually make the necessary edits in your code and push a commit.
+3.  DeepSource will automatically analyze every pull-request and new commits on all new and existing pull-requests.
+4.  Once the checks finish, you will see checks that have passed and some that have failed. If a check passes, it means that the DeepSource Analyzer **did not** find any issues in the changes made in the PR. If a check fails, it means that there are issues that need to be addressed.
+5.  You can click on the ‘details’ view to gain more context on the failing checks and learn how to address the issue effectively.
+
+Autofix™
+
+[](#autofix)
+========================
+
+### 
+
+Installing the Autofix™ app
+
+[](#installing-the-autofix-app)
+
+In the dashboard, you'll see a prompt to install the Autofix™ app. Simply click 'Install Autofix' to begin. If you're using an organization or team account, you can choose to install Autofix on all repositories or select repositories. After you click 'Install', you'll be taken to the VCS provider's App site to finish the setup.
+
+![](https://files.readme.io/3a7681f-install-autofix.png)
+
+### 
+
+Using Autofix™: The dashboard workflow
+
+[](#using-autofix-the-dashboard-workflow)
+
+If you open an issue from the dashboard that has Autofix™ support, you’ll see the Autofix™ button on the top. All you have to do is click on it and confirm which files you want to run Autofix™ on.
+
+![](https://files.readme.io/c618af9-Autofix.png)
+
+It takes a few seconds for DeepSource to generate the fixes, and once you’ve verified all the fixes, click on the ‘Create pull request’ button, and DeepSource will create a pull request with fixes for this issue on your repository automatically.
+
+![](https://files.readme.io/8f4b830-autofix-diff.png)
+
+### 
+
+Using Autofix™: The pull-request workflow
+
+[](#using-autofix-the-pull-request-workflow)
+
+Once you’ve made a new pull request on your GitHub repository, DeepSource analysis will start right away. Once the checks finish, click on the ‘details’ action adjacent to a failing check to view the issues you’ve just introduced.
+
+![](https://files.readme.io/b8a6fcc-pr-flow-1.png)
+
+If any of these issues support Autofix™, you’ll see the Autofix™ button. In this case, the only difference is that running Autofix™ will create a commit directly on the PR.
+
+![](https://files.readme.io/2742522-pr-flow-2.png)
+
+![](https://files.readme.io/0e22e12-pr-flow-3.png)
+
+Updated about 1 year ago
+
+* * *
+
+What’s Next

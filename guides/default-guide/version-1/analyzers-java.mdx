@@ -1,0 +1,200 @@
+---
+title: Java
+slug: analyzers-java
+visibility: PUBLIC
+label: Java
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Java
+
+Search
+
+Java
+====
+
+Configuration - `.deepsource.toml`
+
+[](#configuration---deepsourcetoml)
+-------------------------------------------------------------------------
+
+This section covers configuration details specific to the **Java** analyzer. Please ensure that you have read the general [configuration guide](https://deepsource-docs.readme.io/docs/configuration) first.
+
+The Java analyzer supports Gradle, Maven and Bazel projects. There is no difference in configuration between them, and all types of projects can be initialized through the simple workflow of the DeepSource configuration generator.
+
+### 
+
+`name`
+
+[](#name)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: mandatory
+*   **Description**: Shortcode of the analyzer.
+*   **Example**:
+
+TOML
+
+`name = "java"`
+
+### 
+
+`enabled`
+
+[](#enabled)
+
+*   **Type**: [Boolean](https://toml.io/en/v1.0.0#boolean)
+*   **Presence**: optional
+*   **Description**: Toggle whether this analyzer should be run.
+*   **Example**:
+
+TOML
+
+`enabled = true`
+
+### 
+
+`meta`
+
+[](#meta)
+
+*   **Type**: [Table](https://toml.io/en/v1.0.0#table)
+*   **Presence**: mandatory
+*   **Description**: Additional data used to configure the analyzer.
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   runtime_version = "8"`
+
+#### 
+
+`runtime_version`
+
+[](#runtime_version)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+*   **Presence**: mandatory
+*   **Description**: The Java runtime version to use when running the analyzer. OpenJDK versions 8 to 21 are currently supported.
+*   **Aliases**: `java_version`
+*   **Example**:
+
+TOML
+
+`[analyzers.meta]   runtime_version = "13"`
+
+> 📘
+> --
+> 
+> if `runtime_version` is not specified, or is the wrong Java version, analysis may show incorrect results. Specify the Java version you use in CI for best results.
+
+#### 
+
+`skip_doc_coverage`
+
+[](#skip_doc_coverage)
+
+*   **Type**: [Array](https://toml.io/en/v1.0.0#array)
+    
+*   **Presence**: optional
+    
+*   **Description**: Specify which artifacts to skip when calculating documentation coverage.
+    
+*   **Available Values**: `test`, `class`, `constructor` and `nonpublic`
+    
+    *   `test` - Ignore documentation coverage within tests
+    *   `class` - Ignore class documentation coverage
+    *   `constructor` - Ignore constructor documentation coverage
+    *   `nonpublic` - Ignore documentation coverage for any declaration not marked as `public`
+*   **Default Value**: `[ "test" ]`
+    
+*   **Example**:
+    
+
+TOML
+
+`skip_doc_coverage = [ "nonpublic", "test" ]`
+
+> 📘
+> --
+> 
+> If `skip_doc_coverage` is set, it will override any default configuration. That is, if this key is set, and you wish to ensure documentation coverage is skipped for elements that are skipped by default (like tests), you must specify _those_ as well as the additional elements you wish to skip.
+
+#### 
+
+`cyclomatic_complexity_threshold`
+
+[](#cyclomatic_complexity_threshold)
+
+*   **Type**: [String](https://toml.io/en/v1.0.0#string)
+    
+*   **Presence**: optional
+    
+*   **Description**: Specify the acceptable risk category for your project as the threshold. All functions with complexity beyond this threshold will raise an issue. For example, setting the threshold to `low` will flag all functions that have a cyclomatic complexity of more than `5`, while setting the threshold to `critical` will not flag any function.
+    
+*   **Available Values**: `low`, `medium`, `high`, `very-high` and `critical`
+    
+
+Risk category
+
+Cyclomatic complexity range
+
+Recommended action
+
+low
+
+1-5
+
+No action is needed.
+
+medium
+
+6-15
+
+Review and monitor.
+
+high
+
+16-25
+
+Review and refactor. Recommended to add detailed comments if the function absolutely needs to be kept as it is.
+
+very-high
+
+26-50
+
+Refactor to reduce the complexity.
+
+critical
+
+\> 50
+
+Must refactor this. This can make the code untestable and very difficult to understand.
+
+*   **Default Value**: `medium`
+*   **Example**:
+
+TOML
+
+`[analyzers.meta] cyclomatic_complexity_threshold = "high"`
+
+Sample config
+
+[](#sample-config)
+-----------------------------------
+
+TOML
+
+`version = 1  [[analyzers]] name = "java" enabled = true    [analyzers.meta]   runtime_version = "8"`
+
+Updated 5 months ago
+
+* * *

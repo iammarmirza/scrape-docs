@@ -1,0 +1,436 @@
+---
+title: 'Reference: Enums'
+slug: apis-reference-enums
+visibility: PUBLIC
+label: 'Reference: Enums'
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Reference: Enums
+
+Search
+
+Reference: Enums
+================
+
+AccountType
+
+[](#accounttype)
+-------------------------------
+
+Value
+
+Description
+
+**INDIVIDUAL**
+
+A individual account.
+
+**TEAM**
+
+A team account.
+
+AccountSubscriptionPlan
+
+[](#accountsubscriptionplan)
+-------------------------------------------------------
+
+Represents DeepSource's subscription plans.
+
+Value
+
+**FREE**
+
+**STARTER**
+
+**BUSINESS**
+
+**ENTERPRISE**
+
+AnalysisRunStatus
+
+[](#analysisrunstatus)
+-------------------------------------------
+
+An enumeration.
+
+Value
+
+Description
+
+**PENDING**
+
+The Analysis run is still pending and results are awaited.
+
+**SUCCESS**
+
+The Analysis has completed successfully and no issues were found.
+
+**FAILURE**
+
+The Analysis has completed succesfully and some issues were detected by DeepSource.
+
+**TIMEOUT**
+
+The Analysis could not complete within an acceptable time range.
+
+**CANCEL**
+
+Another analysis was started for the same commitID.
+
+**READY**
+
+CheckStatus
+
+[](#checkstatus)
+-------------------------------
+
+An enumeration.
+
+Value
+
+**WAITING**
+
+**PENDING**
+
+**SUCCESS**
+
+**FAILURE**
+
+**TIMEOUT**
+
+**CANCEL**
+
+**READY**
+
+**NEUTRAL**
+
+**ARTIFACT\_TIMEOUT**
+
+CodeCoverageReportRepositorySortKey
+
+[](#codecoveragereportrepositorysortkey)
+-------------------------------------------------------------------------------
+
+Sort key to use to specify the sorting when fetching repositories in the Code Coverage report.
+
+Value
+
+Description
+
+**LCV\_ASCENDING**
+
+Sort repositories in the Code Coverage report using the LCV metric value in ascending order.
+
+**LCV\_DESCENDING**
+
+Sort repositories in the Code Coverage report using the LCV metric value in descending order.
+
+**BCV\_ASCENDING**
+
+Sort repositories in the Code Coverage report using the BCV metric value in ascending order.
+
+**BCV\_DESCENDING**
+
+Sort repositories in the Code Coverage report using the BCV metric value in descending order.
+
+IssueCategory
+
+[](#issuecategory)
+-----------------------------------
+
+An enumeration.
+
+Value
+
+Description
+
+**ANTI\_PATTERN**
+
+Anti-patterns are certain ways of writing code that result in poor design. While anti-patterns are correct code, they are not recommended as they often affect maintainability, readability, performance, and security.
+
+**BUG\_RISK**
+
+Bug risks are issues in code that can cause errors in code and breakages in production. A bug is a flaw in the code that produces undesired or incorrect results.
+
+**PERFORMANCE**
+
+Performance issues are issues that impact the performance of code being executed by slowing it down.
+
+**SECURITY**
+
+A bug in code which could potentially be used to compromise security is a security vulnerability issue.
+
+**COVERAGE**
+
+Coverage issues are raised against code that is not covered in tests.
+
+**TYPECHECK**
+
+Typecheck issues are raised for type-annotated code in dynamically typed languages (Python, for example) if the annotations are not correct.
+
+**SECRETS**
+
+Hardcoded credentials detected in source code.
+
+**STYLE**
+
+Style issues are violations in the code format according to a style guide.
+
+**DOCUMENTATION**
+
+Documentation issues are raised for undocumented classes, functions, modules etc.
+
+IssueSeverity
+
+[](#issueseverity)
+-----------------------------------
+
+An enumeration.
+
+Value
+
+**CRITICAL**
+
+**MAJOR**
+
+**MINOR**
+
+ReportKey
+
+[](#reportkey)
+---------------------------
+
+Represents the various kinds of reports that exist.
+
+Value
+
+Description
+
+**OWASP\_TOP\_10**
+
+The OWASP Top 10 report.
+
+**SANS\_TOP\_25**
+
+The SANS Top 25 report.
+
+**ISSUE\_DISTRIBUTION**
+
+The Issue Distribution report.
+
+ReportStatus
+
+[](#reportstatus)
+---------------------------------
+
+Represents the various statuses that a report can have.
+
+Value
+
+Description
+
+**PASSING**
+
+The report's status is passing.
+
+**FAILING**
+
+The report's status is failing.
+
+**NOOP**
+
+The report doesn't have a status.
+
+VCSProvider
+
+[](#vcsprovider)
+-------------------------------
+
+An enumeration.
+
+Value
+
+**GITHUB**
+
+**GITLAB**
+
+**BITBUCKET**
+
+**GITHUB\_ENTERPRISE**
+
+**GSR**
+
+MetricShortcode
+
+[](#metricshortcode)
+---------------------------------------
+
+Represents the various metric types.
+
+Value
+
+Description
+
+**BCV**
+
+Branch Coverage
+
+**CCV**
+
+Condition Coverage
+
+**DCV**
+
+Documentation Coverage
+
+**DDP**
+
+External Dependencies
+
+**LCV**
+
+Line Coverage
+
+**CPCV**
+
+Composite Coverage
+
+**NLCV**
+
+New Line Coverage
+
+**NBCV**
+
+New Branch Coverage
+
+**NCCV**
+
+New Condition Coverage
+
+**NCPCV**
+
+New Composite Coverage
+
+MetricKey
+
+[](#metrickey)
+---------------------------
+
+Represents the key for which the metric is recorded in a repository.
+
+Value
+
+**AGGREGATE**
+
+**C\_AND\_CPP**
+
+**CSHARP**
+
+**GO**
+
+**JAVA**
+
+**JAVASCRIPT**
+
+**PHP**
+
+**PYTHON**
+
+**RUBY**
+
+**RUST**
+
+**SCALA**
+
+**KOTLIN**
+
+**SWIFT**
+
+MetricThresholdStatus
+
+[](#metricthresholdstatus)
+---------------------------------------------------
+
+Represents the status of the threshold condition for a particular metric value.
+
+Value
+
+Description
+
+**PASSING**
+
+Metric value meets the threshold.
+
+**FAILING**
+
+Metric value doesn't meet the threshold.
+
+TeamMemberRole
+
+[](#teammemberrole)
+-------------------------------------
+
+Represents the role of a user in a team.
+
+Value
+
+**ADMIN**
+
+**MEMBER**
+
+**CONTRIBUTOR**
+
+IgnoreRuleLevel
+
+[](#ignorerulelevel)
+---------------------------------------
+
+Represents the level of an `IgnoreRule`.
+
+Value
+
+Description
+
+**REPOSITORY**
+
+Suppress the issue for all files in the repository.
+
+**FILE**
+
+Suppress the issue for the given file path in the repository.
+
+IgnoreRuleType
+
+[](#ignoreruletype)
+-------------------------------------
+
+Represents the type of an `IgnoreRule`.
+
+Value
+
+Description
+
+**FOREVER**
+
+Suppress the issue in the repository always.
+
+**PATTERN**
+
+Suppress the issue occurrences matching the given glob pattern in the repository.
+
+**TEST\_PATTERN**
+
+Suppress the issue occurrences matching the repository's specified test patterns in the repository.
+
+Updated 10 months ago
+
+* * *
