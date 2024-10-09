@@ -2,14 +2,12 @@
 title: VS Code
 slug: integrations-vs-code
 visibility: PUBLIC
-label: Integrations
-ogImage: null
-seoTitle: null
-seoDescription: null
+label: Vs Code
 ---
+
 [Jump to Content](#content)
 
-* * *
+---
 
 [System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
 
@@ -21,8 +19,7 @@ VS Code
 
 Search
 
-VS Code
-=======
+# VS Code
 
 Perform analysis and resolve issues directly from the convenience of your VS Code environment.
 
@@ -34,8 +31,7 @@ In addition to issue detection, we have also introduced support for AI-based Aut
 
 Installation
 
-[](#installation)
----------------------------------
+## [](#installation)
 
 1.  Open Visual Studio Code (VS Code).
 2.  Go to the VS Code Marketplace by clicking on the Extensions icon in the Activity Bar on the side of the window or using the keyboard shortcut `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X`(Mac).
@@ -47,7 +43,7 @@ Installation
 
 Alternatively, you can also [download and install the extension from the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=DeepSourceCorp.deepsource-vscode) directly.
 
-### 
+###
 
 Activation
 
@@ -58,7 +54,7 @@ Activation
 
 ![](https://files.readme.io/e396298-c6116d8-click_on_ds.png)
 
-### 
+###
 
 Log-in
 
@@ -74,7 +70,7 @@ Log-in
 
 ![](https://files.readme.io/12e792b-9084979-vs_code_auth.png)
 
-### 
+###
 
 Authentication
 
@@ -83,7 +79,7 @@ Authentication
 1.  In the browser window, enter your DeepSource credentials (username and password) to log in.
 2.  If it's your first time logging in, you might need to follow some additional setup steps, such as configuring repositories or setting up analysis preferences. Follow the on-screen instructions to complete the setup.
 
-### 
+###
 
 Extension activation
 
@@ -94,10 +90,9 @@ Extension activation
 
 Run analysis in VS Code
 
-[](#run-analysis-in-vs-code)
--------------------------------------------------------
+## [](#run-analysis-in-vs-code)
 
-### 
+###
 
 Prerequisites
 
@@ -105,10 +100,10 @@ Prerequisites
 
 1.  Make sure you have the DeepSource extension installed and activated in your VS Code, as outlined in the previous installation steps.
 2.  Ensure that you have a project open in VS Code that meets the following criteria:
-    *   It should be a git repository.
-    *   The project should be activated on DeepSource. If it's not already activated, it will run in the _Single Player Mode_, where no existing issues from DeepSource cloud would be shown. The IDE won't do any baseline issue diffing too, which means you would see all issues present in your file at all time.
+    - It should be a git repository.
+    - The project should be activated on DeepSource. If it's not already activated, it will run in the _Single Player Mode_, where no existing issues from DeepSource cloud would be shown. The IDE won't do any baseline issue diffing too, which means you would see all issues present in your file at all time.
 
-### 
+###
 
 Single Player Mode
 
@@ -116,8 +111,8 @@ Single Player Mode
 
 The extension automatically switches to the Single Player mode in the following cases:
 
-*   When the current directory opened isn't a git repository.
-*   When the project you're working on is not activated on DeepSource account you are logged in with.
+- When the current directory opened isn't a git repository.
+- When the project you're working on is not activated on DeepSource account you are logged in with.
 
 You'd be shown an info message when this happens
 
@@ -127,14 +122,13 @@ Baseline issue diffing isn't available in this mode, and you'll always see all i
 
 ![](https://files.readme.io/8e48cdf-single-player.png)
 
-> 🚧
-> --
-> 
+> ## 🚧
+>
 > If you're working on a project which is not activated on DeepSource, the extension won't pull the baseline issues. You can activate analysis from the DeepSource dashboard to keep cloud and local issues always in sync.
-> 
+>
 > Activating analysis would also get rid on the Single Player Mode.
 
-### 
+###
 
 Accessing Commands
 
@@ -142,7 +136,7 @@ Accessing Commands
 
 To see all available commands provided by the DeepSource extension, press `Cmd + Shift + P` (Windows/Linux: `Ctrl + Shift + P`) to open the VS Code command palette. Type "DeepSource" in the command palette search bar, and you'll see a list of DeepSource-specific commands.
 
-### 
+###
 
 Starting Analysis
 
@@ -154,28 +148,27 @@ You can also trigger an analysis by selecting the "DeepSource: Start analysis" c
 
 Viewing Results
 
-[](#viewing-results)
----------------------------------------
+## [](#viewing-results)
 
 Once the analysis is complete and the results are available, you should be able to see the results in the DeepSource side pane within VS Code.
 
 The sidebar has two relevant panels for analysis results:
 
-*   **ISSUES IN THIS FILE**: Shows all issues detected in the file that is currently open.
-*   **AFFECTED FILES**: Shows all files where DeepSource has detected issues.
+- **ISSUES IN THIS FILE**: Shows all issues detected in the file that is currently open.
+- **AFFECTED FILES**: Shows all files where DeepSource has detected issues.
 
 In both the panels, you can toggle between existing issues and new issues in your code via the switcher.
 
 ![](https://files.readme.io/317d411-baseline-new-gif.gif)
 
-*   **Baseline issues**: Shows all issues in the currently open file that were already present in your file. If you're on your repository's baseline branch that's set on DeepSource, these issues would be identical to those shown on your DeepSource dashboard. In other cases, the existing issues would be the ones detected till the last commit pushed on that branch.
-*   **New issues**: Shows all issues that were newly introduced by the programmer in the current branch. You should probably take care of these before pushing your code!
+- **Baseline issues**: Shows all issues in the currently open file that were already present in your file. If you're on your repository's baseline branch that's set on DeepSource, these issues would be identical to those shown on your DeepSource dashboard. In other cases, the existing issues would be the ones detected till the last commit pushed on that branch.
+- **New issues**: Shows all issues that were newly introduced by the programmer in the current branch. You should probably take care of these before pushing your code!
 
 All lines where DeepSource has detected problems are highlighted using squiggly lines by default.  
 To see the description for issues raised on a line, simply place your cursor on that line, and click on `Explain` code lens.  
 You can also do this using VSCode's Quick Fix menu while the cursor is on the line where issue is raised.
 
-### 
+###
 
 Pull Request and Cloud Analysis
 
@@ -186,10 +179,9 @@ Pull Request and Cloud Analysis
 
 Extension Settings
 
-[](#extension-settings)
----------------------------------------------
+## [](#extension-settings)
 
-### 
+###
 
 Configuring issue types to raise issues on
 
@@ -200,12 +192,11 @@ You can configure the issue categories for which you want DeepSource to raise is
 1.  Click on `Configure issue types...` in the settings panel
 2.  Select the issue categories you want to see issues for and click `OK`
 
-![](https://files.readme.io/a57d16f-issue-types-config.gif)  
+![](https://files.readme.io/a57d16f-issue-types-config.gif)
 
 Supported Analyzers
 
-[](#supported-analyzers)
------------------------------------------------
+## [](#supported-analyzers)
 
 The IDE Extension only supports analysis for the following analyzers at the moment:
 
@@ -223,54 +214,49 @@ We are actively working on adding support for rest of the Analyzers available on
 
 IDE access for Enterprise Server
 
-[](#ide-access-for-enterprise-server)
--------------------------------------------------------------------------
+## [](#ide-access-for-enterprise-server)
 
 Since IDE Extension is in beta right now, it needs additional configuration for it to be used.  
 Follow the following steps to enable IDE extension for your team:
 
 1.  Go to your installation's
-    
 2.  Click on config → Manage Access to DeepSource → Enable beta features
-    
+
     ![](https://files.readme.io/66c4189-kots-settings.png)
+
 3.  Enable/Disable the beta features and save the configuration.
-    
+
     Once the configuration is saved, you'd need to redeploy with the updated config. Click on "Go to updated version" to find the version with updated config.
-    
 
 ![](https://files.readme.io/a7023c6-save-config-conformation.png)
 
 4.  Deploy the newly available version to apply the new configuration.
-    
+
     ![](https://files.readme.io/f17502c-deploy.png)
 
 Once the deployment is successful, all your team members would be able to use IDE Extension in beta features are enabled.
 
 AI-based Autofix
 
-[](#ai-based-autofix)
------------------------------------------
+## [](#ai-based-autofix)
 
 The VS Code extension offers Autofix, a powerful feature that provides automatic suggestions for fixing code issues. This feature utilizes artificial intelligence to intelligently propose code changes — enabling you to review and select the best-fit options that align with your coding style and preferences.
 
-> ❗️
-> --
-> 
+> ## ❗️
+>
 > Autofix utilizes the capabilities of OpenAI's language model, offering automated suggestions. However, it's important to acknowledge that the results may not always be completely accurate, as the feature is currently in an experimental phase.
 
-### 
+###
 
 How to Use Autofix AI
 
 [](#how-to-use-autofix-ai)
 
 > 🚧
-> 
+>
 > Autofix workflow uses VSCode's code lens to take action on them. Please make sure you have them enabled in your workspace.
-> 
-> 
-> --------------------------------------------------------------------------------------------------------------------------------
+>
+> ---
 
 To fix an issue raised by DeepSource, take your cursor to the span where the issue is raised.  
 Click on `Autofix with DeepSource` code lens, on top of the line.
@@ -279,8 +265,7 @@ Click on `Autofix with DeepSource` code lens, on top of the line.
 
 If there are multiple issues in the span of your cursor, you'll also be asked to select which one to fix first.
 
-  
-![](https://files.readme.io/ea3a9bb-afx-multiple.png)  
+![](https://files.readme.io/ea3a9bb-afx-multiple.png)
 
 Once done, DeepSource Autofix AI looks at the issue with surrounding context, and gives you a diff to review the fix.  
 You can accept or discard each suggestion by clicking on the respective buttons in the editor.
@@ -290,28 +275,25 @@ You can accept or discard each suggestion by clicking on the respective buttons 
 While Autofix offers valuable suggestions, it's essential to carefully review the changes before accepting them to ensure they align with the intended functionality of your code.
 
 > 📘
-> 
+>
 > You can also trigger Autofix using VSCode's Quick Fix menu
-> 
-> 
-> ----------------------------------------------------------------
-> 
+>
+> ---
+>
 > ![](https://files.readme.io/4148aab-quick-fix.png)
 
 > ❗️
-> 
+>
 > Autofix AI is disabled for all Enterprise plans at the moment.
-> 
-> 
-> --------------------------------------------------------------------
+>
+> ---
 
 Support
 
-[](#support)
------------------------
+## [](#support)
 
-Your feedback is invaluable in helping us refine and improve the extension further. If you encounter any bugs, hiccups, or have any questions while using the extension, we are here to assist you. Please don't hesitate to reach out for support by visiting app.deepsource.com/support for cloud users, or <HOST\_URL>/support if you are on the Enterprise Server. Our dedicated support team will be glad to address your concerns and ensure a smooth experience with DeepSource. We appreciate your collaboration and look forward to hearing from you.
+Your feedback is invaluable in helping us refine and improve the extension further. If you encounter any bugs, hiccups, or have any questions while using the extension, we are here to assist you. Please don't hesitate to reach out for support by visiting app.deepsource.com/support for cloud users, or <HOST_URL /> support if you are on the Enterprise Server. Our dedicated support team will be glad to address your concerns and ensure a smooth experience with DeepSource. We appreciate your collaboration and look forward to hearing from you.
 
 Updated 3 months ago
 
-* * *
+---
