@@ -1,5 +1,5 @@
 export default {
-  settings: { name: "Something", slug: "v1", isDefault: true },
+  settings: { name: "V1", slug: "v1", isDefault: true },
   sidebar: [
     {
       type: "section",
