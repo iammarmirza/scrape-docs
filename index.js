@@ -17,7 +17,7 @@ const GUIDE_FOLDER_PATH = "guides/default-guide";
 
 async function scrapeWebsite(url) {
   try {
-    const response = await fetch(url, { signal: AbortSignal.timeout(20000) });
+    const response = await fetch(url);
     const pageHtml = await response.text();
 
     const doc = new JSDOM(pageHtml, {
@@ -70,7 +70,6 @@ async function scrapeWebsite(url) {
       url,
       breadcrumbs,
     };
-
     return article;
   } catch (error) {
     console.log("An error occurred:", { error });
@@ -106,77 +105,41 @@ const guideConfigContent = `export default ${JSON.stringify(
 fs.writeFile(guideConfigPath, guideConfigContent, function (err) {
   if (err) return console.log(err);
 });
-
 fs.mkdirSync(GUIDE_PAGES_PATH, { recursive: true });
 
-const sectionSidebar = [];
+function getPaths(pages, result = []) {
+  pages.forEach((page) => {
+    if (page.path) {
+      result.push(page.path);
+    }
+    if (page.pages) {
+      getPaths(page.pages, result);
+    }
+  });
+  return result;
+}
 
-config.forEach((section) => {
-  const sectionPages = [];
-  const isSection = section.type === "section";
-
-  if (isSection && section.pages.length > 0) {
-    section.pages.forEach((page) => {
-      const sectionSubpages = [];
-
-      scrapeWebsite(`https://docs.deepsource.com${page.path}`).then(
-        (article) => {
-          const pagePath = page.path.split("/").pop();
-          createFileWithContent(
-            `./${GUIDE_PAGES_PATH}/${pagePath}.mdx`,
-            article
-          );
-        }
-      );
-
-      if (page.pages?.length > 0) {
-        page.pages?.forEach((subPage) => {
-          scrapeWebsite(`https://docs.deepsource.com${subPage.path}`).then(
-            (article) => {
-              const pagePath = subPage.path.split("/").pop();
-              createFileWithContent(
-                `./${GUIDE_PAGES_PATH}/${pagePath}.mdx`,
-                article
-              );
-            }
-          );
-
-          sectionSubpages.push({
-            type: "page",
-            path: `./${subPage.path.split("/").pop()}.mdx`,
-            pages: [],
-          });
-        });
-      }
-
-      sectionPages.push({
-        type: "page",
-        path: `./${page.path.split("/").pop()}.mdx`,
-        pages: sectionSubpages,
-      });
-    });
+const allPaths = config.reduce((acc, section) => {
+  if (section.pages) {
+    return acc.concat(getPaths(section.pages));
   }
+  return acc;
+}, []);
 
-  if (isSection) {
-    sectionSidebar.push({
-      type: "section",
-      slug: section.path?.split("/").pop(),
-      label: section.label,
-      visibility: "PUBLIC",
-      pages: sectionPages,
-    });
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function scrapeWithThrottle(paths, delayDuration = 1000) {
+  for (let i = 0; i < paths.length; i++) {
+    const path = paths[i];
+    const article = await scrapeWebsite(`https://docs.deepsource.com${path}`);
+    if (article) {
+      const filePath = `${GUIDE_PAGES_PATH}/${path.split("/").pop()}.mdx`;
+      await createFileWithContent(filePath, article);
+    }
+    await delay(delayDuration);
   }
-});
+}
 
-const versionConfigPath = `${GUIDE_PAGES_PATH}/config.ts`;
-const versionConfigContent = `export default ${JSON.stringify({
-  settings: {
-    name: "V1",
-    slug: "v1",
-    isDefault: true,
-  },
-  sidebar: sectionSidebar,
-})};`;
-fs.writeFile(versionConfigPath, versionConfigContent, function (err) {
-  if (err) return console.log(err);
-});
+scrapeWithThrottle(allPaths);
