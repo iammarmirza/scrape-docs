@@ -212,6 +212,12 @@ export const config = [
       {
         type: "page",
         path: "/docs/issues",
+        pages: [
+          {
+            type: "page",
+            path: "/docs/issues-ignore-rules",
+          },
+        ],
       },
       {
         type: "page",
@@ -220,6 +226,24 @@ export const config = [
       {
         type: "page",
         path: "/docs/autofix",
+      },
+      {
+        type: "page",
+        path: "/docs/access-control",
+        pages: [
+          {
+            type: "page",
+            path: "/docs/access-control-managing-members-in-your-team",
+          },
+          {
+            type: "page",
+            path: "/docs/access-control-managing-peoples-access-to-team-with-roles",
+          },
+          {
+            type: "page",
+            path: "/docs/access-control-managing-access-to-your-teams-repositories",
+          },
+        ],
       },
     ],
   },
