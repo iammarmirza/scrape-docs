@@ -1,12 +1,9 @@
-export const mapCrawledContentToMarkdown = (parsedArticle, label) => {
+export const mapCrawledContentToMarkdown = (parsedArticle) => {
   const input = {
     title: parsedArticle.title,
     slug: parsedArticle.url.split("/").pop(),
     visibility: "PUBLIC",
-    label,
-    ogImage: null,
-    seoTitle: null,
-    seoDescription: null,
+    label: parsedArticle.title,
   };
   return input;
 };

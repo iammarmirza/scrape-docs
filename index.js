@@ -4,7 +4,7 @@ import { default as matter } from "gray-matter";
 import TurndownService from "turndown";
 import { mapCrawledContentToMarkdown } from "./utils/mapCrawledContentToMarkdown.js";
 import { parseFile } from "./utils/parseFile.js";
-import { config } from "./config.js";
+import { config } from "./constant.js";
 
 const virtualConsole = new VirtualConsole();
 virtualConsole.on("error", () => {
@@ -76,9 +76,9 @@ async function scrapeWebsite(url) {
   return null;
 }
 
-const createFileWithContent = async (path, content, label) => {
+const createFileWithContent = async (path, content) => {
   const parsedArticle = await parseFile(content);
-  const frontMatter = mapCrawledContentToMarkdown(parsedArticle, label);
+  const frontMatter = mapCrawledContentToMarkdown(parsedArticle);
   const markdown = turndownService.turndown(parsedArticle.content);
   const fileContent = matter.stringify(markdown, frontMatter);
 
@@ -158,11 +158,7 @@ config.forEach((section) => {
 
     scrapeWebsite(`https://docs.deepsource.com${page.path}`).then((article) => {
       const pagePath = page.path.split("/").pop();
-      createFileWithContent(
-        `./${guideFolderPath}/${pagePath}.mdx`,
-        article,
-        guideLabel
-      );
+      createFileWithContent(`./${guideFolderPath}/${pagePath}.mdx`, article);
     });
   });
 });

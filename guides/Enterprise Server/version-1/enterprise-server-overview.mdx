@@ -1,0 +1,167 @@
+---
+title: Overview
+slug: enterprise-server-overview
+visibility: PUBLIC
+label: Overview
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Overview
+
+Search
+
+Overview
+========
+
+DeepSource Enterprise Server is the self-hosted version of DeepSource for customers who have compliance or security needs that require them to operate within their firewall, in a private cloud (AWS, GCP, Azure), or in a data center.
+
+DeepSource Enterprise Server can be set up in approximately 20 minutes and provides the same features as DeepSource’s cloud offering but operates within your private cloud.
+
+> 📘
+> 
+> License Key
+> 
+> 
+> -----------------
+> 
+> A license key is required for on-premise deployments. Please request a license [here](https://app.deepsource.com/request-pilot-license) (or) [schedule a product demo](https://deepsource.io/schedule-demo) to obtain a license.
+
+System Overview
+
+[](#system-overview)
+---------------------------------------
+
+![](https://files.readme.io/ae767fa-image.png)
+
+DeepSource Enterprise Server comes bundled with a host of services, which can be roughly divided into three categories:
+
+### 
+
+Application Services
+
+[](#application-services)
+
+The DeepSource application is served by the application services.
+
+Service/Component
+
+Description
+
+bifrost
+
+Frontend server
+
+asgard-api
+
+Backend for the DeepSource GraphQL API service
+
+asgard-celery-\*
+
+Celery worker pools for asynchronous tasks
+
+atlas
+
+Orchestrator service that integrates with Kubernetes control plane for analysis, transformer, and Autofix™️ jobs
+
+janus
+
+Websocket server for realtime results feedback
+
+mater
+
+Watches for webhook failures from VCS providers and retries them
+
+### 
+
+Dependencies
+
+[](#dependencies)
+
+The application services depend on these core services to function.
+
+Service/Component
+
+Description
+
+minio
+
+Object storage for application assets
+
+pgbouncer
+
+Connection pooler for PostgreSQL database connections
+
+RabbitMQ
+
+Message Queue. Forms a critical bridge between all DeepSource application services.
+
+Redis
+
+Cache database
+
+### 
+
+KOTS Services
+
+[](#kots-services)
+
+KOTS services are used to install and manage the DeepSource Enterprise Server installation. These services also enable updates to the system, as well as license management. More information about KOTS can be found [here](https://docs.replicated.com/intro-kots#replicated-kots).
+
+Service/Component
+
+Description
+
+kotsadm
+
+Admin console to install, configure and manage the DeepSource Enterprise Server installation
+
+kurl-proxy
+
+Proxy service for kotsadm (for standalone cluster installations)
+
+kotsadm-minio
+
+Object storage for the KOTS Admin Console (for existing cluster installations)
+
+kotsadm-rqlite
+
+RQLite database service for KOTS admin console
+
+Network connectivity
+
+[](#network-connectivity)
+-------------------------------------------------
+
+### 
+
+Ingress
+
+[](#ingress)
+
+DeepSource Enterprise Server installation can be kept behind network firewalls with zero-to-limited ingress. Typically, customers keep their installation behind a VPN.
+
+### 
+
+Egress
+
+[](#egress)
+
+On non-airgapped installations, the DeepSource Enterprise Server makes outbound connections to the following:
+
+1.  Our image registry, through `proxy.replicated.com`
+2.  The DeepSource Cloud instance, for raising support tickets and reporting false positives
+3.  Sentry, if enabled
+
+and more. is an exhaustive list.
+
+Updated 11 months ago
+
+* * *

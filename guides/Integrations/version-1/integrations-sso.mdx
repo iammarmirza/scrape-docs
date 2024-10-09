@@ -1,0 +1,167 @@
+---
+title: Single Sign-On
+slug: integrations-sso
+visibility: PUBLIC
+label: Single Sign-On
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Single Sign-On
+
+Search
+
+Single Sign-On
+==============
+
+Control authentication to the DeepSource Dashboard with an Identity Provider.
+
+SSO is a helpful security feature that lets customers control sign-in requirements and manage team member access to systems like the DeepSource Dashboard. With DeepSource, you can use SAML 2.0, a widely supported standard, to delegate the creation and authentication of team member accounts to an Identity Provider (IdP). This makes it easier to manage and secure user accounts within DeepSource.
+
+> 📘
+> 
+> For DeepSource Enterprise Cloud or Server
+> 
+> 
+> -----------------------------------------------
+> 
+> **DeepSource Enterprise Cloud or Server** teams can setup [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)\-based Single Sign-On (SSO) for authentication and [SCIM](https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management) for authorization.
+
+Setup SAML SSO
+
+[](#setup-saml-sso)
+=====================================
+
+Configuration on Identity Provider
+
+[](#configuration-on-identity-provider)
+-----------------------------------------------------------------------------
+
+The following is a list of IdPs with links to their respective guides explaining the integration process:
+
+While we only have official guides for the above providers, the overall process remains quite similar while integrating with any other popular IdP (such as ADFS, PingFederate, etc.) via a SAML 2.0 based connector.
+
+Configuration on DeepSource Enterprise Cloud
+
+[](#configuration-on-deepsource-enterprise-cloud)
+-------------------------------------------------------------------------------------------------
+
+Before you can connect an Identity Provider (IdP) to your DeepSource team, you need to first verify the ownership of your organization's email domain. This should be the domain name of your user's email addresses used for signing into DeepSource.
+
+### 
+
+Request domain verification
+
+[](#request-domain-verification)
+
+1.  Go to [https://app.deepsource.com](https://app.deepsource.com).
+2.  Select the team from the account switcher on the top-left.
+3.  Click on the Settings tab on the nav bar and then click on Security from the left side bar.
+4.  Under Domain name, enter the domain name you want to verify on DeepSource.
+
+![](https://files.readme.io/e3e283b-small-security-page-1.png)
+
+5.  Click on **Request Verification**.
+
+![](https://files.readme.io/80526d9-small-domain-verification-pending.png)
+
+6.  We will reach out to you by email for a manual verification.
+
+![](https://files.readme.io/8ffda2a-small-domain-verified.png)
+
+7.  Once your domain has been verified, you can go ahead with configuring an identity provider.
+
+### 
+
+Add Identity Provider
+
+[](#add-identity-provider)
+
+Once DeepSource has verified your domain and you have successfully created and tested a SAML 2.0 connector on the IdP website, you need to tell DeepSource about it.
+
+1.  On the same **Team settings** -> **Security** page, click on the **Configure** button.
+
+![](https://files.readme.io/b494718-small-idp-config.png)
+
+2.  Enter the XML Metadata URL (aka Issuer URL) that you got from the SAML connector in the IdP.
+
+![](https://files.readme.io/25ecca1-small-idp-config-modal.png)
+
+3.  Click on **Save changes**.
+4.  Your IdP is successfully connected with your DeepSource team now. This means users assigned to the app on IdP will be able to sign up or sign in to DeepSource with SAML SSO now.
+
+> 📘
+> --
+> 
+> If you have enabled SAML and not SCIM, then users are provisioned access to your team Just-In-Time i.e. when the user signs into DeepSource with SAML SSO using your team's configured IdP. They are given the `MEMBER` role if there are empty seats else `CONTRIBUTOR` role.
+
+Configuration on DeepSource Enterprise Server
+
+[](#configuration-on-deepsource-enterprise-server)
+---------------------------------------------------------------------------------------------------
+
+Once SAML has been configured on your IdP, navigate to “**Config”** tab in the Kotsadm admin panel:
+
+1.  Check **"Yes"** for **"Enable SAML SSO"**.
+    
+2.  Enter the XML Metadata URL copied above for "**IdP metadata URL"**.
+    
+    ![](https://files.readme.io/8d0ba7f-image.png)
+    
+3.  One last piece of configuration is whether you want to enable social authentication (i.e. allowing users to be created/log in with GitHub) alongside SAML. In this case, users will be allowed to either sign in via SSO or via OAuth. Choose accordingly.
+    
+4.  Click save, and deploy the new version. You should now be able to Sign in to DeepSource Enterprise with SAML SSO.
+    
+
+Setup SCIM Provisioning
+
+[](#setup-scim-provisioning)
+=======================================================
+
+SCIM, or System for Cross-domain Identity Management, is an open standard that allows for the automation of user provisioning.
+
+With SCIM enabled for your DeepSource team, users will be provisioned, updated, and de-provisioned in real-time with respect to changes on the IdP.
+
+Configuration on DeepSource Enterprise Cloud
+
+[](#configuration-on-deepsource-enterprise-cloud-1)
+---------------------------------------------------------------------------------------------------
+
+Once you have setup SAML SSO, you can optionally enable SCIM provisioning as well.
+
+1.  Go to the same **Team settings** -> **Security** page.
+2.  Enable the toggle labeled "SCIM provisioning".
+
+![](https://files.readme.io/df74ee2-small-scim-config-1.png)
+
+3.  When you toggle it, a modal will pop up displaying the SCIM authentication token. You should copy the token and dismiss the modal.
+
+![](https://files.readme.io/a0fc5bd-small-scim-config-2.png)
+
+4.  Now SCIM is enabled for your DeepSource team. You may click on the "Regenerate" button at any time to reset the SCIM token.
+
+![](https://files.readme.io/0b1f8b8-small-scim-config-3.png)
+
+5.  You can go ahead with configuring and testing the SCIM connection on your identity provider. You can find the configuration steps in the "SCIM Provisioning" section for the identity provider chosen in the Configuration on Identity Provider section.
+
+Configuration on DeepSource Enterprise Server
+
+[](#configuration-on-deepsource-enterprise-server-1)
+-----------------------------------------------------------------------------------------------------
+
+Navigate to **"Config”** tab in the Kotsadm admin panel:
+
+1.  Check **"Yes"** for **"Enable SCIM provisioning"**.
+2.  Enter a strong secret of your choice in "**SCIM Authentication token"**. Keep this token saved somewhere, you will need to enter this in your IdP while setting up SCIM provisioning.
+3.  Click **"Save"**, and deploy the new version.
+
+Updated about 1 year ago
+
+* * *

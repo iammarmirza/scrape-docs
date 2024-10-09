@@ -1,0 +1,253 @@
+---
+title: App Manager Configuration
+slug: enterprise-server-configuration
+visibility: PUBLIC
+label: App Manager Configuration
+---
+[Jump to Content](#content)
+
+* * *
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+Guides
+
+[System Status](https://deepsourcestatus.com/)[Community Forum](https://discuss.deepsource.com/)
+
+App Manager Configuration
+
+Search
+
+App Manager Configuration
+=========================
+
+Admin Console
+
+[](#admin-console)
+===================================
+
+The admin console is used to install and configure your DeepSource enterprise installation.
+
+![](https://files.readme.io/8a4114e-image.png)
+
+The Admin Console contains the following sections:
+
+*   Application
+    *   Dashboard
+    *   Version History
+    *   Config
+    *   Troubleshoot
+    *   License
+    *   View files
+    *   Registry settings
+*   GitOps
+*   Cluster Management
+*   Snapshots
+
+### 
+
+Application
+
+[](#application)
+
+The Application tab is used for installing and upgrading the DeepSource Enterprise application, configuring your installation, etc.
+
+#### 
+
+Dashboard
+
+[](#dashboard)
+
+The Dashboard section shows you a quick preview of the state of your application.
+
+#### 
+
+Version history
+
+[](#version-history)
+
+The Version History tab shows you all versions of the DeepSource application that are available to you. Clicking on the `Deploy` button will deploy the selected version of the app to your cluster.
+
+> Some releases are marked as `Required`. For upgrading to the latest version, you must deploy all `Required` versions in order between your current version and the latest version before upgrading to the latest version.
+
+You can press the `Check for update` button to check for new updates that may be available.
+
+#### 
+
+Config
+
+[](#config)
+
+This tab is used to configure your DeepSource app.
+
+![](https://files.readme.io/2f4b533-image.png)
+
+**Application hostname:** Provide the primary hostname/IP through which you will access the DeepSource application. Please note that your version control system should be able to send webhooks to the application using this hostname/IP.
+
+**Custom Allowed Hosts:** Allows you to provide additional hostnames or IP addresses that must be whitelisted by the application. This can be useful when internal services within your network use a different hostname to access the DeepSource application.
+
+**Version Control Provider:** Select and configure a Version Control Provider to integrate with your DeepSource application. DeepSource Enterprise currently supports the following Version Control Providers:
+
+Selecting any Version Control Provider will show additional configuration options to configure. A detailed guide to integrating with your Version Control Provider is available in the Setup section of the docs.
+
+**Enable SAML SSO:** Configure SAML SSO for your application. A guide to integrating your SSO provider is available in the section of the docs.
+
+**Deploy embedded database:** The application will automatically provision an embedded database within the cluster when enabled. This is often recommended for pilot installations and is not recommended in production. A detailed guide on setting up an external database is available .
+
+**Access key for object storage:** Random value to be used as an access key for Minio object storage. If not entered, a default value is kept.
+
+**Application database username:** PostgreSQL Database username.
+
+**Application database password:** PostgreSQL Database password
+
+**Upload TLS certificate and private key?:** This option is used to configure the TLS settings. A detailed guide on setting up TLS is available .
+
+**Node selectors:** DeepSource contains two classes of workloads. The application workloads and the analysis workloads. Separating application workloads from the analysis workloads is highly recommended. This is done to prevent resource contention surges from affecting your application. You can attach node labels for your nodes using the following command: @vishnu to document.
+
+*   **Node selector label for application workloads:** Set the labels to identify nodes that will run the application workloads. Eg: `deepsource: application`
+*   **Node selector label for analysis workloads:** Set the labels to identify nodes that will run the analysis workloads. Eg: `deepsource: analysis`
+
+**DeepSource Enterprise Admins:** Enter a comma-separated list of users who will have access to the Enterprise Control Panel. You can add these e-mail addresses pre-emptively, and once the user with the e-mail address onboard, they will have access to the Enterprise Control Panel.
+
+Cluster Management
+
+[](#cluster-management)
+---------------------------------------------
+
+This section would be visible if you are using the method. The cluster management section provides information about the nodes in your cluster. The cluster management portal allows you to:
+
+*   **Drain node:** This lets you safely drain a node. This can be used when you need to restart or delete a node.
+*   **Add a Node:** This will generate a command you can execute to add a newly provisioned node to your cluster.
+
+Snapshots (Cluster metadata backups)
+
+[](#snapshots-cluster-metadata-backups)
+-------------------------------------------------------------------------------
+
+You can back up your cluster metadata through the Admin Console. Advanced documentation for this is directly available on [Replicated documentation](https://docs.replicated.com/enterprise/snapshots-understanding) page.
+
+Bring your own Database
+
+[](#bring-your-own-database)
+=======================================================
+
+DeepSource Enterprise uses a PostgreSQL database to store persistent data. By default, an embedded database is provisioned within the Kubernetes cluster. However, we highly recommend bringing your own PostgreSQL database for production deployments. This document walks through the steps to set up an external database.
+
+> Recommended version: PostgreSQL 12
+
+Setting up your database
+
+[](#setting-up-your-database)
+---------------------------------------------------------
+
+On a fresh PostgreSQL database, you would have to create a new database and set up a user with sufficient privileges before configuring it for use with DeepSource app.
+
+Following are sample steps to do this on a generic PostgreSQL database. Your steps may vary if you use a managed database like AWS RDS or Google CloudSQL.
+
+**Log into your database with the `postgres` user:**
+
+`psql postgres`
+
+**Create a new database:**
+
+`CREATE DATABASE <db-name>;`
+
+**Create a new PostgreSQL user for the application to use:**
+
+`CREATE USER <user-name> WITH ENCRYPTED PASSWORD '<password>;`
+
+**Grant privileges to the database user:**
+
+`GRANT ALL PRIVILEGES ON DATABASE <db-name> TO <user-name>;`
+
+> **Important:** Ensure that the `max_connections` parameter for the PostgreSQL application is set to at least `500`. You will have to set a suitable `shared_buffers` value for this value.
+
+Configuring your app to use the external database
+
+[](#configuring-your-app-to-use-the-external-database)
+-----------------------------------------------------------------------------------------------------------
+
+1.  Log into the .
+2.  Navigate to the **Config** section in the admin console.
+3.  Select `No` for the field `Deploy embedded database?`
+4.  **Enter the following values for the corresponding fields:**
+    1.  **Application database name:** Enter the name of your database name that was created for DeepSource.
+    2.  **Application database hostname:** Enter the hostname/IP of your PostgreSQL server.
+    3.  **Application database port:** Enter the port on which your PostgreSQL instance is configured. The default value for this field is `5432`.
+    4.  **Application database username:** Enter the database username that you created for the database.
+    5.  **Application database password:** Enter the database password for the database user you used in the previous step.
+5.  Click on `Save Config` to persist this configuration.
+6.  Navigate to the **Version History** page.
+7.  Click `Deploy`.
+8.  The application will be redeployed with the new database.
+
+Moving from an embedded database to an external database
+
+[](#moving-from-an-embedded-database-to-an-external-database)
+-------------------------------------------------------------------------------------------------------------------------
+
+If you intend to switch to an external database and you have been using DeepSource Enterprise for a while, you will face data loss. You can, however, use these steps to take a database backup and restore it on to the new database.
+
+*   Create a backup using the [pg\_dump](https://www.postgresql.org/docs/current/app-pgdump.html) utility.
+    
+    SH
+    
+    `pg_dump -h <hostname> -U <username> -d <db_name> -v > dump.sql`
+    
+*   To get the hostname, password, database name and the database user, run the following command:
+    
+
+Shell
+
+`kubectl exec -it deploy/asgard-main -- cat /secrets/.env | grep ASGARD_DB_`
+
+*   The above command will output the info in the below format:
+
+Shell
+
+`ASGARD_DB_NAME='asgard' ASGARD_DB_USER=asgard-enterprise ASGARD_DB_PASSWORD=******** ASGARD_DB_HOST='postgresql-ha-pgpool.default' ASGARD_DB_PORT='5432'`
+
+*   To get the hostname IP, run `kubectl get svc | grep pgpool` and use the IP for the service as the hostname.
+*   You can use [pg\_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) to apply the dump to your new database.
+
+Database Backups
+
+[](#database-backups)
+-----------------------------------------
+
+DeepSource Enterprise Server does not create database backups. Please make sure to enable backups by configuring the database hosting provider.
+
+Setup TLS
+
+[](#setup-tls)
+===========================
+
+We highly recommend using TLS with your DeepSource Enterprise installation. There are multiple ways to enable TLS on DeepSource Enterprise Server. You can configure these options on the Admin Console.
+
+### 
+
+Upload your own TLS certificate and private key
+
+[](#upload-your-own-tls-certificate-and-private-key)
+
+Setting this option to `Yes` will allow you to upload your TLS certificate and private key. Upload the TLS certificate and private key and click **Save Config**. Deploy the latest version to begin using your site with TLS.
+
+### 
+
+Let DeepSource provision a TLS certificate
+
+[](#let-deepsource-provision-a-tls-certificate)
+
+By selecting `No` to the above option, DeepSource will automatically use Let's Encrypt to provision a TLS certificate for your site. Please note that Let's Encrypt will attempt a domain validation challenge. To validate the certificates, your site would have to be reachable by the Let's Encrypt server.
+
+### 
+
+No TLS
+
+[](#no-tls)
+
+If this option is selected, no certificates will be installed by DeepSource. This option is useful if you choose to terminate TLS upstream.
+
+Updated over 1 year ago
+
+* * *
