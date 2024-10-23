@@ -255,13 +255,7 @@ export default {
             {
               "type": "page",
               "path": "./published-documentation/publish-your-content-as-a-docs-site/visitor-authentication.mdx",
-              "pages": [
-                null,
-                null,
-                null,
-                null,
-                null
-              ]
+              "pages": []
             }
           ]
         },
@@ -607,8 +601,6 @@ export default {
           "path": "./help-and-faq/contributing.mdx",
           "pages": []
         },
-        null,
-        null
       ]
     },
     {
@@ -616,8 +608,6 @@ export default {
       "label": "Policies",
       "visibility": "PUBLIC",
       "pages": [
-        null,
-        null
       ]
     }
   ]
