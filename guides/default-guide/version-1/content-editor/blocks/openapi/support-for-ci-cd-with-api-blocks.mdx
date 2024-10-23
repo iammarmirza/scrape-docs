@@ -1,0 +1,96 @@
+---
+title: Support for CI/CD with API blocks | GitBook Documentation
+slug: support-for-ci-cd-with-api-blocks
+visibility: PUBLIC
+label: Support for CI/CD with API blocks | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [URL upload](#url-upload)
+*   [API file upload](#api-file-upload)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/content-editor/blocks/openapi/support-for-ci-cd-with-api-blocks.md)
+
+Support for CI/CD with API blocks
+=================================
+
+How to use GitBook’s OpenAPI method blocks to support a CI/CD workflow
+
+Our OpenAPI block supports CI/CD, which means your API documentation can auto-update when a new version is released. The method of updating depends on whether you upload your API spec via URL or as a file.
+
+[](#url-upload)
+
+URL upload
+
+
+-------------------------------
+
+If you upload your API spec via a URL, your docs will auto-update existing API references when they change in the spec. However, when the OpenAPI file is changed, the cache will not be updated immediately. It may take a few hours for the published docs to reflect the latest version, but it can take up to a day.
+
+For example, [this](https://github.com/GitbookIO/integrations/blob/main/docs/gitbook-api/reference/collections.md) is the method we use in our developer docs.
+
+[](#api-file-upload)
+
+API file upload
+
+
+-----------------------------------------
+
+If you upload your API spec as a file, you will have to re-upload the new version of the file in order to update your documentation. However, GitBook will detect existing blocks on the same page and auto-update them when you upload the file.
+
+An alternative solution is to use Git Sync with an OpenAPI spec file in the synced repository. Store the OpenAPI spec in a repository as a JSON/YAML file and reference it in Markdown:
+
+Copy
+
+    {% swagger src="./openapi.json" path="/collections/{collectionId}" method="get" expanded="true" %} 
+    [openapi.json](./openapi.json) 
+    {% endswagger %}
+
+Every time this file changes and a commit is pushed to GitHub, your docs will also update. This ensures that your documentation is always up to date with your latest API changes.
+
+Last updated 26 days ago

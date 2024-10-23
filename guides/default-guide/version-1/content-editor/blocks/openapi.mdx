@@ -1,0 +1,405 @@
+---
+title: OpenAPI methods | GitBook Documentation
+slug: openapi
+visibility: PUBLIC
+label: OpenAPI methods | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/content-editor/blocks/openapi/README.md)
+
+OpenAPI methods
+===============
+
+Add an OpenAPI spec to a page.
+
+You can sync with an OpenAPI or Swagger file or URL to include auto-generated methods in your documentation.
+
+After adding your OpenAPI specification to GitBook, you’ll see a condensed version of the API block in the in-app editor. We’re working on consolidating both the in-app editor view and the published content view.
+
+### 
+
+[](#test-it-powered-by-scalar)
+
+Test it (powered by Scalar)
+
+GitBook's OpenAPI block also supports a "try it" functionality, which allows your users to test your API methods with data and parameters filled in from the editor.
+
+Powered by [Scalar](https://scalar.com/), you won't need to leave the docs in order to see your API methods in action. See and example of this below.
+
+### 
+
+[](#example-of-an-openapi-block)
+
+Example of an OpenAPI block
+
+Manually writing documentation for your REST API can be time-consuming. To help, GitBook supports OpenAPI document imports, which describe your API, and provides API blocks. These will automatically represent your API methods based on the specification you provide — either as a file or as a URL for GitBook to load.
+
+GitBook supports [Swagger 2.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md) or [OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md) compliant files.
+
+### 
+
+[](#options)
+
+Options
+
+GitBook supports extra options you can define in your OpenAPI specification to alter they way your API methods display in your published documentation.
+
+Both properties can be set on either the root level or on a per-operation basis.
+
+**Root**
+
+Copy
+
+    x-hideTryItPanel: true
+    x-codeSamples: false
+    paths:
+      /user
+        get:
+          summary: Get the current user
+
+**Operation**
+
+Copy
+
+    paths:
+      /user
+        get:
+          summary: Get the current user
+          x-hideTryItPanel: true
+          x-codeSamples:
+           - lang: javascript
+              label: JS
+              source: console.log('Hello')
+
+### 
+
+[](#create-openapi-block-using-your-openapi-file)
+
+Create OpenAPI block using your OpenAPI file
+
+Once you have an OpenAPI compliant representation of your API, you can use it in your documentation.
+
+1.  **Create a new OpenAPI block using the insert palette.**
+    
+2.  **Add your OpenAPI specification, choosing between one of the following options**:
+    
+    1.  Upload your OpenAPI formatted file
+        
+    2.  Provide a URL to your publicly available OpenAPI file.
+        
+    
+
+If you’re providing a **URL**, make sure that the file is available on the open internet, and that it’s not behind any kind of password protection.
+
+If you’re just experimenting, you can use one of the [default Swagger files](https://petstore.swagger.io/#/):
+
+`https://petstore.swagger.io/v2/swagger.json`
+
+1.  Choose your API operation
+    
+
+To change the operation that your swagger block is showing, use the "Choose API Operation" option in the block menu
+
+1.  Show more than one operation
+    
+
+Your API is likely to have more than one operation that you'll want to document. Each OpenAPI block shows one API operation. In order to show multiple API operations, you can create an extra OpenAPI block per operation, backed by the same OpenAPI specification file.
+
+### 
+
+[](#update-your-specification)
+
+Update your specification
+
+From time to time you might need to update or modify your API specification. In GitBook, you can replace the specification underlying your OpenAPI blocks, and have the update be reflected across all your documentation.
+
+#### 
+
+[](#replacing-a-specification-in-a-file)
+
+Replacing a specification in a file
+
+1.  Using the Block context menu on one of your OpenAPI Blocks, select "Choose OpenAPI Source"
+    
+2.  On your OpenAPI file in the file list, click "Replace"
+    
+
+Once the OpenAPI Source has been replaced, each OpenAPI block that references your file will be updated based on your new specification.
+
+#### 
+
+[](#replacing-a-specification-from-a-link)
+
+Replacing a specification from a link
+
+1.  Using the Block context menu on one of your OpenAPI Blocks, select "Choose OpenAPI Source"
+    
+2.  Provide a new URL in the input box, and save
+    
+
+Once the OpenAPI Source has been replaced, each OpenAPI block that references your file will be updated based on your new specification.
+
+### 
+
+[](#api-method-block-deprecated)
+
+API method block (deprecated)
+
+**Editable API method blocks are now deprecated**
+
+In light of our updated OpenAPI method block, **we’ve decided to deprecate the API method block.** [Read our recent announcement](https://changelog.gitbook.com/announcements/depreciating-api-method-block) to find out more about the reasons behind this change.
+
+On **Monday 4 March 2024**, we automatically transitioned all pre-existing API method blocks to regular blocks in the format you can see below. [Read our announcement](https://changelog.gitbook.com/announcements/depreciating-api-method-block) to find out more.
+
+You can still create editable API references from the **Quickstart** section of the **Insert menu**. Hit / on your keyboard and select **API Reference**. GitBook will create an editable section that looks like this:
+
+[](#create-a-new-user)
+
+Create a new user
+
+
+---------------------------------------------
+
+`POST` `/users`
+
+<Description of the endpoint>
+
+**Headers**
+
+**Body**
+
+**Response**
+
+200400
+
+Copy
+
+    {
+      "id": 1,
+      "name": "John",
+      "age": 30
+    }
+
+Copy
+
+    {
+      "error": "Invalid request"
+    }
+
+Last updated 7 months ago
+
+Property
+
+Values
+
+Description
+
+Name
+
+Value
+
+Name
+
+Type
+
+Description
+
+`x-hideTryItPanel`
+
+`true` | `false`
+
+Show or hide the "Test it" button for an OpenAPI block.
+
+`x-codeSamples`
+
+`true` | `false`
+
+Show or hide code samples for an OpenAPI block.
+
+Content-Type
+
+`application/json`
+
+Authorization
+
+`Bearer <token>`
+
+`name`
+
+string
+
+Name of the user
+
+`age`
+
+number
+
+Age of the user
+
+Add a new pet to the store
+--------------------------
+
+Add a new pet to the store
+
+POST/api/v3/pet
+
+Authorization
+
+petstore\_auth
+
+Body
+
+application/jsonapplication/xmlapplication/x-www-form-urlencoded
+
+Create a new pet in the store
+
+idinteger (int64)
+
+Example: `10`
+
+name\*string
+
+Example: `"doggie"`
+
+categoryCategory (object)
+
+photoUrls\*array of string
+
+tagsarray of Tag (object)
+
+statusenum
+
+pet status in the store
+
+availablependingsold
+
+Response
+
+200405
+
+Successful operation
+
+Body
+
+application/xmlapplication/json
+
+idinteger (int64)
+
+Example: `10`
+
+name\*string
+
+Example: `"doggie"`
+
+categoryCategory (object)
+
+photoUrls\*array of string
+
+tagsarray of Tag (object)
+
+statusenum
+
+pet status in the store
+
+availablependingsold
+
+Request
+
+JavaScriptCurlPython
+
+Copy
+
+    const response = await fetch('/api/v3/pet', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "name": "doggie",
+          "photoUrls": [
+            "text"
+          ]
+        }),
+    });
+    const data = await response.json();
+
+Test it
+
+Response
+
+200
+
+Copy
+
+    {
+      "id": 10,
+      "name": "doggie",
+      "category": {
+        "id": 1,
+        "name": "Dogs"
+      },
+      "photoUrls": [
+        "text"
+      ],
+      "tags": [
+        {
+          "name": "text"
+        }
+      ],
+      "status": "available"
+    }
+
+*   [Test it (powered by Scalar)](#test-it-powered-by-scalar)
+*   [Example of an OpenAPI block](#example-of-an-openapi-block)
+*   [POSTAdd a new pet to the store](#pet)
+*   [Options](#options)
+*   [Create OpenAPI block using your OpenAPI file](#create-openapi-block-using-your-openapi-file)
+*   [Update your specification](#update-your-specification)
+*   [API method block (deprecated)](#api-method-block-deprecated)
+*   [Create a new user](#create-a-new-user)

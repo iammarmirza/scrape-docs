@@ -1,0 +1,218 @@
+---
+title: Code blocks | GitBook Documentation
+slug: code-block
+visibility: PUBLIC
+label: Code blocks | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [Example of a code block](#example-of-a-code-block)
+*   [Code block options](#options)
+*   [Actions](#actions)
+*   [Representation in Markdown](#representation-in-markdown)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/content-editor/blocks/code-block.md)
+
+Code blocks
+===========
+
+Add a code block to a page to include sample code, configurations, code snippets and more.
+
+You can add code to your GitBook pages using code blocks.
+
+When you add a code block, you can choose to , , , and . It’s also easy to , so you can use it elsewhere
+
+A code block may be useful for:
+
+*   Sharing configurations
+    
+*   Adding code snippets
+    
+*   Sharing code files
+    
+*   Showing usage examples of command line utilities
+    
+*   Showing how to call API endpoints
+    
+*   And much more!
+    
+
+### 
+
+[](#example-of-a-code-block)
+
+Example of a code block
+
+index.js
+
+Copy
+
+    ‌import * as React from 'react';
+    import ReactDOM from 'react-dom';
+    import App from './App';
+    
+    ReactDOM.render(<App />, window.document.getElementById('root'));
+
+You can also combine code blocks with a to offer the same code example in multiple different languages:
+
+JavaScriptRubyElixir
+
+Copy
+
+    let greeting = function (name) {
+      console.log(`Hello, ${name}!`);
+    };
+    greeting("Anna");
+
+Copy
+
+    greeting = lambda {|name| puts "Hello, #{name}!"}
+    greeting.("Anna")
+
+Copy
+
+    greeting = fn name -> IO.puts("Hello, #{name}!") end
+    greeting.("Anna")
+
+You can make code blocks by clicking on the **Options menu** ![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252Fh6PrhC4elyfq3fU1ntC2%252FFrame%25202.png%3Falt%3Dmedia%26token%3Db4e03276-98a2-46b4-8992-42946babfc45&width=26&dpr=4&quality=100&sign=70f8b6b0&sv=1) next to the block and choosing **Full width**.
+
+### 
+
+[](#options)
+
+Code block options
+
+#### 
+
+[](#set-syntax)
+
+Set syntax…
+
+You can set the syntax in your code block to any of the supported languages. This will enable syntax highlighting in that language, too.
+
+We use [Prism](https://github.com/PrismJS/prism) for syntax highlighting. You can use [Test Drive Prism](https://prismjs.com/test.html#language=markup) to check which languages Prism supports. If you notice a mismatch between GitBook and Prism, there’s a chance we’re a version or two behind. We’ll catch up soon!
+
+Copy
+
+    // Some code
+
+#### 
+
+[](#with-line-numbers)
+
+With line numbers
+
+This will toggle line numbers for your code on and off.
+
+Showing line numbers is useful when the code represents the contents of a file as a whole, or when you have long code blocks with lots of lines. Hiding line numbers is useful for snippets, usage instructions for command line or terminal expressions and similar scenarios.
+
+#### 
+
+[](#with-caption)
+
+With caption
+
+This will toggle a caption that sits at the top of the block, above your lines of code.
+
+The caption is often the name of a file as shown in , but you can also use it as a title, description, or anything else you’d like.
+
+#### 
+
+[](#wrap-code)
+
+Wrap code
+
+This will toggle code wrapping on and off, so long lines of code will wrap to all be visible on the page at once.
+
+Wrapping lines is useful when your code is long and you want to avoid having the viewer scroll back and forth to read it. If you toggle **Wrap code** on, you may also want to show line numbers — this will make it easier to read the code and understand where new lines start.
+
+### 
+
+[](#actions)
+
+Actions
+
+As well as the options above, you can also change the language the code block displays, and copy your code instantly.
+
+#### 
+
+[](#copying-the-code)
+
+Copy the code
+
+Hover over a code block and a number of icons will appear. Click the middle icon to copy the contents of the code block to your clipboard in one click.
+
+### 
+
+[](#representation-in-markdown)
+
+Representation in Markdown
+
+Copy
+
+    {% code title="index.js" overflow="wrap" lineNumbers="true" %}
+    
+    ```javascript
+    ‌import * as React from 'react';
+    import ReactDOM from 'react-dom';
+    import App from './App';
+    
+    ReactDOM.render(<App />, window.document.getElementById('root'));
+    ```
+    
+    {% endcode %}
+
+Last updated 1 month ago
+
+When you click on the **Options menu** ![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252Fh6PrhC4elyfq3fU1ntC2%252FFrame%25202.png%3Falt%3Dmedia%26token%3Db4e03276-98a2-46b4-8992-42946babfc45&width=26&dpr=4&quality=100&sign=70f8b6b0&sv=1) next to the code block, or the **Actions menu** in the block itself, you’ll see a number of options you can set.
+
+![Screenshot showing the icon in a code block that allows you to copy its contents to the clipboard.](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FETwhoi43aYjNTPCkLUmh%252Fcode-block-copy.png%3Falt%3Dmedia%26token%3D938b5ff5-2509-4252-9b1d-c547f027cd41&width=768&dpr=4&quality=100&sign=714ca180&sv=1)
+
+Click here to copy the contents of a code block to your clipboard, ready for you to paste elsewhere.
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FIfd7ka3cralqGUz0Z41B%252FFrame%25201.png%3Falt%3Dmedia%26token%3D2cddf304-8c59-4623-b7c2-78b494275308&width=13&dpr=4&quality=100&sign=4304ab0c&sv=1)

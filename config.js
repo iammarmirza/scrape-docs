@@ -1,4 +1,4 @@
-export const config = [
+export const deepsourceConfig = [
   {
     type: "section",
     label: "Home",
@@ -568,6 +568,562 @@ export const config = [
       {
         type: "page",
         path: "/docs/help-permissions",
+      },
+    ],
+  },
+];
+
+export const config = [
+  {
+    type: "page",
+    path: "/",
+  },
+  {
+    type: "section",
+    label: "Content Editor",
+    pages: [
+      {
+        type: "page",
+        path: "/content-editor/overview",
+      },
+      {
+        type: "page",
+        path: "/content-editor/import",
+      },
+      {
+        type: "page",
+        path: "/content-editor/editor",
+        pages: [
+          {
+            type: "page",
+            path: "/content-editor/editor/navigation",
+          },
+          {
+            type: "page",
+            path: "/content-editor/editor/content-structure",
+            pages: [
+              {
+                type: "page",
+                path: "/content-editor/editor/content-structure/what-is-a-space",
+              },
+              {
+                type: "page",
+                path: "/content-editor/editor/content-structure/content-in-a-space",
+              },
+              {
+                type: "page",
+                path: "/content-editor/editor/content-structure/what-is-a-collection",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/content-editor/editing-content",
+        pages: [
+          {
+            type: "page",
+            path: "/content-editor/editing-content/live-edits",
+          },
+          {
+            type: "page",
+            path: "/content-editor/editing-content/formatting",
+          },
+          {
+            type: "page",
+            path: "/content-editor/editing-content/inline",
+          },
+          {
+            type: "page",
+            path: "/content-editor/editing-content/markdown",
+          },
+          {
+            type: "page",
+            path: "/content-editor/editing-content/write-and-edit-with-ai",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/content-editor/blocks",
+        pages: [
+          {
+            type: "page",
+            path: "/content-editor/blocks/paragraph",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/heading",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/unordered-list",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/ordered-list",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/task-list",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/hint",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/quote",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/code-block",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/insert-files",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/insert-images",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/embed-a-url",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/table",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/cards",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/tabs",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/expandable",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/drawing",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/math-and-tex",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/openapi",
+            pages: [
+              {
+                type: "page",
+                path: "/content-editor/blocks/openapi/support-for-ci-cd-with-api-blocks",
+              },
+            ],
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/page-link",
+          },
+          {
+            type: "page",
+            path: "/content-editor/blocks/synced-blocks-beta",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/content-editor/broken-links",
+      },
+      {
+        type: "page",
+        path: "/content-editor/searching-your-content",
+        pages: [
+          {
+            type: "page",
+            path: "/content-editor/searching-your-content/gitbook-ai",
+          },
+          {
+            type: "page",
+            path: "/content-editor/searching-your-content/quick-find",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/content-editor/activity-history",
+      },
+    ],
+  },
+  {
+    type: "section",
+    label: "Published Documentation",
+    pages: [
+      {
+        type: "page",
+        path: "/published-documentation/overview",
+      },
+      {
+        type: "page",
+        path: "/published-documentation/publish-your-content-as-a-docs-site",
+        pages: [
+          {
+            type: "page",
+            path: "/published-documentation/publish-your-content-as-a-docs-site/public-publishing",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/publish-your-content-as-a-docs-site/share-links",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/publish-your-content-as-a-docs-site/visitor-authentication",
+            pages: [
+              {
+                type: "link",
+                label: "Auth0 Integration Guide",
+                url: "https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication",
+              },
+              {
+                type: "link",
+                label: "Azure AD Integration Guide",
+                url: "https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication",
+              },
+              {
+                type: "link",
+                label: "Okta Integration Guide",
+                url: "https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication",
+              },
+              {
+                type: "link",
+                label: "OIDC Integration Guide",
+                url: "https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication",
+              },
+              {
+                type: "link",
+                label: "AWS Cognito Integration Guide",
+                url: "https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/published-documentation/publish-multiple-spaces-on-one-site",
+      },
+      {
+        type: "page",
+        path: "/published-documentation/customization",
+        pages: [
+          {
+            type: "page",
+            path: "/published-documentation/customization/page-layouts",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/customization/space-customization",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/customization/collection-customization",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/published-documentation/custom-domain",
+        pages: [
+          {
+            type: "page",
+            path: "/published-documentation/custom-domain/choose",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/custom-domain/organization-level-custom-domain",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/custom-domain/configure-dns",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/custom-domain/finalize",
+          },
+          {
+            type: "page",
+            path: "/published-documentation/custom-domain/troubleshooting",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/published-documentation/insights",
+      },
+      {
+        type: "page",
+        path: "/published-documentation/site-settings",
+      },
+      {
+        type: "page",
+        path: "/published-documentation/seo",
+      },
+    ],
+  },
+  {
+    type: "section",
+    label: "Integrations",
+    pages: [
+      {
+        type: "page",
+        path: "/integrations/overview",
+      },
+      {
+        type: "page",
+        path: "/integrations/install-an-integration",
+      },
+      {
+        type: "page",
+        path: "/integrations/slack",
+      },
+      {
+        type: "page",
+        path: "/integrations/github-copilot",
+      },
+      {
+        type: "page",
+        path: "/integrations/git-sync",
+        pages: [
+          {
+            type: "page",
+            path: "/integrations/git-sync/enabling-github-sync",
+          },
+          {
+            type: "page",
+            path: "/integrations/git-sync/enabling-gitlab-sync",
+          },
+          {
+            type: "page",
+            path: "/integrations/git-sync/content-configuration",
+          },
+          {
+            type: "page",
+            path: "/integrations/git-sync/github-pull-request-preview",
+          },
+          {
+            type: "page",
+            path: "/integrations/git-sync/commits",
+          },
+          {
+            type: "page",
+            path: "/integrations/git-sync/monorepos",
+          },
+          {
+            type: "page",
+            path: "/integrations/git-sync/troubleshooting",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/integrations/third-party-integrations",
+      },
+      {
+        type: "page",
+        path: "/integrations/integrations-faq",
+      },
+    ],
+  },
+  {
+    type: "section",
+    label: "Collaboration",
+    pages: [
+      {
+        type: "page",
+        path: "/collaboration/collaboration",
+      },
+      {
+        type: "page",
+        path: "/collaboration/change-requests",
+      },
+      {
+        type: "page",
+        path: "/collaboration/share",
+        pages: [
+          {
+            type: "page",
+            path: "/collaboration/share/share-a-space",
+          },
+          {
+            type: "page",
+            path: "/collaboration/share/share-a-collection",
+          },
+          {
+            type: "page",
+            path: "/collaboration/share/pdf-export",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/collaboration/comments-discussion",
+      },
+      {
+        type: "page",
+        path: "/collaboration/notifications",
+      },
+    ],
+  },
+  {
+    type: "section",
+    label: "Account management",
+    pages: [
+      {
+        type: "page",
+        path: "/account-management/overview",
+      },
+      {
+        type: "page",
+        path: "/account-management/plans",
+        pages: [
+          {
+            type: "page",
+            path: "/account-management/plans/legacy-plans",
+          },
+          {
+            type: "page",
+            path: "/account-management/plans/apply-for-the-non-profit-open-source-plan",
+          },
+          {
+            type: "page",
+            path: "/account-management/plans/billing-policy",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/account-management/cancelling-a-plan",
+      },
+      {
+        type: "page",
+        path: "/account-management/account-settings",
+      },
+      {
+        type: "page",
+        path: "/account-management/organization-management",
+      },
+      {
+        type: "page",
+        path: "/account-management/member-management",
+        pages: [
+          {
+            type: "page",
+            path: "/account-management/member-management/invite-members-to-your-organization",
+          },
+          {
+            type: "page",
+            path: "/account-management/member-management/roles",
+          },
+          {
+            type: "page",
+            path: "/account-management/member-management/teams",
+          },
+          {
+            type: "page",
+            path: "/account-management/member-management/permissions-and-inheritance",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/account-management/sso-and-saml",
+        pages: [
+          {
+            type: "page",
+            path: "/account-management/sso-and-saml/sso-and-saml",
+          },
+          {
+            type: "page",
+            path: "/account-management/sso-and-saml/saml",
+            pages: [
+              {
+                type: "page",
+                path: "/account-management/sso-and-saml/saml/sso-members-vs-non-sso",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "section",
+    label: "Help & FAQ",
+    pages: [
+      {
+        type: "page",
+        path: "/help-and-faq/faq",
+        pages: [
+          {
+            type: "page",
+            path: "/help-and-faq/faq/support",
+          },
+          {
+            type: "page",
+            path: "/help-and-faq/faq/report-bugs",
+          },
+          {
+            type: "page",
+            path: "/help-and-faq/faq/how-do-i-solve-connectivity-issues",
+          },
+          {
+            type: "page",
+            path: "/help-and-faq/faq/content-creation-faq",
+          },
+          {
+            type: "page",
+            path: "/help-and-faq/faq/faqs",
+          },
+        ],
+      },
+      {
+        type: "page",
+        path: "/help-and-faq/keyboard-shortcuts",
+      },
+      {
+        type: "page",
+        path: "/help-and-faq/contributing",
+      },
+      {
+        type: "link",
+        label: "Changelog",
+        url: "https://changelog.gitbook.com/",
+      },
+      {
+        type: "link",
+        label: "Developer Documentation",
+        url: "https://developer.gitbook.com/",
+      },
+    ],
+  },
+  {
+    type: "section",
+    label: "Policies",
+    pages: [
+      {
+        type: "link",
+        label: "Subprocessors",
+        url: "https://policies.gitbook.com/security/subprocessors",
+      },
+      {
+        type: "link",
+        label: "Terms of Service",
+        url: "https://policies.gitbook.com/terms",
       },
     ],
   },

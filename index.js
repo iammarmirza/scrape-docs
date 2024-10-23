@@ -12,8 +12,57 @@ virtualConsole.on("error", () => {
 });
 
 const turndownService = new TurndownService();
-const GUIDE_PAGES_PATH = "guides/default-guide/version-1";
-const GUIDE_FOLDER_PATH = "guides/default-guide";
+const DOCS_URL = "https://docs.gitbook.com";
+const GUIDE_NAME = "Default Guide";
+const GUIDE_SLUG = "default-guide";
+const GUIDE_PAGES_PATH = `guides/${GUIDE_SLUG}/version-1`;
+const GUIDE_FOLDER_PATH = `guides/${GUIDE_SLUG}`;
+const GUIDE_CONFIG_PATH = `${GUIDE_FOLDER_PATH}/config.ts`;
+const VERSION_CONFIG_PATH = `${GUIDE_PAGES_PATH}/config.ts`;
+const GUIDE_CONFIG_CONTENT = `export default ${JSON.stringify(
+  {
+    variant: "GUIDE",
+    settings: {
+      name: GUIDE_NAME,
+      slug: GUIDE_SLUG,
+    },
+  },
+  null,
+  2
+)};`;
+
+const VERSION_CONFIG = {
+  settings: { name: "V1", slug: "v1", isDefault: true },
+  sidebar: [],
+};
+
+function buildPageStructure(pages) {
+  return pages.map((page) => {
+    if(page.type === "link") return;
+    if (page.type === "section") {
+      return {
+        type: "section",
+        label: page.label,
+        visibility: "PUBLIC",
+        pages: buildPageStructure(page.pages || []),
+      };
+    }
+    return {
+      type: "page",
+      path: page.path === "/" ? "./index.mdx" : `.${page.path}.mdx`,
+      pages: buildPageStructure(page.pages || []),
+    };
+  });
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const createGuideConfig = async () => {
+  await fs.promises.mkdir(GUIDE_PAGES_PATH, { recursive: true });
+  await fs.promises.writeFile(GUIDE_CONFIG_PATH, GUIDE_CONFIG_CONTENT);
+};
 
 async function scrapeWebsite(url) {
   try {
@@ -78,68 +127,77 @@ async function scrapeWebsite(url) {
 }
 
 const createFileWithContent = async (path, content) => {
+  const filePath =
+    path === "/"
+      ? `${GUIDE_PAGES_PATH}/index.mdx`
+      : `${GUIDE_PAGES_PATH}${path}.mdx`;
+
+  const dirPath = filePath.substring(0, filePath.lastIndexOf("/"));
+  await fs.promises.mkdir(dirPath, { recursive: true });
   const parsedArticle = await parseFile(content);
   const frontMatter = mapCrawledContentToMarkdown(parsedArticle);
   const markdown = turndownService.turndown(parsedArticle.content);
   const fileContent = matter.stringify(markdown, frontMatter);
 
-  fs.writeFile(path, fileContent, function (err) {
-    if (err) return console.log(err);
-    console.log(`File ${path} created`);
+  fs.writeFile(filePath, fileContent, function (err) {
+    if (err) console.log(err);
+    console.log(`File created: ${filePath}`);
   });
 };
 
-const guideConfigPath = `${GUIDE_FOLDER_PATH}/config.ts`;
-fs.mkdirSync(GUIDE_FOLDER_PATH, { recursive: true });
-const guideConfigContent = `export default ${JSON.stringify(
-  {
-    variant: "GUIDE",
-    settings: {
-      name: "default-guide",
-      slug: "default-guide",
-    },
-  },
-  null,
-  2
-)};`;
-fs.writeFile(guideConfigPath, guideConfigContent, function (err) {
-  if (err) return console.log(err);
-});
-fs.mkdirSync(GUIDE_PAGES_PATH, { recursive: true });
-
-function getPaths(pages, result = []) {
+function getNormalizedPaths(pages, result = []) {
   pages.forEach((page) => {
     if (page.path) {
       result.push(page.path);
     }
     if (page.pages) {
-      getPaths(page.pages, result);
+      getNormalizedPaths(page.pages, result);
     }
   });
   return result;
 }
 
-const allPaths = config.reduce((acc, section) => {
-  if (section.pages) {
-    return acc.concat(getPaths(section.pages));
+const normalizedPaths = config.reduce((acc, obj) => {
+  const isSection = obj.type === 'section';
+  const isPage = obj.type === 'page';
+  const isLink = obj.type === 'link';
+  if (isLink) {
+    return acc;
+  }
+  const hasSubpages = !isLink && obj.pages && obj.pages.length > 0;
+  if (isSection && hasSubpages) {
+    return acc.concat(getNormalizedPaths(obj.pages));
+  }
+  if (isPage && hasSubpages) {
+    return acc.concat(getNormalizedPaths(obj.pages));
+  }
+  if (isPage && !hasSubpages) {
+    return acc.concat(obj.path);
   }
   return acc;
 }, []);
 
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function scrapeWithThrottle(paths, delayDuration = 1000) {
-  for (let i = 0; i < paths.length; i++) {
-    const path = paths[i];
-    const article = await scrapeWebsite(`https://docs.deepsource.com${path}`);
-    if (article) {
-      const filePath = `${GUIDE_PAGES_PATH}/${path.split("/").pop()}.mdx`;
-      await createFileWithContent(filePath, article);
-    }
-    await delay(delayDuration);
+async function scrapeWithThrottle(path, delayDuration = 1000) {
+  const article = await scrapeWebsite(`${DOCS_URL}${path}`);
+  if (article) {
+    await createFileWithContent(path, article);
   }
+  await delay(delayDuration);
 }
 
-scrapeWithThrottle(allPaths);
+const createMdxFiles = async (normalizedPaths) => {
+  for (const path of normalizedPaths) {
+    await scrapeWithThrottle(path);
+  }
+};
+
+
+const run = async () => {
+  await createGuideConfig();
+  await createMdxFiles(normalizedPaths);
+  VERSION_CONFIG.sidebar = buildPageStructure(config);
+  const versionConfigContent = `export default ${JSON.stringify(VERSION_CONFIG, null, 2)};`;
+  fs.writeFileSync(VERSION_CONFIG_PATH, versionConfigContent, "utf8");
+};
+
+run();

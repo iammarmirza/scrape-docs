@@ -1,0 +1,200 @@
+---
+title: SAML single sign-on | GitBook Documentation
+slug: saml
+visibility: PUBLIC
+label: SAML single sign-on | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [​Prerequisites for SSO with GitBook](#prerequisites-for-sso-with-gitbook)
+*   [​Setup on GitBook](#setup-on-gitbook)
+*   [​Setup on the IdP](#setup-on-the-idp)
+*   [Custom Attributes](#custom-attributes)
+*   [​Creating end-user accounts](#creating-end-user-account)
+*   [​Removing accounts](#removing-end-user-accounts)
+*   [Controlling access](#controlling-access)
+*   [​Security notice](#security-notice)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/account-management/sso-and-saml/saml/README.md)
+
+SAML single sign-on
+===================
+
+This feature is included in the Pro and Enterprise plans.
+
+**SAML-based Single Sign-On** (SSO) gives members access to GitBook through an identity provider (IdP) of your choice.‌
+
+GitBook easily integrates with your existing identity provider (IdP) so you can provide your employees with single sign-on to GitBook using the same credentials and login experience as your other service providers.‌
+
+By using SSO, your employees will be able to log into GitBook using the familiar identity provider interface, instead of the GitBook login page. The employee’s browser will then forward them to GitBook. The IdP grants access to GitBook when SSO is enabled and GitBook’s own login mechanism is deactivated. In this way, authentication security is shifted to your IdP and coordinated with your other service providers.‌​
+
+[](#prerequisites-for-sso-with-gitbook)
+
+​Prerequisites for SSO with GitBook
+
+
+--------------------------------------------------------------------------------
+
+*   Your company’s identity provider (IdP) must support the **SAML 2.0** standard.
+    
+*   You must have administrative permission on the IdP.
+    
+*   You must be an administrator of the GitBook organization you want to set SAML up on.
+    
+
+[](#setup-on-gitbook)
+
+​Setup on GitBook
+
+
+--------------------------------------------
+
+You must be an to enable SSO for your GitBook organization.‌
+
+After configuring SSO on your IdP, you will be able to enter metadata. When the setup is successful, administrators will see a confirmation dialog and the URL of the SSO login for end-users will be displayed. **GitBook does not send announcement emails when set up is complete**. It is the responsibility of the administrator to notify company employees (and convey the login URL to them) so they can access GitBook via SSO.‌
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252F1EoY7ysvLIqlV2LUa90k%252Fregister-saml.png%3Falt%3Dmedia%26token%3Dbcf5922a-a048-490d-8ccb-601add1aba6f&width=768&dpr=4&quality=100&sign=c03a52&sv=1)
+
+Register a SAML provider.
+
+You’ll need the following from your IdP metadata to register a SAML provider:
+
+*   A **label** – this can be anything, it’ll be displayed on the login page
+    
+*   An **entity ID**
+    
+*   A **Single Sign On URL**
+    
+*   An **X.509 certificate** – make sure you copy and paste the whole certificate!
+    
+
+[](#setup-on-the-idp)
+
+​Setup on the IdP
+
+
+--------------------------------------------
+
+Most SAML 2.0 compliant identity providers require the same information about the service provider (GitBook, in this case) for set up. These values are specific to your GitBook organization and are available in the **Settings -> SSO** tab of the GitBook organization where you want to enable SSO.‌
+
+Most of these values can be copied directly into your IdP to complete configuration of SAML.
+
+GitBook requires that the **NameID** contain the user’s email address. Technically we are looking for: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the Name-ID format – many providers (such as Google) will allow you set a format such as **EMAIL**.
+
+### 
+
+[](#custom-attributes)
+
+Custom Attributes
+
+GitBook will pull the following custom attributes from the SAML assert response and use them when creating the user.
+
+Field
+
+Description
+
+`first_name`
+
+`first_name` and `last_name` fields will be combined to produce the display name for the user in GitBook
+
+`last_name`
+
+`first_name` and `last_name` fields will be combined to produce the display name for the user in GitBook
+
+[](#creating-end-user-account)
+
+​Creating end-user accounts
+
+
+---------------------------------------------------------------
+
+To add members, create accounts for them in your IdP. The first time a new member logs in to GitBook via the IdP, a GitBook account will be created for them via automatic IdP provisioning. The user will have access to organization resources as an organization member.
+
+Set-up requires lower case email addresses. Do not use mixed case email addresses.‌
+
+[](#removing-end-user-accounts)
+
+​Removing accounts
+
+
+-------------------------------------------------------
+
+Removing a member from the IdP will prevent the user from being able to sign in to the corresponding GitBook account, **but will not remove the account from GitBook**. We advise also removing the account from the GitBook organization.
+
+[](#controlling-access)
+
+Controlling access
+
+
+-----------------------------------------------
+
+Once you have set up SAML SSO, the onus is on the IdP to control who can access your GitBook account.
+
+[](#security-notice)
+
+​Security notice
+
+
+------------------------------------------
+
+If you have an existing GitBook account under the same email address as the one we get from Identity Provider and you are not a member of the organization you're trying to sign into, we will not be able to automatically add you to the organization with the SAML configuration due to security reasons. You have two options:
+
+1.  Delete your existing GitBook account and then log into your desired organization with SAML. GitBook will then create a new account for you and you will be added to the organization
+    
+2.  Or, ask your admin to invite you to the organization:
+    
+
+If your organization does not have "Enforce SSO" enabled, an admin of your organization can invite users through the Members page in your organization's settings.
+
+If your organization has enabled "Enforce SSO", an admin will have to use GitBook's `invites` API endpoint to invite users to the organization. A call to this API would look like the following;
+
+Copy
+
+    curl --request POST --header "Authorization: Bearer <your_access_token>" --url "https://api.gitbook.com/v1/orgs/<org_id>/invites" --header 'Content-Type: application/json' --data-raw '{ "sso": true, "role": "<role>", "emails":["<email>"] }'
+
+Last updated 3 months ago

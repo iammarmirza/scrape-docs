@@ -1,0 +1,94 @@
+---
+title: GitHub pull request preview | GitBook Documentation
+slug: github-pull-request-preview
+visibility: PUBLIC
+label: GitHub pull request preview | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [How to access preview links](#how-to-access-preview-links)
+*   [Security considerations](#security-considerations)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/integrations/git-sync/github-pull-request-preview.md)
+
+GitHub pull request preview
+===========================
+
+Customers who configured the GitBook GitHub app before 6th January 2021 and want to enable this feature will need to accept an updated permission request to enable read-only access to PRs. You should have received a notification requesting this access.
+
+When you submit a Pull Request (PR) to a GitHub branch that has been synced to a GitBook space, you can preview the content before merging. This allows you to check the impact of changes before merging them.
+
+You can use this feature to have a final layer of checks before merging a PR, allowing you to see your changes in a non-production environment before merging it into your synced branch.
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FHlxg4ojBepJUupUJpSPn%252FPull%2520request%2520preview2.png%3Falt%3Dmedia%26token%3Dc33a00f6-6d3c-4ecc-bded-83beee7c0ab6&width=768&dpr=4&quality=100&sign=705a07a1&sv=1)
+
+Pull-Request preview
+
+### 
+
+[](#how-to-access-preview-links)
+
+How to access preview links
+
+This behavior works out of the box, provided you have given the [GitBook GitHub app](https://github.com/apps/gitbook-com) the necessary read-only permissions to PRs.
+
+For every PR done using a target branch synced with a GitBook space, you’ll see a status added to the PR with a unique preview URL. Clicking the **Details** link on the status will take you to the preview URL for your content. You can then make sure the content is as expected before merging the PR.
+
+Preview links are only accessible by GitBook users.
+
+### 
+
+[](#security-considerations)
+
+Security considerations
+
+For security reasons, by default GitBook doesn’t currently generate previews for PRs opened from forks of your repository. Because the content of the PR preview is accessible under your own domain, whether on `.gitbook.io` or your , a user could generate malicious content in a fork of your public repository and have it served under your name.
+
+We allow users to explicitly configure this through an option in the Git Sync settings.
+
+Last updated 3 months ago

@@ -1,0 +1,222 @@
+---
+title: Content configuration | GitBook Documentation
+slug: content-configuration
+visibility: PUBLIC
+label: Content configuration | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [Root](#root)
+*   [​Structure‌](#structure)
+*   [​Redirects](#redirects)
+*   [How to create a redirect](#how-to-create-a-redirect)
+*   [Troubleshooting](#troubleshooting)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/integrations/git-sync/content-configuration.md)
+
+Content configuration
+=====================
+
+If you’d like to configure GitSync further, you can add a `.gitbook.yaml` file at the root of your repository to tell GitBook how to parse your Git repository.
+
+Here’s an example:
+
+.gitbook.yaml
+
+Copy
+
+    root: ./
+    
+    ​structure:
+      readme: README.md
+      summary: SUMMARY.md​
+    
+    redirects:
+      previous/page: new-folder/page.md
+
+[](#root)
+
+Root
+
+
+-------------------
+
+The path to lookup for your documentation defaults to the root directory of the repository. Here’s how you can tell GitBook to look into a `./docs` folder:
+
+.gitbook.yaml
+
+Copy
+
+    root: ./docs/
+
+**All other options that specify paths will be relative to this root folder**. So if you define root as `./docs/` and then `structure.summary` as `./product/SUMMARY.md`, GitBook will actually look for a file in `./docs/product/SUMMARY.md`.‌
+
+[](#structure)
+
+​Structure‌
+
+
+-------------------------------
+
+The structure accepts two properties:‌
+
+*   `**readme**`: Your documentation’s first page. Its default value is `./README.md`
+    
+*   `**summary**`: Your documentation’s table of content. Its default value is `./SUMMARY.md`
+    
+
+The value of those properties is a path to the corresponding files. The path is relative to the “root” option. For example, here’s how you can tell GitBook to look into a `./product` folder for the first page and summary:
+
+.gitbook.yaml
+
+Copy
+
+    structure:
+      readme: ./product/README.md
+      summary: ./product/SUMMARY.md
+
+#### 
+
+[](#summary)
+
+​Summary‌
+
+The `summary` file is a Markdown file (`.md`) that should have the following structure:
+
+Copy
+
+    ‌# Summary​
+    
+    ## Use headings to create page groups like this one​
+    
+    * [First page’s title](page1/README.md)
+        * [Some child page](page1/page1-1.md)
+        * [Some other child page](part1/page1-2.md)
+    
+    * [Second page’s title](page2/README.md)
+        * [Some child page](page2/page2-1.md)
+        * [Some other child page](part2/page2-2.md)
+    
+    ## A second-page group​
+    
+    * [Yet another page](another-page.md)
+
+Providing a custom summary file is optional. By default, GitBook will look for a file named `SUMMARY.md` in your `root` folder if specified in your config file, or at the root of the repository otherwise.
+
+If you don’t specify a summary, and GitBook does not find a `SUMMARY.md` file at the root of your docs, GitBook will infer the table of contents from the folder structure and the Markdown files below.‌
+
+The summary markdown file is **a mirror of the** [**table of contents**](https://docs.gitbook.com/getting-started/overview#table-of-contents) of your GitBook space. So even when no summary file is provided during an initial import, GitBook will create one and/or update it whenever you update your content using the GitBook editor.
+
+Because of this, it’s not possible to reference the same Markdown file twice in your `SUMMARY.md` file, because this would imply that a single page lives at two different URLs in your GitBook space.
+
+[](#redirects)
+
+​Redirects
+
+
+------------------------------
+
+Redirects are commonly used when you are migrating your documentation from one provider to another — like when you just moved your docs to GitBook. Broken links can impact your SEO so we recommend setting up redirects where needed.
+
+#### 
+
+[](#restructuring-your-content-in-gitbook)
+
+Restructuring your content in GitBook
+
+When moving your content within GitBook, most URLs should work as expected depending on complexity of the change. There are a number of tools that will allow you to verify which links were broken, if any.
+
+With Git, when a file is moved many times, the file is removed and a new one is created. This makes it impossible for GitBook to know that a folder has been renamed, for example. Make sure to double-check and add redirects where needed.
+
+### 
+
+[](#how-to-create-a-redirect)
+
+How to create a redirect
+
+You can create custom redirects of a URL to a page by specifying the path to the corresponding file. The path is relative to the “root” option. For example, here’s how you can tell GitBook to redirect users accessing a past url `/help` to a new url `/support`
+
+.gitbook.yaml
+
+Copy
+
+    root: ./
+    
+    redirects:
+      help: support.md
+
+#### 
+
+[](#how-to-redirect-on-a-more-complex-path)
+
+How to redirect on a more complex path:
+
+Original URL: `https://docs.company.com/help` which has now moved to `https://docs.company.com/misc/support` on GitBook.
+
+.gitbook.yaml
+
+Copy
+
+    root: ./
+    
+    redirects:
+      help: misc/support.md
+
+The path `misc/support.md` needs to be a real existing path within the repository. It needs to be relative to the current `root` setting in`.gitbook.yaml`. Please don’t add any leading slashes. For example, `./misc/support.md` will not work.
+
+### 
+
+[](#troubleshooting)
+
+Troubleshooting
+
+The YAML file needs to be correctly formatted for the redirects to work. Errors such as incorrect indentation or whitespace can result in your redirects not working. [Validating your YAML file](https://www.yamllint.com/) can ensure that the redirects will work smoothly.
+
+It's also important to consider that as long as a page exists for a path, GitBook won’t be looking for a possible redirect. So if you're setting up a redirect for an old page to a new one, you will need to remove the old page in order for the redirect to work.
+
+Last updated 4 months ago

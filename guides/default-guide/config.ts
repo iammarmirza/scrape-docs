@@ -1,7 +1,7 @@
 export default {
   "variant": "GUIDE",
   "settings": {
-    "name": "default-guide",
+    "name": "Default Guide",
     "slug": "default-guide"
   }
 };

@@ -1,0 +1,121 @@
+---
+title: Troubleshooting custom domain setup | GitBook Documentation
+slug: troubleshooting
+visibility: PUBLIC
+label: Troubleshooting custom domain setup | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/published-documentation/custom-domain/troubleshooting.md)
+
+Troubleshooting custom domain setup
+===================================
+
+Helping you to solve some of the most common issues when setting up a custom domain.
+
+Setting up a custom domain can occasionally run into obstacles. Below, we outline frequent problems encountered during this process and provide detailed solutions to each of them.
+
+SSL error: an error occurred when provisioning your SSL certificate.[](#ssl-error-an-error-occurred-when-provisioning-your-ssl-certificate)
+
+When a custom domain is set for your organization, collection, or space, we set up an SSL certificate on our end so that your documentation will load securely, over HTTPS. This happens automatically when you set your custom domain — you do not need to purchase or configure an SSL certificate.
+
+Occasionally errors occur at this stage, usually when the CNAME record for the custom domain hasn't propagated.
+
+In these cases, we can recommend the following:
+
+1.  Check that your CNAME record is set up correctly. Please review our page about to help you with this. If the CNAME record is incorrect, we won't be able to configure the SSL certificate and complete the custom domain set-up.
+    
+2.  Allow _**at least one hour**_ between and .
+    
+3.  Verify if the CNAME has propagated. You can try using a third-party DNS lookup tool, such as [WhatsMyDNS](https://www.whatsmydns.net/), to find out what the servers believe to be correct for your correct CNAME record.
+    
+4.  If you are using Cloudflare, please confirm that you don’t have the record proxied .
+    
+
+Domain already connected error: your subdomain is already configured for different content.[](#domain-already-connected-error-your-subdomain-is-already-configured-for-different-content)
+
+A custom domain assigned to an organization or site must be unique. Attempting to use the same custom domain in more than one location will result in an error.
+
+If this happens, you can click the link within the error message to look at the content the custom domain is already connected to. This may help you to decide what to do next. It’s also possible that you might not have access to the content — if that’s the case, and they can help you with your next steps.
+
+The solution to this error will always be one of two things, however:
+
+1.  Choose a different custom domain; or
+    
+2.  Disconnect the custom domain from the content it is already connected to, then reconnect it to the new content.
+    
+
+The custom domain is set correctly, but is redirecting to a different custom domain.[](#the-custom-domain-is-set-correctly-but-is-redirecting-to-a-different-custom-domain)
+
+This is an expected behaviour, that usually can be changed.
+
+The common issue is that custom domains have been set in multiple locations for example organization and the site. When someone accesses the URL for an organization, they are taken straight to the organization’s default content. Likewise, when someone accesses the URL for a multi-variant site, they are taken straight to the multi-variant default site.
+
+**Example**
+
+*   `docs.example.com` is set as the custom domain for an organization
+    
+*   `team.example.com` is set as the custom domain for that organization’s default content.
+    
+
+In this case, the expected behaviour would be `docs.example.com` redirecting you to `team.example.com`.
+
+This issue can be solved by changing the default content or by removing the organization domain and adding the domains at a space level or the other way around (removing the space domain, and maintaining the org domain)
+
+This issue frequently occurs due to the confusion over the location of the domain. Please ensure you checked where your domains are set up, and adjusted this to your requirement.
+
+if you are still experiencing an issue.
+
+In your message, please make sure to share:
+
+1.  The subdomain that you would like to set as a custom domain
+    
+2.  The organization or site name for which you would like to set it.
+    
+
+Last updated 5 months ago

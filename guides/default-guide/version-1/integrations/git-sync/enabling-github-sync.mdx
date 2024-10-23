@@ -1,0 +1,143 @@
+---
+title: Enabling GitHub Sync | GitBook Documentation
+slug: enabling-github-sync
+visibility: PUBLIC
+label: Enabling GitHub Sync | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [1\. Get started](#id-1.-get-started)
+*   [2\. Authenticate with GitHub](#id-2.-authenticate-with-github)
+*   [3\. Install the GitBook app to your GitHub account](#id-3.-install-the-gitbook-app-to-your-github-account)
+*   [4\. Select a repository and branch](#id-4.-select-a-repository-and-branch)
+*   [5\. Perform an initial sync](#id-5.-perform-an-initial-sync)
+*   [6\. Write and commit!](#id-6.-write-and-commit)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/integrations/git-sync/enabling-github-sync.md)
+
+Enabling GitHub Sync
+====================
+
+How to set up and authorize the GitHub Sync integration for GitBook.
+
+The GitHub app that powers our GitHub integration is currently not available to customers on GitHub Enterprise Server instances.
+
+### 
+
+[](#id-1.-get-started)
+
+1\. Get started
+
+In the space you want to sync with your GitHub repo, head to the space menu in the top right, and select **Configure**. From the provider list, select **GitHub Sync**.
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FDCwhjszHCNgBKkhr561i%252Fgithub.png%3Falt%3Dmedia%26token%3Deb0683b2-31e3-432b-8803-5d9e4827d339&width=768&dpr=4&quality=100&sign=5e0f05a5&sv=1)
+
+Configure GitHub Sync.
+
+### 
+
+[](#id-2.-authenticate-with-github)
+
+2\. Authenticate with GitHub
+
+If you’re setting up GitHub Sync for the first time and haven’t already linked a GitHub account, you’ll be prompted to do that when you begin configuring Git Sync. If you’ve already linked your account, you might still need to authenticate via GitHub.
+
+If you see a **'Potential duplicated accounts'** error message at this step, this means your GitHub account is already linked with another GitBook user account.
+
+To help you identify which accounts are linked, you will have to log out from this session and log in using the sign-in with GitHub method. If you already know your GitBook account associated with GitHub you can log into that user account and unlink your GitHub account (done in settings) before logging back in and linking your current account. Read more on our .
+
+### 
+
+[](#id-3.-install-the-gitbook-app-to-your-github-account)
+
+3\. Install the GitBook app to your GitHub account
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FeR9WEM19ECfZpoGXtFfk%252Fgithub%2520%281%29.png%3Falt%3Dmedia%26token%3D69a09238-767a-421e-998c-c9073de25164&width=768&dpr=4&quality=100&sign=d7923d8a&sv=1)
+
+Install the GitHub app to your repository.
+
+If you’ve not already done so, you’ll see a prompt to add the [GitBook app](https://github.com/apps/gitbook-com) to your GitHub account. Follow the instructions in the GitHub popover and either give GitBook specific repository permissions, or allow access to all repositories, depending on your needs.
+
+### 
+
+[](#id-4.-select-a-repository-and-branch)
+
+4\. Select a repository and branch
+
+Select the account and repository you want to keep in sync with your GitBook content.
+
+**Can’t see your repository?** If you can't find your repository in the list, make sure that you've installed the [GitBook GitHub app](https://github.com/apps/gitbook-com) in the right scope (i.e. your personal account or the GitHub org where the repository lives). You should also check that you’ve configured the correct repository access in the GitBook GitHub app.
+
+Once you’ve selected the correct repository, choose which branch you want commits to be pushed to and synced from.
+
+### 
+
+[](#id-5.-perform-an-initial-sync)
+
+5\. Perform an initial sync
+
+When syncing for the first time, you’ll have the option to sync in one of two directions:
+
+1.  Git**Book** -> Git**Hub** will sync your space’s content **to** the selected branch. This is great if you’re starting from an empty repository and want to get your GitBook content in quickly.
+    
+2.  Git**Hub** -> Git**Book** will sync your space’s content **from** the selected branch. This is great if you have existing Markdown content in a repository and want to bring it into GitBook.
+    
+
+### 
+
+[](#id-6.-write-and-commit)
+
+6\. Write and commit!
+
+You’re good to go. You’ll notice that if your space was in mode, live edits are now locked. This allows us to reliably sync content to your repository when someone in your team merges a in GitBook.
+
+When you edit on GitBook, every change request merge will result in a commit to your selected GitHub branch.
+
+When you commit to GitHub, every commit will be synced to your GitBook space as a history commit.
+
+Last updated 5 months ago

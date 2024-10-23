@@ -1,0 +1,105 @@
+---
+title: Commit messages & Autolink | GitBook Documentation
+slug: commits
+visibility: PUBLIC
+label: Commit messages & Autolink | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [Autolink GITBOOK-<num> in GitHub and GitLab](#autolink-gitbook-less-than-num-greater-than-in-github-and-gitlab)
+*   [Customize the commit message template](#customize-the-commit-message-template)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/integrations/git-sync/commits.md)
+
+Commit messages & Autolink
+==========================
+
+Last updated 10 months ago
+
+By default, when exporting content from GitBook to the Git repository, GitBook will generate a commit message based on the merged change request:
+
+Copy
+
+    GITBOOK-14: Improve documentation about users management
+
+[](#autolink-gitbook-less-than-num-greater-than-in-github-and-gitlab)
+
+Autolink `GITBOOK-<num>` in GitHub and GitLab
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+If you want to automatically resolve your GitBook change request IDs (e.g. _GITBOOK-123_) in commits to links, you can enable this using GitHub’s _Autolink references_ feature. See instructions on [GitHub](https://help.github.com/en/github/administering-a-repository/configuring-autolinks-to-reference-external-resources).
+
+Use the following URL format, where `space` corresponds to your space’s URL:
+
+`<https://app.gitbook.com/s/space/~/changes/<num>/`
+
+[](#customize-the-commit-message-template)
+
+Customize the commit message template
+
+
+-------------------------------------------------------------------------------------
+
+When using GitBook with a , or when you have specific guidelines for commit messages; you might want to customize the message used by GitBook when pushing a commit to Git.
+
+The template can contain the following placeholders:
+
+*   `{change_request_number}` unique numeric ID for the change request
+    
+*   `{change_request_subject}` the subject of the change request when merged, or `No subject` if none has been provided.
+    
+
+The default template is:
+
+Copy
+
+    GITBOOK-{change_request_number}: {change_request_subject}
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FwWevP73ME2bLZctsC6ss%252Fautolink.png%3Falt%3Dmedia%26token%3D2acf1a7e-dccc-40af-bdb0-0d4957c760f8&width=768&dpr=4&quality=100&sign=262aa145&sv=1)

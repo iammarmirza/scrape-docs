@@ -1,0 +1,143 @@
+---
+title: Enabling GitLab Sync | GitBook Documentation
+slug: enabling-gitlab-sync
+visibility: PUBLIC
+label: Enabling GitLab Sync | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [1\. Get started](#id-1.-get-started)
+*   [2\. Generate and enter your API access token](#id-2.-generate-and-enter-your-api-access-token)
+*   [3\. Select a repository and branch](#id-3.-select-a-repository-and-branch)
+*   [4\. Perform an initial sync](#id-4.-perform-an-initial-sync)
+*   [5\. Write and commit!](#id-5.-write-and-commit)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/integrations/git-sync/enabling-gitlab-sync.md)
+
+Enabling GitLab Sync
+====================
+
+How to set up and authorize the GitLab Sync integration for GitBook.
+
+Last updated 1 month ago
+
+### 
+
+[](#id-1.-get-started)
+
+1\. Get started
+
+In the space you want to sync with your GitLab repo, head to the space menu in the top right, and select **Synchronize with Git**. From the provider list, select **GitLab Sync**, and click **Configure**.
+
+### 
+
+[](#id-2.-generate-and-enter-your-api-access-token)
+
+2\. Generate and enter your API access token
+
+You can generate an API access token in your GitLab user settings.
+
+There are two types of access tokens in GitLab: Project and Personal. Note that in order for the integration to work you’ll need to use a Personal token, which you can generate from your GitLab user preferences menu.
+
+Ensure that you enable the following access for your token:
+
+*   `api`
+    
+*   `read_repository`
+    
+*   `write_repository`
+    
+
+Then you can paste the token into the API access token field when configuring your GitLab integration.
+
+### 
+
+[](#id-3.-select-a-repository-and-branch)
+
+3\. Select a repository and branch
+
+Select the repository you want to keep in sync with your GitBook content.
+
+**Can’t see your repository?** Ensure you’ve set the correct permissions when creating your API token.
+
+Once you’ve selected the correct repository, choose which branch you want commits to be pushed to and synced from.
+
+For many GitLab repositories, the `main` branch might be automatically set to protected. If this is the case, we recommend adding a specific branch to sync your content between. You can then merge this into `main` and keep the protection in place.
+
+### 
+
+[](#id-4.-perform-an-initial-sync)
+
+4\. Perform an initial sync
+
+When syncing for the first time, you’ll have the option to sync in one of two directions:
+
+1.  Git**Book** -> Git**Lab** will sync your space’s content **to** the selected branch. This is great if you’re starting from an empty repository and want to get your GitBook content in quickly.
+    
+2.  Git**Lab** -> Git**Book** will sync your space’s content **from** the selected branch. This is great if you have existing markdown content in a repository and want to bring it into GitBook.
+    
+
+### 
+
+[](#id-5.-write-and-commit)
+
+5\. Write and commit!
+
+You’re good to go. You’ll notice that if your space was in mode, live edits are now locked. This allows GitBook to reliably sync content to your repository when someone in your team merges a in GitBook.
+
+When you edit on GitBook, every change request merge will result in a commit to your selected GitLab branch.
+
+When you commit to GitLab, every commit will be synced to your GitBook space as a history commit.
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FtGzwCg5lMxiIhk3ky3AT%252Fgitlab.png%3Falt%3Dmedia%26token%3D36cba4b0-cee9-4ab4-8b6f-50bf5423f830&width=768&dpr=4&quality=100&sign=ddd780ee&sv=1)
+
+Git Sync setup screen
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FbvmI38xwdqRvOztI7STk%252Fgitlab-configuration.png%3Falt%3Dmedia%26token%3Df30dda02-c844-4288-8dd1-91bb34aacd6d&width=768&dpr=4&quality=100&sign=d72135e5&sv=1)
+
+GitLab setup screen

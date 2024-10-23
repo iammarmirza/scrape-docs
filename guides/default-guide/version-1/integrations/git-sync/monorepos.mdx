@@ -1,0 +1,127 @@
+---
+title: Monorepos | GitBook Documentation
+slug: monorepos
+visibility: PUBLIC
+label: Monorepos | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/integrations/git-sync/monorepos.md)
+
+Monorepos
+=========
+
+GitBook supports monorepos. A monorepo is a repository that contains more than one logical project (e.g. an iOS client and a web application).
+
+GitBook can synchronize multiple directories from the same repository with multiple spaces. When enabling Git Sync on a space, you can configure a "Project directory". It will be used to lookup the `.gitbook.yaml` file for the directory to synchronize with this space.
+
+Example of a repository structure:
+
+Copy
+
+    /
+      package.json
+      packages/
+         styleguide/
+            .gitbook.yaml
+            README.md
+            SUMMARY.md
+         app/
+            README.md
+            SUMMARY.md
+         api/
+            .gitbook.yaml
+            README.md
+            SUMMARY.md
+
+In this example, 3 spaces can be created on GitBook and configured with different Root directories:
+
+*   `packages/styleguide`
+    
+*   `packages/app`
+    
+*   `packages/api`
+    
+
+The "Project directory" option at the Git Sync level differs from the in the `.gitbook.yaml` configuration file. The first is used to lookup `.gitbook.yaml` itself, then both are combined to lookup the rest of the files in the directory. If no `.gitbook.yaml` exists in the "Project directory", the synchronization will use the default configuration scoped to this directory.
+
+[](#updating)
+
+Updating the Project directory
+
+
+-------------------------------------------------
+
+In most cases, we recommend the following step to update the Project directory:
+
+1.  Disable the existing Git Sync
+    
+2.  Move the files in the Git repository to the Project directory
+    
+3.  Reconfigure the Git Sync with the new Project directory
+    
+
+In some cases, you might have started with a typical repository synchronizing with only one space, but then decided to transition into a monorepo with multiple spaces synchronizing with it; or might have to rename the Project directory.
+
+Changing the Project directory on an existing Git Sync can have an unexpected impact on the content, the change will only be propagated during the next synchronization (edit made on GitBook or new commit in the Git repository).
+
+#### 
+
+[](#if-the-next-operation-is-an-import-from-the-git-repository)
+
+**If the next operation is an import from the Git repository**:
+
+GitBook will expect to find the pages and files in the Project directory. If the files have not already been moved into the repository’s Project directory, the result of the synchronization would be an empty space with no content.
+
+We recommend having the next operation to be a commit moving all GitBook-related files (markdown files, README/SUMMARY, and assets) in the repository to their correct new location, in the Project directory.
+
+**If the next operation is an export from GitBook to the Git repository**:
+
+GitBook will generate or update new files in the new Project directory. Files synchronized with GitBook will be moved to the new Project directory (with the best attempt); it might cause side effects if other parts of your system depend on these files.
+
+Last updated 10 months ago

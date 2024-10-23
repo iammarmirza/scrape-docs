@@ -1,0 +1,144 @@
+---
+title: 1. Choose a subdomain and its location | GitBook Documentation
+slug: choose
+visibility: PUBLIC
+label: 1. Choose a subdomain and its location | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [Decide where to set the custom domain](#decide-where-to-set-the-custom-domain)
+*   [Organization custom domains](#organization-custom-domains)
+*   [Site custom domains](#site-custom-domains)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/published-documentation/custom-domain/choose.md)
+
+1\. Choose a subdomain and its location
+=======================================
+
+Here are some examples of domains you can set in GitBook.
+
+Domain type
+
+Example
+
+Supported?
+
+Apex domain
+
+`example.com`
+
+❌
+
+`www` subdomain
+
+`www.example.com`
+
+✅
+
+Custom subdomain
+
+`docs.example.com`
+
+`help.example.com` `anything.example.com`
+
+✅
+
+[](#decide-where-to-set-the-custom-domain)
+
+Decide where to set the custom domain
+
+
+-------------------------------------------------------------------------------------
+
+There are two levels at which a custom domain can be set:
+
+1.  At the **organization level**
+    
+2.  At the **docs site** level
+    
+
+**Your URL path will depend on where you set the domain.**
+
+[](#organization-custom-domains)
+
+Organization custom domains
+
+
+-----------------------------------------------------------------
+
+Because organizations can contain many sites (and internal spaces) any custom domain set for the organization will apply to all published sites unless overridden.
+
+Each published site will follow after your organization's domain
+
+`**Org-domain/site-name/page-group/page**`
+
+If you’ve decided that you want to set a custom domain at the organization level, you can for details on how to set it. If you’re not sure, keep reading to review your other options.
+
+[](#site-custom-domains)
+
+Site custom domains
+
+
+-------------------------------------------------
+
+If you want to set up a domain different from your main organization domain, or you want to maintain a shorter URL path, you should set the domain directly at a site level.
+
+For example, the domains set for _Site A_ and _Site B_ could be:
+
+*   `site-a-domain/page-group/page`
+    
+*   `site-b-domain/page-group/page`
+    
+
+Domains set at a site level will have the following path
+
+If no page groups are used: `**site-domain/page**`
+
+(Or, if page groups are used:`**site-domain/page-group/page)**`
+
+Last updated 1 month ago

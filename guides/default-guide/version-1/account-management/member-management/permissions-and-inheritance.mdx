@@ -1,0 +1,167 @@
+---
+title: Permissions and inheritance | GitBook Documentation
+slug: permissions-and-inheritance
+visibility: PUBLIC
+label: Permissions and inheritance | GitBook Documentation
+---
+[Homepage](https://www.gitbook.com/)
+
+[Solutions](https://www.gitbook.com/solutions/public-docs)[Pricing](https://www.gitbook.com/pricing)[About](https://www.gitbook.com/about)
+
+[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+More
+
+[Homepage](https://www.gitbook.com/)[Community](https://github.com/GitbookIO/community)[Blog](https://www.gitbook.com/blog)[Developer Docs](https://developer.gitbook.com/)[Sign up](https://gitbook.com/join)
+
+Ask or SearchCtrl + K
+
+*   Content Editor
+    
+*   Published Documentation
+    
+    *   *   *   [Auth0 Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-auth0-integration-for-visitor-authentication)
+            *   [Azure AD Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-azure-ad-integration-for-visitor-authentication)
+            *   [Okta Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-okta-integration-for-visitor-authentication)
+            *   [OIDC Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-oidc-integration-for-visitor-authentication)
+            *   [AWS Cognito Integration Guide](https://developer.gitbook.com/visitor-authentication/guides/integrations/how-to-use-the-aws-cognito-integration-for-visitor-authentication)
+            
+        
+    
+*   Integrations
+    
+*   Reusable Content (beta)
+    
+*   Collaboration
+    
+*   Account management
+    
+*   Help & FAQ
+    
+    *   [Changelog](https://changelog.gitbook.com/)
+    *   [Developer Documentation](https://developer.gitbook.com/)
+*   Policies
+    
+    *   [Subprocessors](https://policies.gitbook.com/security/subprocessors)
+    *   [Terms of Service](https://policies.gitbook.com/terms)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=NkEGS7hzeqa35sMXQZ4X)
+
+On this page
+
+*   [Organization default roles](#organization-default-roles)
+*   [Managing inheritance](#managing-inheritance)
+*   [Inherit](#inherit)
+*   [Specific role access](#specific-role-access)
+*   [No access](#no-access)
+*   [Setting content specific permissions](#setting-content-specific-permissions)
+*   [Giving a team direct access](#giving-a-team-direct-access)
+*   [Giving a member direct access](#giving-a-member-direct-access)
+*   [Keeping on top of permissions](#keeping-on-top-of-permissions)
+
+Was this helpful?
+
+[Edit on GitHub](https://github.com/GitbookIO/public-docs/blob/main/account-management/member-management/permissions-and-inheritance.md)
+
+Permissions and inheritance
+===========================
+
+Last updated 1 month ago
+
+GitBook has a flexible permissions model that lets you have as much, or as little, control over permissions as you need. The permission model in GitBook is a **role-based, cascading** model. This means that you set defaults and then, at any level of content, decide whether to inherit those defaults or not.
+
+### 
+
+[](#organization-default-roles)
+
+Organization default roles
+
+When you add a member to your organization, you set . This role applies to any piece of content that inherits its permissions from the organization defaults.
+
+### 
+
+[](#managing-inheritance)
+
+Managing inheritance
+
+Any time you create a collection or a space, you’ll be able to set the type of inheritance you want. You have three broad options when setting the inheritance for a piece of content:
+
+### 
+
+[](#inherit)
+
+Inherit
+
+Setting the inheritance to **inherit** will make the space or collection inherit the roles assigned in the **parent level content**. For top-level spaces or collections, this parent is the organization, so they would inherit the organization default roles. For spaces or sub-collections inside a collection, the parent will be the collection the content sits within.
+
+### 
+
+[](#specific-role-access)
+
+Specific role access
+
+Selecting a specific role when setting a collection or space’s permission inheritance will **reset** the organization default roles and assign every **non-admin** to that role within the collection or space. For example, if you set the inheritance to **reader**, everyone in the organization would have read-only access to the space or collection, regardless of their default role.
+
+### 
+
+[](#no-access)
+
+No access
+
+You can also completely revoke access for any non-admin organization members at a space or collection level. This will hide the content from everyone except for admins and whomever created the space or collection.
+
+The default inheritance option for any newly-created space or collection is **inherit**. This means that whenever a piece of content is created, it’ll inherit permissions from its parent by default.
+
+### 
+
+[](#setting-content-specific-permissions)
+
+Setting content specific permissions
+
+Once you’ve decided on the permission inheritance for your space or collection, you can further customise access by giving teams or members **direct access**.
+
+### 
+
+[](#giving-a-team-direct-access)
+
+Giving a team direct access
+
+You can add a team directly to a collection or space with a specific role. This will give anyone in that team the specified access to the content.
+
+Team access is a great way to ensure that the right people have access to the right content; any time someone is added to or removed from a team, they’ll gain or lose, respectively, the permissions set on the content.
+
+### 
+
+[](#giving-a-member-direct-access)
+
+Giving a member direct access
+
+Similarly to teams, you can also give members direct access. This is the most granular way of managing permissions. When giving single members direct access to a collection or space, you override any inherited permissions they might have. Direct member access is great if you need very specific control over collaborators.
+
+### 
+
+[](#keeping-on-top-of-permissions)
+
+Keeping on top of permissions
+
+While this might seem pretty complex at first, GitBook’s permission model gives you control if you need it, and gets out of the way if you don’t. For many teams, a **set-and-forget** approach to permission management is all they need. For other teams, especially larger organizations, this level of control over access and workflow is essential.
+
+#### 
+
+[](#set-and-forget)
+
+Set and forget
+
+If you just want to get your teammates onboarded and editing content with you, then you might never even need to look at permissions. Invite folks, set their default role, and any content you create will default to inheriting these roles. No need to get into the weeds!
+
+#### 
+
+[](#control-over-access-and-workflow)
+
+Control over access and workflow
+
+For larger organizations, teams that split their organization up into discrete collections, or teams that need very granular control over workflow; then getting into the weeds is exactly what’s needed. Using a combination of inheritance, overriding, direct team access and direct user access, you can create workflows and access models that keep you in control.
+
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252FXzdOxvjGUWqimev2OqJr%252Finherited-permission.png%3Falt%3Dmedia%26token%3D57eaf49a-8697-436c-aeb5-d096f41d8f29&width=768&dpr=4&quality=100&sign=fb720b69&sv=1)
+
+permissions inheritance
