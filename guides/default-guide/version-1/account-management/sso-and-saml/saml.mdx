@@ -65,6 +65,8 @@ Was this helpful?
 SAML single sign-on
 ===================
 
+Last updated 3 months ago
+
 This feature is included in the Pro and Enterprise plans.
 
 **SAML-based Single Sign-On** (SSO) gives members access to GitBook through an identity provider (IdP) of your choice.‌
@@ -97,10 +99,6 @@ By using SSO, your employees will be able to log into GitBook using the familiar
 You must be an to enable SSO for your GitBook organization.‌
 
 After configuring SSO on your IdP, you will be able to enter metadata. When the setup is successful, administrators will see a confirmation dialog and the URL of the SSO login for end-users will be displayed. **GitBook does not send announcement emails when set up is complete**. It is the responsibility of the administrator to notify company employees (and convey the login URL to them) so they can access GitBook via SSO.‌
-
-![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252F1EoY7ysvLIqlV2LUa90k%252Fregister-saml.png%3Falt%3Dmedia%26token%3Dbcf5922a-a048-490d-8ccb-601add1aba6f&width=768&dpr=4&quality=100&sign=c03a52&sv=1)
-
-Register a SAML provider.
 
 You’ll need the following from your IdP metadata to register a SAML provider:
 
@@ -197,4 +195,6 @@ Copy
 
     curl --request POST --header "Authorization: Bearer <your_access_token>" --url "https://api.gitbook.com/v1/orgs/<org_id>/invites" --header 'Content-Type: application/json' --data-raw '{ "sso": true, "role": "<role>", "emails":["<email>"] }'
 
-Last updated 3 months ago
+![](https://docs.gitbook.com/~gitbook/image?url=https%3A%2F%2F1050631731-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNkEGS7hzeqa35sMXQZ4X%252Fuploads%252F1EoY7ysvLIqlV2LUa90k%252Fregister-saml.png%3Falt%3Dmedia%26token%3Dbcf5922a-a048-490d-8ccb-601add1aba6f&width=768&dpr=4&quality=100&sign=c03a52&sv=1)
+
+Register a SAML provider.

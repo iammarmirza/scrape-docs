@@ -7,7 +7,7 @@ export default {
   "sidebar": [
     {
       "type": "page",
-      "path": "./index.mdx",
+      "path": "./introduction.mdx",
       "pages": []
     },
     {
@@ -255,7 +255,13 @@ export default {
             {
               "type": "page",
               "path": "./published-documentation/publish-your-content-as-a-docs-site/visitor-authentication.mdx",
-              "pages": []
+              "pages": [
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
             }
           ]
         },
@@ -601,6 +607,8 @@ export default {
           "path": "./help-and-faq/contributing.mdx",
           "pages": []
         },
+        null,
+        null
       ]
     },
     {
@@ -608,6 +616,8 @@ export default {
       "label": "Policies",
       "visibility": "PUBLIC",
       "pages": [
+        null,
+        null
       ]
     }
   ]
